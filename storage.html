@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>HTML5 Demo: storage</title>
+<style>
+body { 
+  font: normal 16px/20px Helvetica, sans-serif;
+  background: rgb(237, 237, 236);
+  margin: 0;
+  margin-top: 40px;
+  padding: 0;
+}
+
+section, header, footer {
+  display: block;
+}
+
+#wrapper {
+  width: 600px;
+  margin: 0 auto;
+  background: #fff url(images/shade.jpg) repeat-x center bottom;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-top: 1px solid #fff;
+  padding-bottom: 76px;
+}
+
+h1 {
+  padding-top: 10px;
+}
+
+h2 {
+  font-size: 100%;
+  font-style: italic;
+}
+
+header,
+article > *,
+footer > * {
+  margin: 20px;
+}
+
+input {
+  font-size: 16px;
+  padding: 3px;
+  margin-left: 5px;  
+}
+
+footer > * {
+  margin: 20px;
+  color: #999;
+}
+
+article div {
+  margin: 10px 0;
+}
+
+label {
+  float: left;
+  display: block;
+  width: 125px;
+  line-height: 32px;
+}
+
+</style>
+<script src="h5utils.js"></script>
+</head>
+<body>
+<section id="wrapper">
+    <header>
+      <h1>Storage</h1>
+    </header>
+    <article>
+      <section>
+        <p>Values are stored on <code>keyup</code></p>
+        <p>Content loaded from previous sessions:</p>
+        <ul id="previous"></ul>
+      </section>
+      <section>
+        <div>
+          <label for="session">sessionStorage:</label>
+          <input type="text" name="session" value="" id="session" />          
+        </div>
+        <div>
+          <label for="local">localStorage:</label>
+          <input type="text" name="local" value="" id="local" />
+        </div>
+        <input type="button" id="clear" value="Clear storage" />
+      </section>
+    </article>
+    <footer><a href="/">HTML5 demo</a></footer>
+</section>
+<script>
+
+function getStorage(type) {
+  var storage = window[type + 'Storage'],
+    delta = 0,
+    li = document.createElement('li');
+
+  if (!window[type + 'Storage']) return;
+
+  if (storage.getItem('value')) {
+    delta = ((new Date()).getTime() - (new Date()).setTime(storage.getItem('timestamp'))) / 1000;
+    
+    li.innerHTML = type + 'Storage: ' + storage.getItem('value') + ' (last updated: ' + delta + 's ago)';
+  } else {
+    li.innerHTML = type + 'Storage is empty';
+  }
+
+  document.querySelector('#previous').appendChild(li);
+}
+
+getStorage('session');
+getStorage('local');
+
+addEvent(document.querySelector('#session'), 'keyup', function () {
+  sessionStorage.setItem('value', this.value);
+  sessionStorage.setItem('timestamp', (new Date()).getTime());
+});
+
+addEvent(document.querySelector('#local'), 'keyup', function () {
+  localStorage.setItem('value', this.value);
+  localStorage.setItem('timestamp', (new Date()).getTime());
+});
+
+addEvent(document.querySelector('#clear'), 'click', function () {
+  sessionStorage.clear();
+  localStorage.clear();
+  
+  document.querySelector('#previous').innerHTML = '';
+  getStorage('local');
+  getStorage('session');
+});
+
+</script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

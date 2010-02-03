@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>HTML5 Demo: canvas</title>
+<style>
+body { 
+  font: normal 16px/20px Helvetica, sans-serif;
+  background: rgb(237, 237, 236);
+  margin: 0;
+  margin-top: 40px;
+  padding: 0;
+}
+
+article, section, header, footer {
+  display: block;
+}
+
+#wrapper {
+  width: 600px;
+  margin: 0 auto;
+  background: #fff url(images/shade.jpg) repeat-x center bottom;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-top: 1px solid #fff;
+  padding-bottom: 76px;
+}
+
+h1 {
+  padding-top: 10px;
+}
+
+h2 {
+  font-size: 100%;
+  font-style: italic;
+}
+
+header,
+article > *,
+footer a,
+footer p {
+  margin: 20px;
+}
+
+footer > * {
+  margin: 20px;
+  color: #999;
+}
+
+article {
+  position: relative;
+}
+</style>
+<script>
+// For discussion and comments, see: http://remysharp.com/2009/01/07/html5-enabling-script/
+(function(){if(!/*@cc_on!@*/0)return;var e = "abbr,article,aside,audio,bb,canvas,datagrid,datalist,details,dialog,eventsource,figure,footer,header,mark,menu,meter,nav,output,progress,section,time,video".split(','),i=e.length;while (i--){document.createElement(e[i])}})()
+</script>
+</head>
+<body>
+<section id="wrapper">
+    <header>
+      <h1>Canvas</h1>
+    </header>
+    <article></article>
+    <footer><a href="/">HTML5 demo</a></footer>
+</section>
+<script src="h5utils.js"></script>
+<script>
+
+buildSpinner({ x : 50, y : 50, size : 20, degrees : 30 });
+
+function buildSpinner(data) {
+  
+  var canvas = document.createElement('canvas');
+  canvas.height = 100;
+  canvas.width = 300;
+  document.getElementsByTagName('article')[0].appendChild(canvas);
+  var ctx = canvas.getContext("2d"),
+    i = 0, degrees = data.degrees, loops = 0, degreesList = [];
+    
+  for (i = 0; i < degrees; i++) {
+    degreesList.push(i);
+  }
+  
+  // reset
+  i = 0;
+  
+  // so I can kill it later
+  window.canvasTimer = setInterval(draw, 1000/degrees);  
+
+  function reset() {
+    ctx.clearRect(0,0,100,100); // clear canvas
+    
+    var left = degreesList.slice(0, 1);
+    var right = degreesList.slice(1, degreesList.length);
+    degreesList = right.concat(left);
+  }
+  
+  function draw() {
+    var c, s, e;
+
+    var d = 0;
+
+    if (i == 0) {
+      reset();
+    }
+
+    ctx.save();
+
+    d = degreesList[i];
+    c = Math.floor(255/degrees*i);
+    ctx.strokeStyle = 'rgb(' + c + ', ' + c + ', ' + c + ')';
+    ctx.lineWidth = data.size;
+    ctx.beginPath();
+    s = Math.floor(360/degrees*(d));
+    e = Math.floor(360/degrees*(d+1)) - 1;
+
+    ctx.arc(data.x, data.y, data.size, (Math.PI/180)*s, (Math.PI/180)*e, false);
+    ctx.stroke();
+
+    ctx.restore();
+
+    i++;
+    if (i >= degrees) {
+      i = 0;
+    }
+  }  
+}
+
+
+</script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
+<title>HTML5 Drag and drop demonstration</title>
+<style type="text/css">
+#boxA, #boxB, #boxC { 
+  float:left; width:200px; height:200px; padding:10px; margin:10px;
+}
+
+#boxA { background-color: blue; }
+#boxB { background-color: green; }
+#boxC { background-color: yellow; }
+
+#drag, #drag2, #drag3 {
+  width:50px; height:50px; padding:5px; margin:5px;
+  -moz-user-select:none;
+}
+#drag { background-color: red;}
+#drag2 { background-color: orange;}
+#drag3 { background-color: purple; border:3px brown solid;}
+
+</style>
+<script type="text/javascript">
+function dragStart(ev) {
+    ev.dataTransfer.effectAllowed='move';
+    //ev.dataTransfer.dropEffect='move';
+    ev.dataTransfer.setData("Text", ev.target.getAttribute('id'));
+    ev.dataTransfer.setDragImage(ev.target,0,0);
+    return true;
+}
+
+function dragEnd(ev) {
+    ev.dataTransfer.clearData("Text");
+    return true
+}
+
+
+function dragEnter(ev) {
+    var idelt = ev.dataTransfer.getData("Text");
+    return true;
+}
+
+function dragOver(ev) {
+    var idelt = ev.dataTransfer.getData("Text");
+    var id = ev.target.getAttribute('id');
+    
+    return false;
+    
+    if( (id =='boxB' || id =='boxA') && (idelt == 'drag' || idelt=='drag2'))
+        return false;
+    else if( id =='boxC' && idelt == 'drag3')
+        return false;
+    else
+        return true;
+}
+
+function dragDrop(ev) {
+  console.log('drop');
+    var idelt = ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(idelt));
+    ev.stopPropagation();
+    return false; // return false so the event will not be propagated to the browser
+}
+
+</script>
+</head>
+<body>
+    <h1>Drag and drop demo in a HTML document, using the HTML5 drag and drop API</h1>
+    <div> The red box and the orange box can be dragged and dropped between 
+    the blue and the green boxes.
+    The purple box can be dragged and dropped only to the yellow box.
+    </div>
+
+    <div id="boxA"
+        ondragenter="return dragEnter(event)"
+        ondrop="return dragDrop(event)"
+        ondragover="return dragOver(event)">
+
+      <div id="drag" draggable="true"
+            ondragstart="return dragStart(event)"
+            ondragend="return dragEnd(event)">drag me</div>
+
+      <div id="drag2" draggable="true"
+            ondragstart="return dragStart(event)"
+            ondragend="return dragEnd(event)">drag me</div>
+
+      <div id="drag3" draggable="true"
+            ondragstart="return dragStart(event)"
+            ondragend="return dragEnd(event)">drag me</div>
+
+    </div>
+
+    <div id="boxB"
+        ondragenter="return dragEnter(event)"
+        ondrop="return dragDrop(event)"
+        ondragover="return dragOver(event)">
+    </div>
+
+    <div id="boxC"
+        ondragenter="return dragEnter(event)"
+        ondrop="return dragDrop(event)"
+        ondragover="return dragOver(event)">
+    </div>
+    <div style="clear:both">Example created by <a href="http://ljouanneau.com/blog/">Laurent Jouanneau</a>.</div>
+    <script>
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script>
+    try {
+    var pageTracker = _gat._getTracker("UA-1656750-18");
+    pageTracker._trackPageview();
+    } catch(err) {}</script>
+</body>
+</html>
