@@ -1,0 +1,20 @@
+<IfModule mod_rewrite.c>
+Options +FollowSymLinks +ExecCGI
+RewriteEngine On
+RewriteBase /
+
+# no-www.org
+RewriteCond %{HTTP_HOST} ^www\.html5demos\.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www\.html5demo\.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^html5demo\.com$ [NC]
+RewriteRule ^(.*)$ http://html5demos.com/$1 [R=301,L]
+
+# if the file or directory does exist
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .* - [L]
+
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule (.*) $1.html [L]
+
+</IfModule>
