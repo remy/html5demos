@@ -20,5 +20,6 @@ A collection of HTML5 experiments I've created, now open source and on GitHub, s
 
 ## TODO
 
+* Clearer versioning on the demos, rather than "All bar Opera", should include last version to support feature, i.e. Opera 10.10b, Chrome 4 dev, Safari 4.0, etc.
 * Reorganise the directory structure to categorise demos
 * Create an easy way to drive the template for the site (currently it's a complete copy for each of the files)
