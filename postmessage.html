@@ -90,13 +90,13 @@ iframe {
 <script>
 var win = document.getElementById("iframe").contentWindow;
 
-addEvent(document.querySelector('form'), 'submit', function (e) {
+addEvent(document.getElementsByTagName('form')[0], 'submit', function (e) {
 	if (e.preventDefault)
 		e.preventDefault();
 
 	win.postMessage(
 		document.getElementById("message").value,
-		"http://html5demos.com"
+    "http://html5demos.com"
 	);
 
 	// otherwise set the returnValue property of the original event to false (IE)

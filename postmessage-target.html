@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html>
+<head>
 <title>.postMessage target</title>
 <style>
 body { 
@@ -7,9 +9,11 @@ body {
   padding: 20px;
 }
 </style>
+</head>
+<body>
 <strong>This iframe is located on the same domain</strong>
 <p id="test">Send me a message!</p>
-<script src="h5utils.js"></script>
+<script src="/h5utils.js"></script>
 <script>
 addEvent(window, "message", function(e){
   if ( e.origin !== "http://html5demos.com" ) {
@@ -19,3 +23,5 @@ addEvent(window, "message", function(e){
   }
 });
 </script>
+</body>
+</html>
