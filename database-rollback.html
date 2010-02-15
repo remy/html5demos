@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>HTML5 Demo: Web Database</title>
+<style>
+body { 
+  font: normal 16px/20px Helvetica, sans-serif;
+  background: rgb(237, 237, 236);
+  margin: 0;
+  margin-top: 40px;
+  padding: 0;
+}
+
+section, header, footer {
+  display: block;
+}
+
+#wrapper {
+  width: 600px;
+  margin: 0 auto;
+  background: #fff url(images/shade.jpg) repeat-x center bottom;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-top: 1px solid #fff;
+  padding-bottom: 76px;
+}
+
+h1 {
+  padding-top: 10px;
+}
+
+h2 {
+  font-size: 100%;
+  font-style: italic;
+}
+
+#wrapper > * > * {
+  margin: 20px;
+}
+
+input {
+  font-size: 16px;
+  padding: 3px;
+  margin-left: 5px;  
+}
+
+footer > * {
+  color: #999;
+}
+
+article div {
+  margin: 10px 0;
+}
+
+#status {
+  padding: 5px;
+  color: #fff;
+  background: #ccc;
+}
+
+#status.error {
+  background: #c00;
+}
+
+#status.ok {
+  background: #0c0;
+}
+
+label {
+  float: left;
+  display: block;
+  width: 125px;
+  line-height: 32px;
+}
+
+#tweets {
+  max-height: 300px;
+  overflow: auto;
+  border: 3px solid #ccc;
+}
+
+#tweets ul {
+  margin: 0;
+/*  list-style: none;*/
+  padding: 5px;
+}
+
+#tweets li {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-top: 1px solid #ccc;
+}
+
+#tweets li:first-child {
+  border-top: 0;
+}
+</style>
+<script src="h5utils.js"></script>
+</head>
+<body>
+<div id="wrapper">
+    <article>
+      <section>
+        <header>
+          <h1>Web SQL Database - rollback test</h1>
+        </header>
+        <p>This code creates a table called 'foo' and inserts a single row. In a separate transaction, it drops the table then tries to insert in to the table 'foo' - obviously failing. That failure should cause the transaction to rollback, and leave the table 'foo' intact. The next transaction tries to select a row from the 'foo' table. If the rollback succeeds, you should see the status change to 'found rows'.</p>
+        <p>Status:</p>
+        <section id="status" class="ok">ready</section>
+      </section>
+    </article>
+    <footer><a href="/">HTML5 demo</a></footer>
+</div>
+<script>
+var db = openDatabase('foo', '1.0', 'foo', 2 * 1024);
+db.transaction(function (tx) {
+  tx.executeSql('CREATE TABLE IF NOT EXISTS foo (id unique, text)');  
+  tx.executeSql('INSERT INTO foo (id, text) VALUES (1, "foobar")');
+  document.querySelector('#status').innerHTML = '<p>foo created and row inserted.</p>';
+});
+
+db.transaction(function (tx) {
+  tx.executeSql('DROP TABLE foo');
+  
+  // known to fail - so should rollback the DROP statement
+  tx.executeSql('INSERT INTO foo (id, text) VALUES (1, "foobar")');
+}, function (err) {
+  document.querySelector('#status').innerHTML += '<p>should be rolling back caused by: <code>' + err.message + '</code></p>';
+});
+
+db.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM foo', [], function (tx, results) {
+    document.querySelector('#status').innerHTML += '<p>found rows (should be 1): ' + results.rows.length + '</p>'; 
+  }, function (tx, err) {
+    document.querySelector('#status').innerHTML += '<p>failed (rollback failed): <em>' + err.message + '</em></p>';
+    document.querySelector('#status').className = 'error';
+  });
+});
+</script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
