@@ -22,6 +22,7 @@ section, header, footer {
   background: #fff url(images/shade.jpg) repeat-x center bottom;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
+  border-radius: 10px;
   border-top: 1px solid #fff;
   padding-bottom: 76px;
 }
@@ -164,7 +165,12 @@ addEvent(drop, 'drop', function (e) {
   
   /** THIS IS THE MAGIC: we read from getData based on the content type - so it grabs the item matching that format **/
   if (getDataType.checked == false && e.dataTransfer.types) {
-    li.innerHTML = entities(e.dataTransfer.getData(e.dataTransfer.types[0]) + ' (content-type: ' + e.dataTransfer.types[0] + ')');
+    li.innerHTML = '<ul>';
+    [].forEach.call(e.dataTransfer.types, function (type) {
+      li.innerHTML += '<li>' + entities(e.dataTransfer.getData(type) + ' (content-type: ' + type + ')') + '</li>';
+    });
+    li.innerHTML += '</ul>';
+    
   } else {
     // ... however, if we're IE, we don't have the .types property, so we'll just get the Text value
     li.innerHTML = e.dataTransfer.getData('Text');
