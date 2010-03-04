@@ -1,18 +1,19 @@
 <title>Online connectivity monitoring</title>
 <article>
   <p>Current network status: <span id="status">checking...</span></p>
+  <ol id="state"></ol>
 </article>
 <script>
-function online() {
-  var status = document.querySelector('#status');
-  if (status) {
-    status.className = navigator.onLine ? 'online' : 'offline';
-    status.innerHTML = navigator.onLine ? 'online' : 'offline';
-  }
+var status = document.getElementById('status'),
+    state = document.getElementById('state');
+
+function online(event) {
+  status.className = navigator.onLine ? 'online' : 'offline';
+  status.innerHTML = navigator.onLine ? 'online' : 'offline';
+  state.innerHTML += '<li>New event: ' + event.type + '</li>';
 }
 
-document.addEventListener('DOMContentLoaded', online, true);
-window.addEventListener('online', online, true);
-window.addEventListener('offline', online, true);
-
+addEvent(window, 'online', online);
+addEvent(window, 'offline', online);
+online({ type: 'ready' });
 </script>

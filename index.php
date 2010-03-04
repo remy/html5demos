@@ -26,6 +26,7 @@
         <li><a href="drag">drag and drop</a> (IE, Safari 4, FF3.5)</li>
         <li><a href="drag-anything">drag <em>anything</em></a> (IE, Safari 4, FF3.5)</li>
         <li><a href="offline">offline detection</a> (FF3.5, iPhone OS 3)</li>
+        <li><a href="offline-events">on/offline event tests</a> (Opera, Firefox - requires "Work Offline")</li>
         <li><a href="offlineapp">offline application using the manifest</a> (Safari 4, FF3.5.3) (<em>Note: pre-FF3.5.3 <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=501422">has a bug</a></em>)</li>
         <li><a href="storage">Storage</a> (all latest browsers)</li>
         <li><a href="database">Web SQL Database Storage</a> (Safari, iPhone OS 3, Opera 10.50)</li>
