@@ -1,79 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" manifest="html5demo.manifest">
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=620" />
-<title>HTML5 Demo: offline app (v15)</title>
-<style>
-body { 
-  font: normal 16px/20px Helvetica, sans-serif;
-  background: rgb(237, 237, 236);
-  margin: 0;
-  margin-top: 40px;
-  padding: 0;
-}
-
-section, header, footer {
-  display: block;
-}
-
-#wrapper {
-  width: 600px;
-  margin: 0 auto;
-  background: #fff url(images/shade.jpg) repeat-x center bottom;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  border-top: 1px solid #fff;
-  padding-bottom: 76px;
-}
-
-h1 {
-  padding-top: 10px;
-}
-
-h2 {
-  font-size: 100%;
-  font-style: italic;
-}
-
-header,
-article > p,
-article > h3,
-article > code,
-footer a,
-footer p {
-  margin: 20px;
-}
-
-footer > * {
-  margin: 20px;
-  color: #999;
-}
-
-#status {
-  padding: 5px;
-  color: #fff;
-  background: #ccc;
-}
-
-#status.fail {
-  background: #c00;
-}
-
-#status.success {
-  background: #0c0;
-}
-
-
-</style>
-<script src="h5utils-offline.js"></script>
-</head>
-<body>
-<section id="wrapper">
-    <header>
-      <h1>Offline Application: using manifest</h1>
-    </header>
+<title>Offline Application: using manifest</title>
+<script src="/js/h5utils-offline.js"></script>
     <article>
       <p>A good working example is to load this demo up, then disconnection your web connection - the page will still reload. In addition, try this on an iPhone, then set your iPhone to flight mode, and refresh: the page loads.</p>
       <p>Status of cache: </p>
@@ -81,8 +8,6 @@ footer > * {
       <p><input type="button" id="update" value="Update cache status" /></p>
       <p><input type="button" id="swap" value="Update cache to latest" /></p>
     </article>
-    <footer><a href="/">HTML5 demo</a></footer>
-</section>
 <script>
 
 var cacheStates = ["UNCACHED (numeric value 0) -- The ApplicationCache object's cache host is not associated with an application cache at this time.",
@@ -112,14 +37,3 @@ while (i--) {
 }
 
 </script>
-<script>
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script>
-try {
-var pageTracker = _gat._getTracker("UA-1656750-18");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-</body>
-</html>

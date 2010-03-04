@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
-<title>HTML5 Drag and drop demonstration</title>
+<meta charset=UTF-8 />
+<title>Drag and drop</title>
 <style type="text/css">
 * {
   margin: 0;
@@ -73,6 +73,7 @@ li.over {
 }
 
 </style>
+<script src="/js/h5utils.js"></script>
 </head>
 <body>
   <div id="bin"></div>
@@ -152,14 +153,14 @@ li.over {
   });
 
   </script>
-  <script>
-  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script>
-  try {
-  var pageTracker = _gat._getTracker("UA-1656750-18");
-  pageTracker._trackPageview();
-  } catch(err) {}</script>  
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>  
 </body>
 </html>

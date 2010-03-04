@@ -5,4 +5,4 @@ CACHE MANIFEST
 CACHE:
 images/shade.jpg
 images/bin.jpg
-h5utils-offline.js
+/js/h5utils-offline.js

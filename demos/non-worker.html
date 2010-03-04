@@ -1,72 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<title>HTML5 Demo: worker reference point</title>
-<style>
-body { 
-  font: normal 16px/20px Helvetica, sans-serif;
-  background: rgb(237, 237, 236);
-  margin: 0;
-  margin-top: 40px;
-  padding: 0;
-}
-
-article, section, header, footer {
-  display: block;
-}
-
-#wrapper {
-  width: 600px;
-  margin: 0 auto;
-  background: #fff url(images/shade.jpg) repeat-x center bottom;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  border-top: 1px solid #fff;
-  padding-bottom: 76px;
-}
-
-h1 {
-  padding-top: 10px;
-}
-
-h2 {
-  font-size: 100%;
-  font-style: italic;
-}
-
-header,
-article > *,
-footer a,
-footer p {
-  margin: 20px;
-}
-
-footer > * {
-  margin: 20px;
-  color: #999;
-}
-
-article {
-  position: relative;
-}
-
-</style>
-</head>
-<body>
-<section id="wrapper">
-  <header>
-    <h1>Non Worker (for reference)</h1>
-  </header>
+  <title>Non Worker</title>
   <article>
     <p>Canvas is running whilst an prime number finder runs - this will cause your browser to hang</p>
     <p>Prime found: <span id="status">0</span></p>
     <div><input type="button" value="start worker" id="toggleWorker" /></div>
   </article>
-  <footer><a href="/">HTML5 demo</a></footer>
-</section>
-<script src="h5utils.js"></script>
 <script>
 
 buildSpinner({ x : 50, y : 50, size : 20, degrees : 30 });
@@ -157,14 +94,3 @@ function buildSpinner(data) {
 
 
 </script>
-<script>
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script>
-try {
-var pageTracker = _gat._getTracker("UA-1656750-18");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-</body>
-</html>
