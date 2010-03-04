@@ -25,3 +25,28 @@ var addEvent = (function () {
   }
 })();
 
+(function () {
+
+var pre = document.createElement('pre');
+pre.id = "view-source"
+
+// private scope to avoid conflicts with demos
+addEvent(window, 'click', function (event) {
+  if (event.target.hash == '#view-source') {
+    // event.preventDefault();
+    if (!document.getElementById('view-source')) {
+      pre.innerHTML = ('<!DOCTYPE html>\n<html>\n' + document.documentElement.innerHTML + '\n</html>').replace(/[<>]/g, function (m) { return {'<':'&lt;','>':'&gt;'}[m]});
+      document.body.appendChild(pre);      
+    }
+    document.body.className = 'view-source';
+    
+    var sourceTimer = setInterval(function () {
+      if (window.location.hash != '#view-source') {
+        clearInterval(sourceTimer);
+        document.body.className = '';
+      }
+    }, 200);
+  }
+});
+  
+})();

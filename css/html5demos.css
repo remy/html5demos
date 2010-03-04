@@ -131,3 +131,22 @@ input {
   padding: 3px;
   margin-left: 5px;  
 }
+
+#view-source {
+  display: none;
+}
+
+body.view-source {
+  margin: 0;
+  background: #fff;
+  padding: 20px;
+}
+
+body.view-source > * {
+  display: none;
+}
+
+body.view-source #view-source {
+  display: block !important;
+  margin: 0;
+}
