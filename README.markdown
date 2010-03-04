@@ -18,12 +18,12 @@ Instructions to creating a new demo:
 * Create a .html in the /demos directory
 * Use the following template (also a sample in /demos/template.html):
 
-`<title><!-- Title of your demo, note this appears in the document title prefixed with "HTML5 Demo:" --></title>
-<style>/** any custom styles live here **/</style>
-<article><!-- any demo markup here --></article>
-<script>
+<pre><code>&lt;title&gt;&lt;!-- Title of your demo, note this appears in the document title prefixed with &quot;HTML5 Demo:&quot; --&gt;&lt;/title&gt;
+&lt;style&gt;/** any custom styles live here **/&lt;/style&gt;
+&lt;article&gt;&lt;!-- any demo markup here --&gt;&lt;/article&gt;
+&lt;script&gt;
 // your JavaScript
-</script>`
+&lt;/script&gt;</code></pre>
 
 * When requesting the demo, use html5demos.com/[yourdemo] and page.php will top and tail your page
 * Any additional JavaScript libraries should be stored in the /js directory, assets, such as video and audio live in the /assets directory.
