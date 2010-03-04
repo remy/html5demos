@@ -9,6 +9,31 @@ A collection of HTML5 experiments I've created, now open source and on GitHub, s
 * All content is open source and content is [Creative Commons Share Alike 2.0](http://creativecommons.org/licenses/by-sa/2.0/uk/)
 * Individual demos, if authored by someone other than [@rem](http://twitter.com) can be credited as appropriate
 
+# Creating new demos
+
+If the demo should take the default style - currently grey and dull - but it keeps the focus on the code ;) then follow these instructions. Otherwise, simply create the file in the root directory calling it [yourdemo].html and include it in the index.php.
+
+Instructions to creating a new demo:
+
+* Create a .html in the /demos directory
+* Use the following template (also a sample in /demos/template.html):
+
+`<title><!-- Title of your demo, note this appears in the document title prefixed with "HTML5 Demo:" --></title>
+<style>/** any custom styles live here **/</style>
+<article><!-- any demo markup here --></article>
+<script>
+// your JavaScript
+</script>`
+
+* When requesting the demo, use html5demos.com/[yourdemo] and page.php will top and tail your page
+* Any additional JavaScript libraries should be stored in the /js directory, assets, such as video and audio live in the /assets directory.
+
+That should be it. 
+
+By submitting any code, you're also agreeing that your code is covered by the MIT-LICENSE that this project is covered by, and all content is covered by Creative Commons Share Alike 2.0 - as is all of this project: it's all about sharing baby!
+
+# TODO
+
 ## Demos Required
 
 * Microdata
@@ -18,8 +43,6 @@ A collection of HTML5 experiments I've created, now open source and on GitHub, s
 * More event based stuff
 * WebSockets (@rem - have a demo ready, but not the server side)
 
-## TODO
+## Misc
 
 * Clearer versioning on the demos, rather than "All bar Opera", should include last version to support feature, i.e. Opera 10.10b, Chrome 4 dev, Safari 4.0, etc.
-* Reorganise the directory structure to categorise demos
-* Create an easy way to drive the template for the site (currently it's a complete copy for each of the files)
