@@ -43,8 +43,9 @@
     "desc": "Geolocation",
     "url": "geo",
     "tags": "geolocation",
+    "note": "Works on Safari Mobile too",
     "support": {
-      "live": "firefox iphone",
+      "live": "firefox",
       "nightly": "chrome"
     }
   },
@@ -86,8 +87,9 @@
     "desc": "offline detection",
     "url": "offline",
     "tags": "offline events",
+    "note": "Works on Safari Mobile too"
     "support": {
-      "live": "firefox opera iphone"
+      "live": "firefox opera"
     }
   },
   {
@@ -96,7 +98,7 @@
     "notes": "Opera &amp; Firefox - requires \"Work Offline\"",
     "tags": "offline events",
     "support": {
-      "live": "firefox opera iphone"
+      "live": "firefox opera"
     }
   },
   {
