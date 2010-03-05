@@ -87,7 +87,7 @@
     "desc": "offline detection",
     "url": "offline",
     "tags": "offline events",
-    "note": "Works on Safari Mobile too"
+    "note": "Works on Safari Mobile too",
     "support": {
       "live": "firefox opera"
     }
