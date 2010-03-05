@@ -82,7 +82,7 @@ function spans($list) {
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script>
-$('tr span').click(function () {
+$('tbody tr span').click(function () {
   var $tag = $(this), tag = $tag.text(), type = $tag.closest('td').attr('class');
   if ($tag.is('.selected')) {
     $('.' + type + ' span:contains(' + tag + ')').removeClass('selected');
@@ -93,10 +93,10 @@ $('tr span').click(function () {
   // it's an AND filter
   var $trs = $('.' + type + ':has(span.selected)').closest('tr');
   if ($trs.length) {
-    $('tr').hide();
+    $('tbody tr').hide();
     $trs.show();
   } else {
-    $('tr').show();
+    $('tbody tr').show();
   }
 });
 
