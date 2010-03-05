@@ -171,7 +171,7 @@ body.view-source #view-source {
   text-decoration: underline;
 }
 
-#demos tr {
+#demos tbody tr {
   border-top: 1px solid #DCDCDC;
 }
 
