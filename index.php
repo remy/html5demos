@@ -1,3 +1,40 @@
+<?php
+$demos = json_decode(file_get_contents('demos.json'));
+
+function support($support) {
+  $browsers = split(' ', 'ie firefox opera safari chrome'); // big 5 - should I add iPhone (for geo, etc)?
+
+  $live = isset($support->live) ? split(' ', $support->live) : array();
+  $nightly = isset($support->nightly) ? split(' ', $support->nightly) : array();
+  
+  $html = '';
+  
+  foreach ($browsers as $browser) {
+    $class = '';
+    if (in_array($browser, $live)) {
+      $class .= ' live';
+    } else if (in_array($browser, $nightly)) {
+      $class .= ' nightly';
+    } else {
+      $class .= ' none';
+    }
+    
+    $html .= '<span title="' . trim($class) . '" class="' . $browser . $class . '">' . $browser . ':' . $class . '</span> ';
+  }
+  
+  return $html;
+}
+
+function spans($list) {
+  $items = split(' ', $list);
+  $html = '';
+  foreach ($items as $item) {
+    $html .= '<span>' . $item . '</span> ';
+  }
+  
+  return $html;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,27 +49,23 @@
       <h1><abbr>HTML</abbr> 5 Demos and Examples</h1>
     </header>
     <article>
-      <p><abbr>HTML</abbr> 5 experimentation and demos I've hacked together:</p>
-      <ul>
-        <li><span class="support"></span><a href="canvas-grad">Interactive canvas gradients</a> (all bar IE)</li>
-        <li><a href="video-canvas">Canvas &amp; Video</a> (all bar IE)</li>
-        <li><a href="video">Video</a> (all bar IE)</li>
-        <!--<li><a href="http://people.opera.com/brucel/demo/html5-forms-demo.html">Web Forms 2.0</a> (Opera 9+, very partial Safari support)</li>-->
-        <li><a href="canvas">Canvas</a> (all bar IE)</li>
-        <li><a href="contenteditable">Content Editable</a> (all latest browsers)</li>
-        <li><a href="geo">Geolocation</a> (FF3.5, iPhone OS 3)</li>
-        <li><a href="postmessage">postMessage</a> (same domain) (all latest browsers)</li>
-        <li><a href="postmessage2">postMessage</a> (cross domain) (all latest browsers)</li>
-        <li><a href="drag">drag and drop</a> (IE, Safari 4, FF3.5)</li>
-        <li><a href="drag-anything">drag <em>anything</em></a> (IE, Safari 4, FF3.5)</li>
-        <li><a href="offline">offline detection</a> (FF3.5, iPhone OS 3)</li>
-        <li><a href="offline-events">on/offline event tests</a> (Opera, Firefox - requires "Work Offline")</li>
-        <li><a href="offlineapp">offline application using the manifest</a> (Safari 4, FF3.5.3) (<em>Note: pre-FF3.5.3 <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=501422">has a bug</a></em>)</li>
-        <li><a href="storage">Storage</a> (all latest browsers)</li>
-        <li><a href="database">Web SQL Database Storage</a> (Safari, iPhone OS 3, Opera 10.50)</li>
-        <li><a href="database-rollback">Web SQL Database - rollback test</a> (Safari, iPhone OS 3, Opera 10.50)</li>
-        <li><a href="worker">Web Workers</a> (watch out - uses a <em>lot</em> of CPU! <a href="non-worker">example without - will hang your browser</a>)</li>
-      </ul>
+      <p><abbr>HTML</abbr> 5 experimentation and demos I've hacked together. Click on the browser support icon or the technology tag to filter the demos (the filter is an <code>and</code> filter).</p>
+      <table id="demos">
+        <thead>
+          <th>Demo</th>
+          <th>Support</th>
+          <th>Technology</th>
+        </thead>
+        <tbody>
+          <?php foreach ($demos as $demo) :?>
+          <tr>
+            <td class="demo"><a href="<?=$demo->url?>"><?=$demo->desc?></a><?php if (isset($demo->note)) { echo ' <small>' . $demo->note . '</small>'; }?></td>
+            <td class="support"><?=support($demo->support)?></td>
+            <td class="tags"><?=spans($demo->tags)?></td>
+          </tr>
+          <?php endforeach ?>
+        </tbody>
+      </table>
       
       <!-- <section>
         <a href="http://full-frontal.org" id="ffad" title="JavaScript Conference: Full Frontal, 20th November">
@@ -46,6 +79,32 @@
     </article>
     <footer><a id="built" href="http://twitter.com/rem">@rem built this</a></footer> 
 </section>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>
+$('tr span').click(function () {
+  var $tag = $(this), tag = $tag.text(), type = $tag.closest('td').attr('class');
+  if ($tag.is('.selected')) {
+    $('.' + type + ' span:contains(' + tag + ')').removeClass('selected');
+  } else {
+    $('.' + type + ' span:contains(' + tag + ')').addClass('selected');
+  }
+
+  // it's an AND filter
+  var $trs = $('.' + type + ':has(span.selected)').closest('tr');
+  if ($trs.length) {
+    $('tr').hide();
+    $trs.show();
+  } else {
+    $('tr').show();
+  }
+});
+
+// $('tr td.demo').click(function () {
+//   window.location = $(this).find('a').attr('href');
+// });
+
+</script>
 <a href="http://github.com/remy/html5demos"><img style="position: absolute; top: 0; left: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 <script>
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

@@ -1,0 +1,144 @@
+[
+  {
+    "desc": "Interactive canvas gradients",
+    "url": "canvas-grad",
+    "tags": "canvas",
+    "support": {
+      "live": "firefox opera safari chrome"
+    }
+  },
+  {
+    "desc": "Canvas & Video",
+    "url": "video-canvas",
+    "tags": "video canvas",
+    "support": {
+      "live": "firefox opera safari chrome"
+    }
+  },
+  {
+    "desc": "Video",
+    "url": "video",
+    "tags": "video",
+    "support": {
+      "live": "firefox opera safari chrome"
+    }
+  },
+  {
+    "desc": "Canvas",
+    "url": "canvas",
+    "tags": "canvas",
+    "support": {
+      "live": "firefox opera safari chrome"
+    }
+  },
+  {
+    "desc": "Content Editable",
+    "url": "contenteditable",
+    "tags": "contenteditable storage",
+    "support": {
+      "live": "ie firefox opera safari chrome"
+    }
+  },
+  {
+    "desc": "Geolocation",
+    "url": "geo",
+    "tags": "geolocation",
+    "support": {
+      "live": "firefox iphone",
+      "nightly": "chrome"
+    }
+  },
+  {
+    "desc": "postMessage",
+    "url": "postmessage",
+    "note": "same domain",
+    "tags": "postMessage",
+    "support": {
+      "live": "ie firefox opera safari chrome"
+    }
+  },
+  {
+    "desc": "postMessage",
+    "url": "postmessage2",
+    "tags": "postMessage",
+    "note": "cross domain",
+    "support": {
+      "live": "ie firefox opera safari chrome"
+    }
+  },
+  {
+    "desc": "drag and drop",
+    "url": "drag",
+    "tags": "dnd",
+    "support": {
+      "live": "ie firefox safari chrome"
+    }
+  },
+  {
+    "desc": "drag anything",
+    "url": "drag-anything",
+    "tags": "dnd",
+    "support": {
+      "live": "ie firefox safari chrome"
+    }
+  },
+  {
+    "desc": "offline detection",
+    "url": "offline",
+    "tags": "offline events",
+    "support": {
+      "live": "firefox opera iphone"
+    }
+  },
+  {
+    "desc": "on/offline event tests",
+    "url": "offline-events",
+    "notes": "Opera &amp; Firefox - requires \"Work Offline\"",
+    "tags": "offline events",
+    "support": {
+      "live": "firefox opera iphone"
+    }
+  },
+  {
+    "desc": "offline application using the manifest",
+    "url": "offlineapp",
+    "note": "FF 3.6 is still buggy - doesn't request manifest after initial load",
+    "tags": "offline manifest",
+    "support": {
+      "live": "firefox safari chrome"
+    }
+  },
+  {
+    "desc": "Storage",
+    "url": "storage",
+    "tags": "storage",
+    "support": {
+      "live": "ie firefox opera safari chrome"
+    }
+  },
+  {
+    "desc": "Web SQL Database Storage",
+    "url": "database",
+    "tags": "sql-database",
+    "support": {
+      "live": "safari chrome opera"
+    }
+  },
+  {
+    "desc": "Web SQL Database - rollback test",
+    "url": "database-rollback",
+    "tags": "sql-database",
+    "support": {
+      "live": "safari chrome opera"
+    }
+  },
+  {
+    "desc": "Web Workers",
+    "url": "worker",
+    "tags": "workers",
+    "note": "watch out - uses a lot of CPU! <a href=\"non-worker\">example without - will hang your browser</a>",
+    "support": {
+      "live": "safari chrome opera firefox"
+    }
+  }
+]

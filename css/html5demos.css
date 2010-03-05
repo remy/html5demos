@@ -1,5 +1,5 @@
 body { 
-  font: normal 16px/20px Helvetica, sans-serif;
+  font: normal 16px/20px "Helvetica Neue", Helvetica, sans-serif;
   background: rgb(237, 237, 236);
   margin: 0;
   margin-top: 40px;
@@ -149,4 +149,138 @@ body.view-source > * {
 body.view-source #view-source {
   display: block !important;
   margin: 0;
+}
+
+#demos {
+  width: 560px;
+  border-collapse: collapse;
+}
+
+#demos .demo {
+  padding: 5px;
+  cursor: pointer;
+}
+
+#demos a {
+  color: #00b;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+#demos a:hover {
+  text-decoration: underline;
+}
+
+#demos tr {
+  border-top: 1px solid #DCDCDC;
+}
+
+
+#demos .demo p {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+#demos .support {
+  width: 105px;
+}
+
+#demos .support span {
+  cursor: pointer;
+  overflow: hidden;
+  float: left;
+  display: block;
+  height: 16px;
+  width: 16px;
+  text-indent: -9999px;
+  background-image: url(/images/browsers.gif);
+  background-repeat: none;
+  margin-right: 5px;
+}
+
+#demos .support span.selected {
+  outline: 1px dashed #75784C;
+}
+
+#demos .support span.ie.live {
+  background-position: 48px 0px;
+}
+
+#demos .support span.ie.nightly {
+  background-position: 48px -16px;
+}
+
+#demos .support span.ie.none {
+  background-position: 48px -32px;
+}
+
+#demos .support span.opera.live {
+  background-position: 64px 0px;
+}
+
+#demos .support span.opera.nightly {
+  background-position: 64px -16px;
+}
+
+#demos .support span.opera.none {
+  background-position: 64px -32px;
+}
+
+#demos .support span.firefox.live {
+  background-position: 32px 0px;
+}
+
+#demos .support span.firefox.nightly {
+  background-position: 32px -16px;
+}
+
+#demos .support span.firefox.none {
+  background-position: 32px -32px;
+}
+
+#demos .support span.chrome.live {
+  background-position: 16px 0px;
+}
+
+#demos .support span.chrome.nightly {
+  background-position: 16px -16px;
+}
+
+#demos .support span.chrome.none {
+  background-position: 16px -32px;
+}
+
+#demos .support span.safari.live {
+  background-position: 0px 0px;
+}
+
+#demos .support span.safari.nightly {
+  background-position: 0px -16px;
+}
+
+#demos .support span.safari.none {
+  background-position: 0px -32px;
+}
+
+#demos .tags {
+  width: 140px;
+}
+
+#demos .tags span {
+  font-size: 11px;
+  color: #6E724E;
+  padding: 2px 5px;
+  border: 1px solid #D7D999;
+  background: #FFFFC6;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#demos .tags span:hover,
+#demos .tags span.selected {
+  border: 1px solid #75784C;
+  background: #FF7;  
+  color: #333521;
 }
