@@ -201,64 +201,34 @@ body.view-source #view-source {
   outline: 1px dashed #75784C;
 }
 
-#demos .support span.ie.live {
-  background-position: 48px 0px;
+#demos .support span.safari {
+  background-position: 0 0;
 }
 
-#demos .support span.ie.nightly {
-  background-position: 48px -16px;
+#demos .support span.chrome {
+  background-position: 16px 0;
 }
 
-#demos .support span.ie.none {
-  background-position: 48px -32px;
+#demos .support span.firefox {
+  background-position: 32px 0;
 }
 
-#demos .support span.opera.live {
-  background-position: 64px 0px;
+#demos .support span.ie {
+  background-position: 48px 0;
 }
 
-#demos .support span.opera.nightly {
-  background-position: 64px -16px;
+#demos .support span.opera {
+  background-position: 64px 0;
 }
 
-#demos .support span.opera.none {
-  background-position: 64px -32px;
+#demos .support span.nightly {
+  opacity: 0.5;
+  filter:alpha(opacity=50);
 }
 
-#demos .support span.firefox.live {
-  background-position: 32px 0px;
-}
-
-#demos .support span.firefox.nightly {
-  background-position: 32px -16px;
-}
-
-#demos .support span.firefox.none {
-  background-position: 32px -32px;
-}
-
-#demos .support span.chrome.live {
-  background-position: 16px 0px;
-}
-
-#demos .support span.chrome.nightly {
-  background-position: 16px -16px;
-}
-
-#demos .support span.chrome.none {
-  background-position: 16px -32px;
-}
-
-#demos .support span.safari.live {
-  background-position: 0px 0px;
-}
-
-#demos .support span.safari.nightly {
-  background-position: 0px -16px;
-}
-
-#demos .support span.safari.none {
-  background-position: 0px -32px;
+#demos .support span.none {
+  opacity: 0.1;
+  filter:alpha(opacity=10);
 }
 
 #demos .tags {

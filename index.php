@@ -49,7 +49,7 @@ function spans($list) {
       <h1><abbr>HTML</abbr> 5 Demos and Examples</h1>
     </header>
     <article>
-      <p><abbr>HTML</abbr> 5 experimentation and demos I've hacked together. Click on the browser support icon or the technology tag to filter the demos (the filter is an <code>and</code> filter).</p>
+      <p><abbr>HTML</abbr> 5 experimentation and demos I've hacked together. Click on the browser support icon or the technology tag to filter the demos (the filter is an <code>OR</code> filter).</p>
       <table id="demos">
         <thead>
           <th>Demo</th>
