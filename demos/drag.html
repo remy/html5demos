@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset=UTF-8 />
 <title>Drag and drop</title>
 <style type="text/css">
-* {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  margin: 50px;
-  font-family: helvetica, arial;
-}
-
 li {
   list-style: none;
 }
@@ -39,8 +25,13 @@ li a {
   background-color: rgba(238,238,238, 0.5);
 }
 
-a:hover:after {
+li a:hover:after {
   content: ' (drag me)';
+}
+
+ul {
+  margin-left: 200px;
+  min-height: 300px;
 }
 
 li.over {
@@ -52,9 +43,10 @@ li.over {
   background: url(images/bin.jpg) top right no-repeat;
   height: 250px;
   width: 166px;
-  float: right;
+  float: left;
   border: 5px solid #000;
   position: relative;
+  margin-top: 0;
 }
 
 #bin.over {
@@ -71,11 +63,9 @@ li.over {
   color: #fff;
   text-shadow: #000 2px 2px 2px;
 }
-
 </style>
-<script src="/js/h5utils.js"></script>
-</head>
-<body>
+<article>
+  <p>Drag the list items over the dustbin, and drop them to have the bin eat the item</p>
   <div id="bin"></div>
   <ul>
     <li><a id="one" href="#">one</a></li>
@@ -84,7 +74,7 @@ li.over {
     <li><a href="#" id="four">four</a></li>
     <li><a href="#" id="five">five</a></li>
   </ul>
-  <script src="h5utils.js"></script>
+</article>
   <script>
 
   var eat = ['yum!', 'gulp', 'burp!', 'nom'];
@@ -92,23 +82,24 @@ li.over {
   var msie = /*@cc_on!@*/0;
   yum.style.opacity = 1;
 
-  // var links = document.querySelectorAll('li > a'), el = null;
-  // for (var i = 0; i < links.length; i++) {
-  //   el = links[i];
-  // 
-  //   el.setAttribute('draggable', 'true');
-  // 
-  //   addEvent(el, 'dragstart', function (e) {
-  //     // e.dataTransfer.effectAllowed = 'move';
-  //     e.dataTransfer.setData('Text', this.id); // required otherwise doesn't work
-  //   });
-  // }
+  var links = document.querySelectorAll('li > a'), el = null;
+  for (var i = 0; i < links.length; i++) {
+    el = links[i];
+  
+    el.setAttribute('draggable', 'true');
+  
+    addEvent(el, 'dragstart', function (e) {
+      e.dataTransfer.effectAllowed = 'copy'; // only dropEffect='copy' will be dropable
+      e.dataTransfer.setData('Text', this.id); // required otherwise doesn't work
+    });
+  }
 
   var bin = document.querySelector('#bin');
 
   addEvent(bin, 'dragover', function (e) {
     if (e.preventDefault) e.preventDefault(); // allows us to drop
     this.className = 'over';
+    e.dataTransfer.dropEffect = 'copy';
     return false;
   });
 
@@ -125,9 +116,9 @@ li.over {
   addEvent(bin, 'drop', function (e) {
     if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting...why???
 
-    // var el = document.getElementById(e.dataTransfer.getData('Text'));
-    // 
-    // el.parentNode.removeChild(el);
+    var el = document.getElementById(e.dataTransfer.getData('Text'));
+    
+    el.parentNode.removeChild(el);
 
     // stupid nom text + fade effect
     bin.className = '';
@@ -153,14 +144,3 @@ li.over {
   });
 
   </script>
-<script>
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script>
-try {
-var pageTracker = _gat._getTracker("UA-1656750-18");
-pageTracker._trackPageview();
-} catch(err) {}</script>  
-</body>
-</html>

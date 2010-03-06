@@ -72,7 +72,7 @@
     "url": "drag",
     "tags": "dnd",
     "support": {
-      "live": "ie firefox safari"
+      "live": "ie firefox safari chrome"
     }
   },
   {
@@ -80,7 +80,7 @@
     "url": "drag-anything",
     "tags": "dnd",
     "support": {
-      "live": "ie firefox safari"
+      "live": "ie firefox safari chrome"
     }
   },
   {

@@ -58,7 +58,7 @@ label {
         </div>
       </section>
       <section id="drag">
-         <p><img class="photo" src="http://twivatar.org/rem" alt="Remy Sharp" style="float: left; margin: 3px 10px 10px 0;" /> My name is <a class="fn n url" rel="me" href="http://remysharp.com">Remy Sharp</a> (<a href="http://twitter.com/rem">@rem on Twitter</a> and <a href="http://remysharp.com">my blog</a>).  <span class="adr">I run a small <abbr class="type" title="Work">business</abbr> in <a href="http://www.flickr.com/places/United+Kingdom/England/Brighton"><span class="region">Brighton</span>, <abbr class="country-name" title="United Kingdom">UK</abbr></a> called <a class="org url" rel="me" href="http://leftlogic.com">Left Logic</a> and am running the <a href="http://full-frontal.org">Full Frontal JavaScript Conference</a> and I specialise in <em>bespoke</em> front-end development &amp; backend.</span></p>
+         <p><img class="photo" src="http://a3.twimg.com/profile_images/82806383/remysharp_normal.jpg" alt="Remy Sharp" style="float: left; margin: 3px 10px 10px 0;" /> My name is <a class="fn n url" rel="me" href="http://remysharp.com">Remy Sharp</a> (<a href="http://twitter.com/rem">@rem on Twitter</a> and <a href="http://remysharp.com">my blog</a>).  <span class="adr">I run a small <abbr class="type" title="Work">business</abbr> in <a href="http://www.flickr.com/places/United+Kingdom/England/Brighton"><span class="region">Brighton</span>, <abbr class="country-name" title="United Kingdom">UK</abbr></a> called <a class="org url" rel="me" href="http://leftlogic.com">Left Logic</a> and am running the <a href="http://full-frontal.org">Full Frontal JavaScript Conference</a> and I specialise in <em>bespoke</em> front-end development &amp; backend.</span></p>
       </section>
       <section id="drop">
         <p class="info">Drop here for info about the dragged item</p>
@@ -68,6 +68,7 @@ label {
 
 function cancel(e) {
   if (e.preventDefault) e.preventDefault(); // required by FF + Safari
+  e.dataTransfer.dropEffect = 'copy'; // tells the browser what drop effect is allowed here
   return false; // required by IE
 }
 
