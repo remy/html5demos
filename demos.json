@@ -1,5 +1,13 @@
 [
   {
+    "desc": "Two videos in sync",
+    "url": "two-videos",
+    "tags": "video",
+    "support": {
+      "live": "firefox opera safari chrome"
+    }
+  },
+  {
     "desc": "Interactive canvas gradients",
     "url": "canvas-grad",
     "tags": "canvas",
