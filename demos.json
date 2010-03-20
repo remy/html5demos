@@ -97,6 +97,15 @@
     "tags": "offline events",
     "note": "Works on Safari Mobile too",
     "support": {
+      "live": "firefox opera"
+    }
+  },
+  {
+    "desc": "navigator.onLine tests",
+    "url": "nav-online",
+    "tags": "offline",
+    "note": "Doesn't use events, only polls",
+    "support": {
       "live": "firefox opera ie"
     }
   },
