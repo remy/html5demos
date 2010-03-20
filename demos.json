@@ -97,7 +97,7 @@
     "tags": "offline events",
     "note": "Works on Safari Mobile too",
     "support": {
-      "live": "firefox opera"
+      "live": "firefox opera ie"
     }
   },
   {

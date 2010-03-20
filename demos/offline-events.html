@@ -6,22 +6,13 @@ li {
 li::before {
   font-weight: normal;
 }
-#viabody::before {
-  content: 'via body "on" events: ';
-}
-#viaon::before {
-  content: 'via window "on" events: ';
-}
-#vialistener::before {
-  content: 'via window.addEventListener: ';
-}
 </style>
 <article>
   <p>Test required here: File -> Work Offline - toggle the value and there <em>should</em> be three list items notifying of online and offline.</p>
   <ul>
-    <li id="viabody"></li>
-    <li id="vialistener"></li>
-    <li id="viaon"></li>
+    <li>via body "on" events: <span id="viabody"></span></li>
+    <li>via window "on" events: <span id="vialistener"></span></li>
+    <li>via window.addEventListener: <span id="viaon"></span></li>
   </ul>
   <p>Note that the test shows that <code>window.ononline</code> and <code>window.onoffline</code> doesn't work (which I thought I had read in the specs somewhere...).</p>
 </article>
@@ -49,6 +40,6 @@ window.onoffline = function () {
 document.body.onOnline = update;
 document.body.onOffline = update;
 
-document.body.onload = update;
+// document.body.onload = update;
  
 </script>
