@@ -148,7 +148,7 @@
     "tags": "workers",
     "note": "watch out - uses a lot of CPU! <a href=\"non-worker\">example without - will hang your browser</a>",
     "support": {
-      "live": "safari chrome opera firefox"
+      "live": "safari chrome firefox"
     }
   }
 ]
