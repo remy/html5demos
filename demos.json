@@ -53,8 +53,7 @@
     "tags": "geolocation",
     "note": "Works on Safari Mobile too",
     "support": {
-      "live": "firefox",
-      "nightly": "chrome"
+      "live": "firefox chrome"
     }
   },
   {
