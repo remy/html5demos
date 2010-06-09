@@ -9,12 +9,14 @@
     <input type="button" id="play" value="play">
     <span id="position">00:00</span> / <span id="duration">loading...</span>
   </p>
+  <p>Video loaded: <span id="using">loading...</span></p>
   <p>Note that (at time of writing) <a href="http://webkit.org/" title="The WebKit Open Source Project">Webkit nightly</a> supports full screen mode, which will add a button above.</p>
 </article>
 <script>
 var video = document.querySelector('video'),
     togglePlay = document.querySelector('#play'),
     position = document.querySelector('#position'),
+    using = document.querySelector('#using'),
     ready = false,
     controls = document.querySelector('#controls'),
     fullscreen = null;
@@ -45,7 +47,7 @@ addEvent(video, 'canplay', function () {
   video.muted = true;
   ready = true;
   document.querySelector('#duration').innerHTML = asTime(this.duration);
-
+  using.innerHTML = this.currentSrc;
   // note: .webkitSupportsFullscreen is false while the video is loading, so we bind in to the canplay event
   if (video.webkitSupportsFullscreen) {
     fullscreen = document.createElement('input');
