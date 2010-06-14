@@ -1,5 +1,13 @@
 [
   {
+    "desc": "Simple chat client",
+    "url": "web-socket",
+    "tags": "websocket",
+    "support": {
+      "live": "safari chrome"
+    }
+  },
+  {
     "desc": "Two videos playing in sync",
     "url": "two-videos",
     "tags": "video",
