@@ -22,7 +22,8 @@
     "url": "two-videos",
     "tags": "video",
     "support": {
-      "live": "firefox opera safari chrome"
+      "live": "firefox opera safari chrome",
+      "nightly": "ie"
     }
   },
   {
@@ -30,7 +31,8 @@
     "url": "canvas-grad",
     "tags": "canvas",
     "support": {
-      "live": "firefox opera safari chrome"
+      "live": "firefox opera safari chrome",
+      "nightly": "ie"
     }
   },
   {
@@ -38,7 +40,8 @@
     "url": "video-canvas",
     "tags": "video canvas",
     "support": {
-      "live": "firefox opera safari chrome"
+      "live": "firefox opera safari chrome",
+      "nightly": "ie"
     }
   },
   {
@@ -46,7 +49,8 @@
     "url": "video",
     "tags": "video",
     "support": {
-      "live": "firefox opera safari chrome"
+      "live": "firefox opera safari chrome",
+      "nightly": "ie"
     }
   },
   {
