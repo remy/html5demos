@@ -58,7 +58,8 @@
     "url": "canvas",
     "tags": "canvas",
     "support": {
-      "live": "firefox opera safari chrome"
+      "live": "firefox opera safari chrome",
+      "nightly": "ie"
     }
   },
   {
