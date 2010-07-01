@@ -76,8 +76,7 @@
     "tags": "geolocation",
     "note": "Works on Safari Mobile too",
     "support": {
-      "live": "firefox chrome safari",
-      "nightly": "opera"
+      "live": "firefox chrome safari opera"
     }
   },
   {
@@ -147,8 +146,7 @@
     "note": "FF 3.6 is still buggy - doesn't request manifest after initial load",
     "tags": "offline manifest",
     "support": {
-      "live": "firefox safari chrome",
-      "nightly": "opera"
+      "live": "firefox safari chrome opera"
     }
   },
   {
@@ -181,8 +179,7 @@
     "tags": "workers",
     "note": "watch out - uses a lot of CPU! <a href=\"non-worker\">example without - will hang your browser</a>",
     "support": {
-      "live": "safari chrome firefox",
-      "nightly": "opera"
+      "live": "safari chrome firefox opera"
     }
   }
 ]
