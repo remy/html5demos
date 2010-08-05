@@ -1,0 +1,21 @@
+<title>HTML5 History API</title>
+<style>
+#holder { border: 10px dashed #ccc; width: 300px; height: 300px; margin: 20px auto;}
+#holder.hover { border: 10px dashed #333; }
+</style>
+<article>
+  <div id="holder"></div> 
+  <p id="status">HTML5 History API not supported</p>
+</article>
+<script>
+var state = document.getElementById('status');
+
+if (typeof history.pushState === 'undefined' || !('onpopstate' in window)) {
+  state.className = 'fail';
+} else {
+  state.className = 'success';
+  state.innerHTML = 'HTML5 History API available';
+}
+ 
+
+</script>
