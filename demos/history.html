@@ -55,11 +55,9 @@ function reportEvent(event) {
 }
 
 function reportData(data) {
-  console.log(data);
   output.innerHTML = template.replace(/(:?\{(.*?)\})/g, function (a,b,c) {
     return data[c];
   });
-  console.log(output.innerHTML);
 }
 
 if (typeof history.pushState === 'undefined' || !('onpopstate' in window)) {
@@ -84,7 +82,6 @@ addEvent(examples, 'click', function (event) {
 // addEvent(window, 'popstate', function (event) {
 onpopstate = function (event) {
   var data = event.state;
-  console.log('ok', event.state);
   reportEvent(event);
   reportData(event.state || { url: "unknown", name: "undefined", location: "undefined" });
 };
@@ -103,7 +100,6 @@ addEvent(window, 'hashchange', function (event) {
 });
 
 addEvent(window, 'pageshow', function (event) {
-  console.log(event.persisted);
   reportEvent(event);
 });
 
