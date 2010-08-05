@@ -85,21 +85,23 @@ li {
 
 #ffad {
   font-size: 90%;
-  border: 1px solid #ccc;
-  background: #fcfcfc;
+  border: 1px solid #4C8296;
+  background: rgba(44,67,71,.7);
   display: block;
+  color: #F7FCE4;
   -moz-border-radius-topleft: 25px;
   -webkit-border-top-left-radius: 25px;
   -moz-border-radius-bottomright: 25px;
   -webkit-border-bottom-right-radius: 25px;
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  color: #000;
   text-decoration: none;
+  cursor: pointer;
 }
 
 #ffad:hover {
-  border-color: #919191;
+  background: rgb(44,67,71);
+  border-color: #1B2B30;
 }
 
 #ffad section {
