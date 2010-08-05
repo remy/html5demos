@@ -5,8 +5,7 @@
     "notes": "Uses onpopstate event",
     "tags": "history",
     "support": {
-      "live": "chrome safari",
-      "nightly": "ie"
+      "live": "chrome safari"
     }
   },
   {
