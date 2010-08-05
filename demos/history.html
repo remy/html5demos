@@ -20,7 +20,7 @@
     <li><a href="/history/third">third</a></li>
     <li><a href="/history/fourth">fourth</a></li>
   </ul>
-  <p><small>Note: since these urls aren't real, refreshing the page will land on an invalid url. Due to a bug in Chrome, going back won't cycle the history properly.</small></p>
+  <p><small>Note: since these urls aren't real, refreshing the page will land on an invalid url.</small></p>
   <div id="output"></div>
 </article>
 <script>
@@ -79,12 +79,11 @@ addEvent(examples, 'click', function (event) {
   }
 });
 
-// addEvent(window, 'popstate', function (event) {
-onpopstate = function (event) {
+addEvent(window, 'popstate', function (event) {
   var data = event.state;
   reportEvent(event);
   reportData(event.state || { url: "unknown", name: "undefined", location: "undefined" });
-};
+});
 
 addEvent(window, 'hashchange', function (event) {
   reportEvent(event);
