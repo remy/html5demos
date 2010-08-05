@@ -51,6 +51,13 @@ function spans($list) {
     </header>
     <article>
       <p><abbr>HTML</abbr> 5 experimentation and demos I've hacked together. Click on the browser support icon or the technology tag to filter the demos (the filter is an <code>OR</code> filter).</p>
+      <section>
+        <a href="http://full-frontal.org" id="ffad" title="JavaScript Conference: Full Frontal, 12th November">
+          <img src="http://2010.full-frontal.org/images/ff2010.png" alt="Full Frontal Logo" />
+          <p><strong>Learn more HTML5 &amp; JavaScript:</strong> Full Frontal is a conference, <em>run by</em> front end developers <em>for</em> front end developers, held in the UK on 12th November.</p>
+          <p>Early bird tickets start at £100. Find out more: <em class="url">http://full-frontal.org</em></p>
+        </a>
+      </section>
       <table id="demos">
         <thead>
           <th>Demo</th>
@@ -68,14 +75,6 @@ function spans($list) {
         </tbody>
       </table>
       
-      <!-- <section>
-        <a href="http://full-frontal.org" id="ffad" title="JavaScript Conference: Full Frontal, 20th November">
-          <img src="http://2009.full-frontal.org/images/ff.gif" alt="Full Frontal Logo" width="70" />
-          <p><b>Want to learn more about JavaScript?</b></p>
-          <p>Full Frontal is a <strong>JavaScript conference</strong>, <em>run by</em> front end developers <em>for</em> front end developers, held in the UK on 20th November.</p>
-          <p>Early bird tickets start at £100. Find out more: <em class="url">http://full-frontal.org</em></p>
-        </a>
-      </section> -->
 	<p>All content, code, video and audio is <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/uk/">Creative Commons Share Alike 2.0</a></p>
     </article>
     <footer><a id="built" href="http://twitter.com/rem">@rem built this</a></footer> 
