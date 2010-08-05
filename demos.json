@@ -1,5 +1,15 @@
 [
   {
+    "desc": "History API using pushState",
+    "url": "history",
+    "notes": "Uses onpopstate event",
+    "tags": "history",
+    "support": {
+      "live": "chrome safari",
+      "nightly": "ie"
+    }
+  },
+  {
     "desc": "Drag files directly into your browser",
     "url": "file-api",
     "note": "Not directly part of HTML5",
