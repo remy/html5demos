@@ -5,7 +5,8 @@
     "notes": "Uses onpopstate event",
     "tags": "history",
     "support": {
-      "live": "chrome safari"
+      "live": "chrome safari",
+      "nightly": "firefox"
     }
   },
   {
@@ -23,7 +24,8 @@
     "url": "web-socket",
     "tags": "websocket",
     "support": {
-      "live": "safari chrome"
+      "live": "safari chrome",
+      "nightly": "firefox"
     }
   },
   {
