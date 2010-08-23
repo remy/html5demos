@@ -60,7 +60,7 @@ function reportData(data) {
   });
 }
 
-if (typeof history.pushState === 'undefined' || !isEventSupported('popstate')) {
+if (typeof history.pushState === 'undefined') {
   state.className = 'fail';
 } else {
   state.className = 'success';
