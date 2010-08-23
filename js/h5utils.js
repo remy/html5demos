@@ -1,6 +1,15 @@
 // For discussion and comments, see: http://remysharp.com/2009/01/07/html5-enabling-script/
 /*@cc_on'abbr article aside audio canvas details figcaption figure footer header hgroup mark menu meter nav output progress section summary time video'.replace(/\w+/g,function(n){document.createElement(n)})@*/
 
+function isEventSupported(event, element) {
+  element = element || window;
+  var ok = 'on'+event in element;
+  if (ok) return ok;
+  element.setAttribute('on' + event, '');
+  ok = typeof(element['on'+event] == "function");
+  element.removeAttribute('on' + event);
+  return ok;
+}
 
 var addEvent = (function () {
   if (document.addEventListener) {

@@ -9,6 +9,10 @@ RewriteCond %{HTTP_HOST} ^www\.html5demo\.com$ [NC,OR]
 RewriteCond %{HTTP_HOST} ^html5demo\.com$ [NC]
 RewriteRule ^(.*)$ http://html5demos.com/$1 [R=301,L]
 
+# RewriteCond %{HTTP_REFERER} ^$ [OR]
+# RewriteCond %{HTTP_REFERER} !^http://(www\.|offline\.)?html5demos.com/.*$
+# RewriteRule \.(gif|jpg|swf|flv|png|ogv|mp4|webm|js)$ [R=404,L]
+
 # if the file or directory does exist
 RewriteCond %{REQUEST_FILENAME} -d [OR]
 RewriteCond %{REQUEST_FILENAME} -f
