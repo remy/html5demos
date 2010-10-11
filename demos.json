@@ -25,7 +25,7 @@
     "tags": "websocket",
     "support": {
       "live": "safari chrome",
-      "nightly": "firefox"
+      "nightly": "firefox opera"
     }
   },
   {
