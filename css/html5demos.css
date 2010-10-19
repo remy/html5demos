@@ -83,25 +83,19 @@ li {
   margin-bottom: 10px;
 }
 
-#ffad {
+#ih5 {
   font-size: 90%;
-  border: 1px solid #4C8296;
-  background: rgba(44,67,71,.7);
+  background: #442C0D url(http://introducinghtml5.com/book_m.jpg) no-repeat left center;
   display: block;
   color: #F7FCE4;
-  -moz-border-radius-topleft: 25px;
-  -webkit-border-top-left-radius: 25px;
-  -moz-border-radius-bottomright: 25px;
-  -webkit-border-bottom-right-radius: 25px;
-  border-top-left-radius: 25px;
-  border-bottom-right-radius: 25px;
   text-decoration: none;
   cursor: pointer;
+  padding: 1px 20px 1px 260px;
+  border: 5px solid #904200;
 }
 
-#ffad:hover {
-  background: rgb(44,67,71);
-  border-color: #1B2B30;
+#ih5:hover {
+  border-color: #CF6D3B;
 }
 
 #ffad section {
@@ -186,7 +180,7 @@ body.view-source #view-source {
   width: 105px;
 }
 
-#demos .support span {
+.support span {
   cursor: pointer;
   overflow: hidden;
   float: left;
@@ -199,36 +193,36 @@ body.view-source #view-source {
   margin-right: 5px;
 }
 
-#demos .support span.selected {
+.support span.selected {
   outline: 1px dashed #75784C;
 }
 
-#demos .support span.safari {
+.support span.safari {
   background-position: 0 0;
 }
 
-#demos .support span.chrome {
+.support span.chrome {
   background-position: 16px 0;
 }
 
-#demos .support span.firefox {
+.support span.firefox {
   background-position: 32px 0;
 }
 
-#demos .support span.ie {
+.support span.ie {
   background-position: 48px 0;
 }
 
-#demos .support span.opera {
+.support span.opera {
   background-position: 64px 0;
 }
 
-#demos .support span.nightly {
+.support span.nightly {
   opacity: 0.5;
   filter:alpha(opacity=50);
 }
 
-#demos .support span.none {
+.support span.none {
   opacity: 0.1;
   filter:alpha(opacity=10);
 }
@@ -237,7 +231,7 @@ body.view-source #view-source {
   width: 140px;
 }
 
-#demos .tags span {
+.tags span {
   font-size: 11px;
   color: #6E724E;
   padding: 2px 5px;
@@ -249,9 +243,30 @@ body.view-source #view-source {
   cursor: pointer;
 }
 
-#demos .tags span:hover,
-#demos .tags span.selected {
+.tags span:hover,
+.tags span.selected {
   border: 1px solid #75784C;
   background: #FF7;  
   color: #333521;
 }
+
+#tags span {
+  margin-right: 2px;
+}
+
+#tags {
+  font-size: 14px;
+}
+
+/** Pretty printing styles. Used with prettify.js. */
+.str { color: #080; }
+.kwd { color: #008; }
+.com { color: #800; }
+.typ { color: #606; }
+.lit { color: #066; }
+.pun { color: #660; }
+.pln { color: #000; }
+.tag { color: #008; }
+.atn { color: #606; }
+.atv { color: #080; }
+.dec { color: #606; }
