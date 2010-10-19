@@ -63,10 +63,10 @@ footer > * {
   background: #0c0;
 }
 
-footer #built:hover:after {
+/*footer #built:hover:after {
   content: '...quickly';
 }
-
+*/
 [contenteditable]:hover {
   outline: 1px dotted #ccc;
 }
@@ -85,7 +85,7 @@ li {
 
 #ih5 {
   font-size: 90%;
-  background: #442C0D url(http://introducinghtml5.com/book_m.jpg) no-repeat left center;
+  background: #442C0D url(/images/ih5.jpg) no-repeat left center;
   display: block;
   color: #F7FCE4;
   text-decoration: none;
@@ -259,6 +259,7 @@ body.view-source #view-source {
 }
 
 /** Pretty printing styles. Used with prettify.js. */
+pre { font-size: 14px; }
 .str { color: #080; }
 .kwd { color: #008; }
 .com { color: #800; }

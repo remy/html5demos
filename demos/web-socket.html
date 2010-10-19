@@ -25,14 +25,14 @@
   <p id="status">Not connected</p>
   <p>Users connected: <span id="connected">0</span></p>
   <p>To test, open two windows with Web Socket support, type a message above and press return.</p>
-  <p>The server side code is available here: <a href="/server/node.ws.js/">node.ws.js &amp; server</a> (note that it runs on <a href="http://nodejs.org/" title="node.js">nodejs</a>)</p>
+  <p>The server side code is available here: <a href="http://github.com/remy/html5demos/tree/master/server/">node-web-socket &amp; server</a> (note that it runs on <a href="http://nodejs.org/" title="node.js">nodejs</a>)</p>
   <ul id="log"></ul>
 </article>
 <script>
 function openConnection() {
   // uses global 'conn' object
   if (conn.readyState === undefined || conn.readyState > 1) {
-    conn = new WebSocket('ws://apps.leftlogic.com:8001');    
+    conn = new WebSocket('ws://node.remysharp.com:8001');    
     conn.onopen = function () {
       state.className = 'success';
       state.innerHTML = 'Socket open';
