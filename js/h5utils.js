@@ -35,8 +35,21 @@ addEvent(window, 'click', function (event) {
   if (event.target.hash == '#view-source') {
     // event.preventDefault();
     if (!document.getElementById('view-source')) {
-      pre.innerHTML = ('<!DOCTYPE html>\n<html>\n' + document.documentElement.innerHTML + '\n</html>').replace(/[<>]/g, function (m) { return {'<':'&lt;','>':'&gt;'}[m]});
-      document.body.appendChild(pre);      
+      // pre.innerHTML = ('<!DOCTYPE html>\n<html>\n' + document.documentElement.innerHTML + '\n</html>').replace(/[<>]/g, function (m) { return {'<':'&lt;','>':'&gt;'}[m]});
+      var xhr = new XMLHttpRequest();
+
+      // original source - rather than rendered source
+      xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          pre.innerHTML = this.responseText.replace(/[<>]/g, function (m) { return {'<':'&lt;','>':'&gt;'}[m]});
+          prettyPrint();
+        }
+      };
+
+      document.body.appendChild(pre);
+      // really need to be sync? - I like to think so
+      xhr.open("GET", window.location, true);
+      xhr.send();
     }
     document.body.className = 'view-source';
     

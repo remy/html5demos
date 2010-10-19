@@ -19,7 +19,7 @@ function support($support) {
       $class .= ' none';
     }
     
-    $html .= '<span title="' . trim($class) . '" class="' . $browser . $class . '">' . $browser . ':' . $class . '</span> ';
+    $html .= '<span title="' . trim($class) . '" class="tag ' . $browser . $class . '">' . $browser . ':' . $class . '</span> ';
   }
   
   return $html;
@@ -29,7 +29,7 @@ function spans($list) {
   $items = split(' ', $list);
   $html = '';
   foreach ($items as $item) {
-    $html .= '<span>' . $item . '</span> ';
+    $html .= '<span class="tag">' . $item . '</span> ';
   }
   
   return $html;
@@ -52,17 +52,20 @@ function spans($list) {
     <article>
       <p><abbr>HTML</abbr> 5 experimentation and demos I've hacked together. Click on the browser support icon or the technology tag to filter the demos (the filter is an <code>OR</code> filter).</p>
       <section>
-        <a href="http://full-frontal.org" id="ffad" title="JavaScript Conference: Full Frontal, 12th November">
-          <img src="http://2010.full-frontal.org/images/ff2010.png" alt="Full Frontal Logo" />
-          <p><strong>Learn more HTML5 &amp; JavaScript:</strong> Full Frontal is a conference, <em>run by</em> front end developers <em>for</em> front end developers, held in the UK on 12th November.</p>
-          <p>Early bird tickets start at £100. Find out more: <em class="url">http://full-frontal.org</em></p>
+        <a href="http://introducinghtml5.com" id="ih5">
+          <p><strong>Introducing HTML5</strong> by Bruce Laweson &amp; Remy Sharp is the first full length book dedicated to HTML5.</p><p>Get it now and kick some HTML5 ass!</p>
         </a>
       </section>
+      <p id="tags" class="tags">
+        
+      </p>
       <table id="demos">
         <thead>
-          <th>Demo</th>
-          <th>Support</th>
-          <th>Technology</th>
+          <tr>
+            <th>Demo</th>
+            <th>Support</th>
+            <th>Technology</th>            
+          </tr>
         </thead>
         <tbody>
           <?php foreach ($demos as $demo) :?>
@@ -82,8 +85,9 @@ function spans($list) {
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script>
-$('tbody tr span').click(function () {
-  var $tag = $(this), tag = $tag.text(), type = $tag.closest('td').attr('class');
+$(document).delegate('span.tag', 'click', function () {
+  var $tag = $(this), tag = $tag.text(), type = $tag.closest('td').attr('class') || 'tags';
+
   if ($tag.is('.selected')) {
     $('.' + type + ' span:contains(' + tag + ')').removeClass('selected');
   } else {
@@ -97,8 +101,20 @@ $('tbody tr span').click(function () {
     $trs.show();
   } else {
     $('tbody tr').show();
+  }  
+});
+
+var html = [];
+$('.tags span.tag').each(function () {
+  var $tag = $(this), tag = $tag.text();
+  
+  if (!tags[tag]) {
+    tags[tag] = true;
+    html.push('<span class="tag">' + tag + '</span> ');
   }
 });
+
+$('#tags').append('<strong>Filter demos:</strong> ' + html.sort().join(''));
 
 // $('tr td.demo').click(function () {
 //   window.location = $(this).find('a').attr('href');
