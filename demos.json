@@ -1,5 +1,14 @@
 [
   {
+    "desc": "dataset (data-* attributes)",
+    "url": "dataset",
+    "tags": "dataset",
+    "support": {
+      "live": "chrome",
+      "nightly": "safari"
+    }
+  },
+  {
     "desc": "History API using pushState",
     "url": "history",
     "notes": "Uses onpopstate event",
