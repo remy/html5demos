@@ -13,7 +13,7 @@ section, header, footer {
 #wrapper {
   width: 600px;
   margin: 0 auto;
-  background: #fff url(/images/shade.jpg) repeat-x center bottom;
+  background: #fff url(../images/shade.jpg) repeat-x center bottom;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
@@ -85,7 +85,7 @@ li {
 
 #ih5 {
   font-size: 90%;
-  background: #442C0D url(/images/ih5.jpg) no-repeat left center;
+  background: #442C0D url(../images/ih5.jpg) no-repeat left center;
   display: block;
   color: #F7FCE4;
   text-decoration: none;
@@ -188,7 +188,7 @@ body.view-source #view-source {
   height: 16px;
   width: 16px;
   text-indent: -9999px;
-  background-image: url(/images/browsers.gif);
+  background-image: url(../images/browsers.gif);
   background-repeat: none;
   margin-right: 5px;
 }
