@@ -41,7 +41,7 @@ function spans($list) {
 <meta charset=utf-8 />
 <meta name="viewport" content="width=620" />
 <title>HTML5 Demos and Examples</title>
-<link rel="stylesheet" href="/css/html5demos.css" type="text/css" />
+<link rel="stylesheet" href="css/html5demos.css" type="text/css" />
 <script src="js/h5utils.js"></script>
 </head>
 <body>
