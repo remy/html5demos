@@ -2,10 +2,10 @@
 $demos = json_decode(file_get_contents('demos.json'));
 
 function support($support) {
-  $browsers = split(' ', 'ie firefox opera safari chrome'); // big 5 - should I add iPhone (for geo, etc)?
+  $browsers = explode(' ', 'ie firefox opera safari chrome'); // big 5 - should I add iPhone (for geo, etc)?
 
-  $live = isset($support->live) ? split(' ', $support->live) : array();
-  $nightly = isset($support->nightly) ? split(' ', $support->nightly) : array();
+  $live = isset($support->live) ? explode(' ', $support->live) : array();
+  $nightly = isset($support->nightly) ? explode(' ', $support->nightly) : array();
   
   $html = '';
   
@@ -26,7 +26,7 @@ function support($support) {
 }
 
 function spans($list) {
-  $items = split(' ', $list);
+  $items = explode(' ', $list);
   $html = '';
   foreach ($items as $item) {
     $html .= '<span class="tag">' . $item . '</span> ';
