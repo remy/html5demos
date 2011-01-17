@@ -258,6 +258,11 @@ body.view-source #view-source {
   font-size: 14px;
 }
 
+#html5badge {
+  display: none;
+  margin-left: -30px;
+}
+
 /** Pretty printing styles. Used with prettify.js. */
 pre { font-size: 14px; }
 .str { color: #080; }

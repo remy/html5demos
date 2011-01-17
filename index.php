@@ -36,7 +36,7 @@ function spans($list) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html id="home" lang="en">
 <head>
 <meta charset=utf-8 />
 <meta name="viewport" content="width=620" />
@@ -80,6 +80,9 @@ function spans($list) {
       
 	<p>All content, code, video and audio is <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/uk/">Creative Commons Share Alike 2.0</a></p>
     </article>
+    <a id="html5badge" href="http://www.w3.org/html/logo/">
+    <img src="http://blue-harvest.appspot.com/html/logo/badge/html5-badge-h-connectivity-device-graphics-multimedia-performance-semantics-storage.png" width="325" height="64" alt="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage">
+    </a>
     <footer><a id="built" href="http://twitter.com/rem">@rem built this</a></footer> 
 </section>
 
