@@ -67,7 +67,7 @@ footer > * {
   content: '...quickly';
 }
 */
-[contenteditable]:hover {
+[contenteditable]:hover:not(:focus) {
   outline: 1px dotted #ccc;
 }
 
