@@ -259,7 +259,7 @@ body.view-source #view-source {
 }
 
 #html5badge {
-  display: none;
+/*  display: none;*/
   margin-left: -30px;
 }
 
