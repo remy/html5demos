@@ -6,7 +6,8 @@
     "support": {
       "live": "chrome",
       "nightly": "safari"
-    }
+    },
+    "test": "'dataset' in document.createElement('i')"
   },
   {
     "desc": "History API using pushState",
@@ -16,7 +17,8 @@
     "support": {
       "live": "chrome safari",
       "nightly": "firefox"
-    }
+    },
+    "test": "Modernizr.history"
   },
   {
     "desc": "Drag files directly into your browser",
@@ -24,9 +26,9 @@
     "note": "Not directly part of HTML5",
     "tags": "file-api dnd",
     "support": {
-      "live": "firefox",
-      "nightly": "chrome"
-    }
+      "live": "firefox chrome"
+    },
+    "test": "typeof FileReader != 'undefined'"
   },
   {
     "desc": "Simple chat client",
@@ -35,7 +37,8 @@
     "support": {
       "live": "safari chrome",
       "nightly": "firefox opera"
-    }
+    },
+    "test": "Modernizr.websockets"
   },
   {
     "desc": "Two videos playing in sync",
@@ -44,7 +47,8 @@
     "support": {
       "live": "firefox opera safari chrome",
       "nightly": "ie"
-    }
+    },
+    "test": "Modernizr.video"
   },
   {
     "desc": "Interactive canvas gradients",
@@ -53,7 +57,8 @@
     "support": {
       "live": "firefox opera safari chrome",
       "nightly": "ie"
-    }
+    },
+    "test": "Modernizr.canvas"
   },
   {
     "desc": "Canvas & Video",
@@ -62,7 +67,8 @@
     "support": {
       "live": "firefox opera safari chrome",
       "nightly": "ie"
-    }
+    },
+    "test": "Modernizr.video && Modernizr.canvas"
   },
   {
     "desc": "Video",
@@ -71,7 +77,8 @@
     "support": {
       "live": "firefox opera safari chrome",
       "nightly": "ie"
-    }
+    },
+    "test": "Modernizr.video"
   },
   {
     "desc": "Canvas",
@@ -80,7 +87,8 @@
     "support": {
       "live": "firefox opera safari chrome",
       "nightly": "ie"
-    }
+    },
+    "test": "Modernizr.canvas"
   },
   {
     "desc": "Content Editable",
@@ -88,7 +96,8 @@
     "tags": "contenteditable storage",
     "support": {
       "live": "ie firefox opera safari chrome"
-    }
+    },
+    "test": "'isContentEditable' in document.createElement('span');"
   },
   {
     "desc": "Geolocation",
@@ -96,8 +105,10 @@
     "tags": "geolocation",
     "note": "Works on Safari Mobile too",
     "support": {
-      "live": "firefox chrome safari opera"
-    }
+      "live": "firefox chrome safari opera",
+      "nightly": "ie"
+    },
+    "test": "Modernizr.geolocation"
   },
   {
     "desc": "postMessage",
@@ -106,7 +117,8 @@
     "tags": "postMessage",
     "support": {
       "live": "ie firefox opera safari chrome"
-    }
+    },
+    "test": "Modernizr.postmessage"
   },
   {
     "desc": "postMessage",
@@ -115,7 +127,8 @@
     "note": "cross domain",
     "support": {
       "live": "ie firefox opera safari chrome"
-    }
+    },
+    "test": "Modernizr.postmessage"
   },
   {
     "desc": "drag and drop",
@@ -123,7 +136,8 @@
     "tags": "dnd",
     "support": {
       "live": "ie firefox safari chrome"
-    }
+    },
+    "test": "Modernizr.draganddrop"
   },
   {
     "desc": "drag anything",
@@ -131,7 +145,8 @@
     "tags": "dnd",
     "support": {
       "live": "ie firefox safari chrome"
-    }
+    },
+    "test": "Modernizr.draganddrop"
   },
   {
     "desc": "offline detection",
@@ -167,7 +182,8 @@
     "tags": "offline manifest",
     "support": {
       "live": "firefox safari chrome opera"
-    }
+    },
+    "test": "Modernizr.applicationcache"
   },
   {
     "desc": "Storage",
@@ -175,7 +191,8 @@
     "tags": "storage",
     "support": {
       "live": "ie firefox opera safari chrome"
-    }
+    },
+    "test": "Modernizr.sessionstorage && Modernizr.localstorage"
   },
   {
     "desc": "Web SQL Database Storage",
@@ -183,7 +200,8 @@
     "tags": "sql-database",
     "support": {
       "live": "safari chrome opera"
-    }
+    },
+    "test": "Modernizr.websqldatabase"
   },
   {
     "desc": "Web SQL Database - rollback test",
@@ -191,7 +209,8 @@
     "tags": "sql-database",
     "support": {
       "live": "safari chrome opera"
-    }
+    },
+    "test": "Modernizr.websqldatabase"
   },
   {
     "desc": "Web Workers",
@@ -200,6 +219,7 @@
     "note": "watch out - uses a lot of CPU! <a href=\"non-worker\">example without - will hang your browser</a>",
     "support": {
       "live": "safari chrome firefox opera"
-    }
+    },
+    "test": "Modernizr.webworkers"
   }
 ]

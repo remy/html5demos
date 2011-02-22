@@ -177,7 +177,7 @@ body.view-source #view-source {
 }
 
 #demos .support {
-  width: 105px;
+  width: 126px;
 }
 
 .support span {
@@ -261,6 +261,25 @@ body.view-source #view-source {
 #html5badge {
 /*  display: none;*/
   margin-left: -30px;
+  border: 0;
+}
+
+#html5badge img {
+  border: 0;
+}
+
+.support span.yourbrowser {
+  width: 16px;
+  height: 16px;
+  background: none;
+}
+
+.support span.yourbrowser.supported {
+  background: url(../images/yourbrowser.gif) no-repeat top left;
+}
+
+.support span.yourbrowser.not-supported {
+  background: url(../images/yourbrowser.gif) no-repeat top right;
 }
 
 /** Pretty printing styles. Used with prettify.js. */

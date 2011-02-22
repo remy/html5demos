@@ -1,13 +1,13 @@
 <?php
 $demos = json_decode(file_get_contents('demos.json'));
 
-function support($support) {
+function support($support, $url) {
   $browsers = split(' ', 'ie firefox opera safari chrome'); // big 5 - should I add iPhone (for geo, etc)?
 
   $live = isset($support->live) ? split(' ', $support->live) : array();
   $nightly = isset($support->nightly) ? split(' ', $support->nightly) : array();
   
-  $html = '';
+  $html = '<span title="unknown browser support" class="yourbrowser tag" id="test-' . $url . '"></span> ';
   
   foreach ($browsers as $browser) {
     $class = '';
@@ -43,6 +43,7 @@ function spans($list) {
 <title>HTML5 Demos and Examples</title>
 <link rel="stylesheet" href="/css/html5demos.css" type="text/css" />
 <script src="js/h5utils.js"></script>
+<script src="js/modernizr.custom.js"></script>
 </head>
 <body>
 <section id="wrapper">
@@ -64,14 +65,14 @@ function spans($list) {
           <tr>
             <th>Demo</th>
             <th>Support</th>
-            <th>Technology</th>            
+            <th>Technology</th>
           </tr>
         </thead>
         <tbody>
           <?php foreach ($demos as $demo) :?>
           <tr>
             <td class="demo"><a href="<?=$demo->url?>"><?=$demo->desc?></a><?php if (isset($demo->note)) { echo ' <small>' . $demo->note . '</small>'; }?></td>
-            <td class="support"><?=support($demo->support)?></td>
+            <td class="support"><?=support($demo->support, $demo->url)?></td>
             <td class="tags"><?=spans($demo->tags)?></td>
           </tr>
           <?php endforeach ?>
@@ -86,8 +87,9 @@ function spans($list) {
     <footer><a id="built" href="http://twitter.com/rem">@rem built this</a></footer> 
 </section>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script>
+var tags = [];
 $(document).delegate('span.tag', 'click', function () {
   var $tag = $(this), tag = $tag.text(), type = $tag.closest('td').attr('class') || 'tags';
 
@@ -104,7 +106,7 @@ $(document).delegate('span.tag', 'click', function () {
     $trs.show();
   } else {
     $('tbody tr').show();
-  }  
+  }
 });
 
 var html = [];
@@ -118,6 +120,17 @@ $('.tags span.tag').each(function () {
 });
 
 $('#tags').append('<strong>Filter demos:</strong> ' + html.sort().join(''));
+
+$.getJSON('demos.json', function (data) {
+  var i = data.length, $test;
+  while (i--) {
+    if (data[i].test && (new Function('return ' + data[i].test))()) {
+      $('#test-' + data[i].url).addClass('supported').attr('title', 'your browser is supported');
+    } else if (data[i].test) {
+      $('#test-' + data[i].url).addClass('not-supported').attr('title', 'your browser is NOT supported');
+    }
+  }
+});
 
 // $('tr td.demo').click(function () {
 //   window.location = $(this).find('a').attr('href');
