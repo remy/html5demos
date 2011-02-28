@@ -6,9 +6,9 @@ function support($support, $url) {
 
   $live = isset($support->live) ? split(' ', $support->live) : array();
   $nightly = isset($support->nightly) ? split(' ', $support->nightly) : array();
-  
+
   $html = '<span title="unknown browser support" class="yourbrowser tag" id="test-' . $url . '"></span> ';
-  
+
   foreach ($browsers as $browser) {
     $class = '';
     if (in_array($browser, $live)) {
@@ -18,10 +18,10 @@ function support($support, $url) {
     } else {
       $class .= ' none';
     }
-    
+
     $html .= '<span title="' . trim($class) . '" class="tag ' . $browser . $class . '">' . $browser . ':' . $class . '</span> ';
   }
-  
+
   return $html;
 }
 
@@ -31,7 +31,7 @@ function spans($list) {
   foreach ($items as $item) {
     $html .= '<span class="tag">' . $item . '</span> ';
   }
-  
+
   return $html;
 }
 ?>
@@ -41,7 +41,7 @@ function spans($list) {
 <meta charset=utf-8 />
 <meta name="viewport" content="width=620" />
 <title>HTML5 Demos and Examples</title>
-<link rel="stylesheet" href="/css/html5demos.css" type="text/css" />
+<link rel="stylesheet" href="/css/html5demos.css" />
 <script src="js/h5utils.js"></script>
 <script src="js/modernizr.custom.js"></script>
 </head>
@@ -58,7 +58,7 @@ function spans($list) {
         </a>
       </section>
       <p id="tags" class="tags">
-        
+
       </p>
       <table id="demos">
         <thead>
@@ -78,74 +78,76 @@ function spans($list) {
           <?php endforeach ?>
         </tbody>
       </table>
-      
+
 	<p>All content, code, video and audio is <a rel="license" href="http://creativecommons.org/licenses/by-sa/2.0/uk/">Creative Commons Share Alike 2.0</a></p>
     </article>
     <a id="html5badge" href="http://www.w3.org/html/logo/">
     <img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity-device-graphics-multimedia-performance-semantics-storage.png" width="325" height="64" alt="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage">
     </a>
-    <footer><a id="built" href="http://twitter.com/rem">@rem built this</a></footer> 
+    <footer><a id="built" href="http://twitter.com/rem">@rem built this</a></footer>
 </section>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script>
-var tags = [];
-$(document).delegate('span.tag', 'click', function () {
-  var $tag = $(this), tag = $tag.text(), type = $tag.closest('td').attr('class') || 'tags';
+(function() {
+  var tags = [];
+  $(document).delegate('span.tag', 'click', function () {
+    var $tag = $(this), tag = $tag.text(), type = $tag.closest('td').attr('class') || 'tags';
 
-  if ($tag.is('.selected')) {
-    $('.' + type + ' span:contains(' + tag + ')').removeClass('selected');
-  } else {
-    $('.' + type + ' span:contains(' + tag + ')').addClass('selected');
-  }
-
-  // it's an AND filter
-  var $trs = $('.' + type + ':has(span.selected)').closest('tr');
-  if ($trs.length) {
-    $('tbody tr').hide();
-    $trs.show();
-  } else {
-    $('tbody tr').show();
-  }
-});
-
-var html = [];
-$('.tags span.tag').each(function () {
-  var $tag = $(this), tag = $tag.text();
-  
-  if (!tags[tag]) {
-    tags[tag] = true;
-    html.push('<span class="tag">' + tag + '</span> ');
-  }
-});
-
-$('#tags').append('<strong>Filter demos:</strong> ' + html.sort().join(''));
-
-$.getJSON('demos.json', function (data) {
-  var i = data.length, $test;
-  while (i--) {
-    if (data[i].test && (new Function('return ' + data[i].test))()) {
-      $('#test-' + data[i].url).addClass('supported').attr('title', 'your browser is supported');
-    } else if (data[i].test) {
-      $('#test-' + data[i].url).addClass('not-supported').attr('title', 'your browser is NOT supported');
+    if ($tag.is('.selected')) {
+      $('.' + type + ' span:contains(' + tag + ')').removeClass('selected');
+    } else {
+      $('.' + type + ' span:contains(' + tag + ')').addClass('selected');
     }
-  }
-});
+
+    // it's an AND filter
+    var $trs = $('.' + type + ':has(span.selected)').closest('tr');
+    if ($trs.length) {
+      $('tbody tr').hide();
+      $trs.show();
+    } else {
+      $('tbody tr').show();
+    }
+  });
+
+  var html = [];
+  $('.tags span.tag').each(function () {
+    var $tag = $(this), tag = $tag.text();
+
+    if (!tags[tag]) {
+      tags[tag] = true;
+      html.push('<span class="tag">' + tag + '</span> ');
+    }
+  });
+
+  $('#tags').append('<strong>Filter demos:</strong> ' + html.sort().join(''));
+
+  $.getJSON('demos.json', function (data) {
+    var i = data.length, $test;
+    while (i--) {
+      if (data[i].test && (new Function('return ' + data[i].test))()) {
+        $('#test-' + data[i].url).addClass('supported').attr('title', 'your browser is supported');
+      } else if (data[i].test) {
+        $('#test-' + data[i].url).addClass('not-supported').attr('title', 'your browser is NOT supported');
+      }
+    }
+  });
 
 // $('tr td.demo').click(function () {
 //   window.location = $(this).find('a').attr('href');
 // });
 
+}());
 </script>
 <a href="http://github.com/remy/html5demos"><img style="position: absolute; top: 0; left: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 <script>
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+var _gaq = [['_setAccount', 'UA-1656750-18'], ['_trackPageview']];
+(function(d, t) {
+  var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+  g.async = 1;
+  g.src = '//www.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g, s);
+}(document, 'script'));
 </script>
-<script>
-try {
-var pageTracker = _gat._getTracker("UA-1656750-18");
-pageTracker._trackPageview();
-} catch(err) {}</script>
 </body>
 </html>
