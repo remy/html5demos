@@ -83,6 +83,22 @@ li {
   margin-bottom: 10px;
 }
 
+#promo {
+  font-size: 90%;
+  background: #333 url(/images/learn-js.jpg) no-repeat left center;
+  display: block;
+  color: #efefef;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0px 20px 0px 260px;
+  border: 5px solid #006;
+  height: 160px;
+}
+
+#promo:hover {
+  border-color: #00f;
+}
+
 #ih5 {
   font-size: 90%;
   background: #442C0D url(/images/ih5.jpg) no-repeat left center;

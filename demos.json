@@ -45,8 +45,7 @@
     "url": "two-videos",
     "tags": "video",
     "support": {
-      "live": "firefox opera safari chrome",
-      "nightly": "ie"
+      "live": "firefox opera safari chrome ie"
     },
     "test": "Modernizr.video"
   },
@@ -55,8 +54,7 @@
     "url": "canvas-grad",
     "tags": "canvas",
     "support": {
-      "live": "firefox opera safari chrome",
-      "nightly": "ie"
+      "live": "firefox opera safari chrome ie"
     },
     "test": "Modernizr.canvas"
   },
@@ -65,8 +63,7 @@
     "url": "video-canvas",
     "tags": "video canvas",
     "support": {
-      "live": "firefox opera safari chrome",
-      "nightly": "ie"
+      "live": "firefox opera safari chrome ie"
     },
     "test": "Modernizr.video && Modernizr.canvas"
   },
@@ -75,8 +72,7 @@
     "url": "video",
     "tags": "video",
     "support": {
-      "live": "firefox opera safari chrome",
-      "nightly": "ie"
+      "live": "firefox opera safari chrome ie"
     },
     "test": "Modernizr.video"
   },
@@ -85,8 +81,7 @@
     "url": "canvas",
     "tags": "canvas",
     "support": {
-      "live": "firefox opera safari chrome",
-      "nightly": "ie"
+      "live": "firefox opera safari chrome ie"
     },
     "test": "Modernizr.canvas"
   },
@@ -105,8 +100,7 @@
     "tags": "geolocation",
     "note": "Works on Safari Mobile too",
     "support": {
-      "live": "firefox chrome safari opera",
-      "nightly": "ie"
+      "live": "firefox chrome safari opera ie"
     },
     "test": "Modernizr.geolocation"
   },
