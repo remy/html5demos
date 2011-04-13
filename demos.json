@@ -4,7 +4,7 @@
     "url": "dataset",
     "tags": "dataset",
     "support": {
-      "live": "chrome",
+      "live": "chrome opera",
       "nightly": "safari"
     },
     "test": "'dataset' in document.createElement('i')"
@@ -21,6 +21,16 @@
     "test": "Modernizr.history"
   },
   {
+    "desc": "Browser based file reading",
+    "url": "file-api-simple",
+    "note": "Not part of HTML5",
+    "tags": "file-api",
+    "support": {
+      "live": "firefox chrome opera"
+    },
+    "test": "typeof FileReader != 'undefined'"
+  },
+  {
     "desc": "Drag files directly into your browser",
     "url": "file-api",
     "note": "Not directly part of HTML5",
@@ -28,7 +38,7 @@
     "support": {
       "live": "firefox chrome"
     },
-    "test": "typeof FileReader != 'undefined'"
+    "test": "typeof FileReader != 'undefined' && Modernizr.draganddrop"
   },
   {
     "desc": "Simple chat client",
