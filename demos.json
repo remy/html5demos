@@ -1,5 +1,13 @@
 [
   {
+    "desc": "Storage events",
+    "url": "storage-events",
+    "tags": "storage",
+    "support": {
+      "live": "chrome safari opera firefox"
+    }
+  },
+  {
     "desc": "dataset (data-* attributes)",
     "url": "dataset",
     "tags": "dataset",
@@ -15,8 +23,7 @@
     "notes": "Uses onpopstate event",
     "tags": "history",
     "support": {
-      "live": "chrome safari",
-      "nightly": "firefox"
+      "live": "chrome safari firefox"
     },
     "test": "Modernizr.history"
   },
