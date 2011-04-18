@@ -5,7 +5,8 @@
     "tags": "storage",
     "support": {
       "live": "chrome safari opera firefox"
-    }
+    },
+    "test": "Modernizr.localstorage"
   },
   {
     "desc": "dataset (data-* attributes)",
