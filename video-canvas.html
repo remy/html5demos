@@ -40,12 +40,12 @@ addEvent(togglePlay, 'click', function () {
   }
 });
 
-addEvent(video, 'timeupdate', function () {
-  position.innerHTML = asTime(this.currentTime);
+setInterval(function () {
+  position.innerHTML = asTime(video.currentTime);
 
   // ctx.restore();
   ctx.drawImage(video, 0, 0, video.width, video.height, 0, 0, canvas.width, canvas.height);
-});
+}, 1000 / 15);
 
 addEvent(video, 'ended', function () {
   togglePlay.value = "play";
