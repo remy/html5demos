@@ -43,7 +43,8 @@ addEvent(video, 'ended', function () {
   togglePlay.value = "play";
 });
 
-addEvent(video, 'canplay', function () {
+// this used to be canplay, but really it should have been loadedmetadata - sorry folks
+addEvent(video, 'loadedmetadata', function () {
   video.muted = true;
   ready = true;
   document.querySelector('#duration').innerHTML = asTime(this.duration);
