@@ -1,9 +1,13 @@
 CACHE MANIFEST
 
-# Build 2011-02-22
+# Build 2011-05-17
 
 CACHE:
 images/shade.jpg
 images/bin.jpg
 /js/h5utils-offline.js
 /css/html5demos.css
+
+NETWORK:
+http://*
+https://*
