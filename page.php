@@ -8,7 +8,7 @@ if (file_exists('demos/' . $request . '.html')) {
 
   $manifest = '';
   if ($request == 'offlineapp') { // specific change to support <html manifest=xyz>
-    $manifest = ' manifest="html5demo.manifest"';
+    $manifest = ' manifest="html5demo.appcache"';
   }
   
   include('includes/header.php');
