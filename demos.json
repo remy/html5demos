@@ -1,5 +1,15 @@
 [
   {
+    "desc": "Simple class manipulation",
+    "url": "classlist",
+    "tags": "classlist",
+    "support": {
+      "live": "chrome opera firefox",
+      "nightly": "safari"
+    },
+    "test": "'classList' in document.createElement('i')"
+  },
+  {
     "desc": "Storage events",
     "url": "storage-events",
     "tags": "storage",
@@ -24,7 +34,7 @@
     "notes": "Uses onpopstate event",
     "tags": "history",
     "support": {
-      "live": "chrome safari firefox"
+      "live": "chrome safari firefox opera"
     },
     "test": "Modernizr.history"
   },
