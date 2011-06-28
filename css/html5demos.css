@@ -138,7 +138,7 @@ li {
   text-decoration: underline;
 }
 
-input {
+button, input {
   font-size: 16px;
   padding: 3px;
   margin-left: 5px;  
