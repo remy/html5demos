@@ -14,7 +14,7 @@
     "url": "storage-events",
     "tags": "storage",
     "support": {
-      "live": "chrome safari opera firefox"
+      "live": "chrome safari opera firefox ie"
     },
     "test": "Modernizr.localstorage"
   },
