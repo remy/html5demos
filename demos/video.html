@@ -1,6 +1,10 @@
 <title>Video</title>
 <article>
-  <p id="altmsg">It doesn't appear that your browser supports native video, sorry :(</p>
+  <video>
+    <source src="assets/dizzy.mp4" type="video/mp4" />
+    <source src="assets/dizzy.webm" type="video/webm" />
+    <source src="assets/dizzy.ogv" type="video/ogv" />
+  </video>
   <p id="controls">
     <input type="button" id="play" value="play">
     <span id="position">00:00</span> / <span id="duration">loading...</span>
@@ -24,12 +28,16 @@
   Another alternative is to put inline event handlers in the markup, again
   this is something I prefer not to do. 
   
+  One final alternative is to create the meida element and bind the event
+  before dropping it in the DOM. 
+  
+  Instead of all of these workarounds, I'm going to test the readyState
+  of the media element. If readyState is > 0, then it means the metadata
+  has loaded, and therefore I'll have to run the event handler manually.
 */
 
 
-var container = document.getElementById('altmsg'),
-    video = document.createElement('video'),
-    source, // support will be detected
+var video = document.getElementsByTagName('video')[0],
     togglePlay = document.getElementById('play'),
     position = document.getElementById('position'),
     using = document.getElementById('using'),
@@ -37,17 +45,9 @@ var container = document.getElementById('altmsg'),
     controls = document.getElementById('controls'),
     fullscreen = null;
 
-if (video.canPlayType('video/webm')) {
-  source = 'assets/dizzy.webm';
-} else if (video.canPlayType('video/mp4')) {
-  source = 'assets/dizzy.mp4';
-} else if (video.canPlayType('video/ogv')) {
-  source = 'assets/dizzy.ogv';
-}
-
 addEvent(togglePlay, 'click', function () {
   if (ready) {
-    video.playbackRate = 0.5;
+    // video.playbackRate = 0.5;
     if (video.paused) {
       if (video.ended) video.currentTime = 0;
       video.play();
@@ -68,7 +68,7 @@ addEvent(video, 'ended', function () {
 });
 
 // this used to be canplay, but really it should have been loadedmetadata - sorry folks
-addEvent(video, 'loadedmetadata', function () {
+function loadedmetadata() {
   video.muted = true;
   ready = true;
   document.querySelector('#duration').innerHTML = asTime(this.duration);
@@ -83,13 +83,14 @@ addEvent(video, 'loadedmetadata', function () {
       video.webkitEnterFullScreen();
     });
   }
-});
-
-if (source) {
-  video.src = source;
-  console.log(video);
-  container.parentNode.replaceChild(video, container);
 }
+
+if (video.readyState > 0) { // metadata is loaded already - fire the event handler manually
+  loadedmetadata.call(video);
+} else {
+  addEvent(video, 'loadedmetadata', loadedmetadata);
+}
+
 
 function asTime(t) {
   t = Math.round(t);
