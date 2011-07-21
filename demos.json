@@ -4,8 +4,8 @@
     "url": "classlist",
     "tags": "classlist",
     "support": {
-      "live": "chrome opera firefox",
-      "nightly": "safari"
+      "live": "chrome opera firefox safari",
+      "nightly": ""
     },
     "test": "'classList' in document.createElement('i')"
   },
@@ -23,8 +23,8 @@
     "url": "dataset",
     "tags": "dataset",
     "support": {
-      "live": "chrome opera",
-      "nightly": "safari"
+      "live": "chrome opera safari",
+      "nightly": ""
     },
     "test": "'dataset' in document.createElement('i')"
   },
