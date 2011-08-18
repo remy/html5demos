@@ -29,6 +29,11 @@
   <ul id="log"></ul>
 </article>
 <script>
+// let's invite Firefox to the party.
+if (window.MozWebSocket) {
+  window.WebSocket = window.MozWebSocket;
+}
+
 function openConnection() {
   // uses global 'conn' object
   if (conn.readyState === undefined || conn.readyState > 1) {
@@ -39,8 +44,9 @@ function openConnection() {
     };
 
     conn.onmessage = function (event) {
-      var message = JSON.parse(event.data);
-      if (typeof message == 'string') {
+      // console.log(event.data);
+      var message = event.data; //JSON.parse(event.data);
+      if (!(/^\d+$/).test(message)) {
         log.innerHTML = '<li class="them">' + message.replace(/[<>&]/g, function (m) { return entities[m]; }) + '</li>' + log.innerHTML;
       } else {
         connected.innerHTML = message;

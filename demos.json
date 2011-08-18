@@ -23,7 +23,7 @@
     "url": "dataset",
     "tags": "dataset",
     "support": {
-      "live": "chrome opera safari",
+      "live": "chrome opera safari firefox",
       "nightly": ""
     },
     "test": "'dataset' in document.createElement('i')"
