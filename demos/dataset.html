@@ -20,7 +20,7 @@ pre {
   </section>
   <p id="status">Not connected</p>
   <section>
-    <div id="test" data-name="rem" data-height="short">This element has data</div>
+    <div id="testWrapper"><div id="test" data-name="rem" data-height="short">This element has data</div></div>
     <input type="button" value="Show data" id="show" />
     <input type="button" value="Change data via dataset" id="change1" />
     <input type="button" value="change data via setAttribute" id="change2" />
@@ -31,7 +31,7 @@ pre {
 (function () {
 
 function show() {
-  code.innerHTML = test.outerHTML.replace(/[<>]/g, function (m) {
+  code.innerHTML = testWrapper.innerHTML.replace(/[<>]/g, function (m) {
     return { '<': '&lt;', '>': '&gt;' }[m];
   });
   
@@ -43,7 +43,8 @@ function show() {
 var state = document.getElementById('status'),
     code = document.getElementById('element');
     
-var test = window.element = document.getElementById('test');
+var test = document.getElementById('test'),
+    testWrapper = document.getElementById('testWrapper');
 
 if (test.dataset === undefined) {
   state.innerHTML = 'dataset not supported';
