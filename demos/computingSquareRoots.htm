@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Workers : table </title>
+</head>
+<body>
+ <article>
+    <p><span id="log"></span></p>
+ </article>
+
+<script>
+
+/* 
+   This sample shows ho to perform an operation (computing the square roots) on a table using Web Workers 
+   Worker #i is assigned the task of finding the square roots of the numbers in line #i of the table.
+   A global object then recombines the results received from the workers into the result table.
+
+   Sample code contributed by :  Francois Role francois.role@gmail.com 
+*/
+
+
+
+
+ 
+   var log=document.querySelector('#log');
+
+  
+
+  function logging(txt)  { log.innerHTML+="<p>" + txt ;  }
+
+  
+
+  
+///////////////////////////////////////////////////////
+// Dispatcher object
+//////////////////////////////////////////////////////
+
+ function Dispatcher() {
+
+    logging("<p>Creating the Dispatcher") ;
+
+    this.availableArray=new Array();
+    this.workerArray=new Array();
+    
+    this.nbWorkers=0;
+    this.resultTable=new Array();
+
+    this.handle=function(m) {
+         this.nbWorkers=m.length;
+         that=this;
+         for (var i =0 ; i < this.nbWorkers ; i++) {
+                this.workerArray[i]=new Worker('computingSquareRoots.js');
+                this.availableArray[i]=true;
+                this.workerArray[i].onmessage = function(event) {
+                   respObj=JSON.parse(event.data);  
+                   numLine=  respObj.id;  
+                   line=respObj.line
+                    that.resultTable[numLine]=line; 
+                   that.nbWorkers--;                    
+                   if ( that.nbWorkers ==0 )   
+                           logging(formatTable(that.resultTable, "Final table"));
+                } ;
+
+
+               
+                this.workerArray[i].postMessage(JSON.stringify(  { id : i , line : m[i] } )  );
+          } 
+   
+    logging("<p>Number of created workers:" + this.workerArray.length)  ;
+         
+     }
+  }  // end of constructor Dispatcher
+
+
+
+///////////////////////////////////////////////////////
+// main 
+//////////////////////////////////////////////////////
+
+
+  function formatTable(a,caption)  {
+      var res ="";
+      res+="<table border=1><caption><b><u>" + caption + "</u></b></caption>";
+      for (var i  in a) {
+         res+= "<tr>" + "<th>#" + i + "</th>";
+         for (var j in a[i] ) 
+            res+="<td align='center'>" + a[i][j] + "</td>" ;
+         res+= "</tr>"  ;
+      }
+      res+= "</table>";
+      return res;
+   }
+  
+
+  function randomLine(nbElems, borne) {
+      l=[];
+      for (var i=0 ; i < nbElems ; i++) {
+         l[i]=Math.floor( Math.random()*borne  ) ;
+      }
+     return l;
+  }
+
+   a= [  randomLine(10, 66)  , randomLine(10, 155) ,randomLine(10, 166) ,randomLine(10,28) ,randomLine(10, 89) , randomLine(10, 89)  ]
+  
+
+logging(formatTable(a,"Initial table"));
+
+
+  d=new Dispatcher();
+  
+  d.handle(a);
+
+
+</script>
+
+
+</script>
+</body>
+</html>
