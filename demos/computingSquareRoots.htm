@@ -48,8 +48,8 @@
     this.handle=function(m) {
          this.nbWorkers=m.length;
          that=this;
-         for (var i =0 ; i < this.nbWorkers ; i++) {
-                this.workerArray[i]=new Worker('computingSquareRoots.js');
+         for (var i =0 ; i < this.nbWorkers ; i++) {  
+                this.workerArray[i]=new Worker('../js/computingSquareRoots.js');
                 this.availableArray[i]=true;
                 this.workerArray[i].onmessage = function(event) {
                    respObj=JSON.parse(event.data);  
@@ -113,7 +113,5 @@ logging(formatTable(a,"Initial table"));
 
 </script>
 
-
-</script>
 </body>
 </html>
