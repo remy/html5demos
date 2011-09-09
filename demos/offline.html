@@ -4,12 +4,12 @@
   <ol id="state"></ol>
 </article>
 <script>
-var status = document.getElementById('status'),
-    state = document.getElementById('state');
+var statusElem  = document.getElementById('status'),
+    state 		= document.getElementById('state');
 
 function online(event) {
-  status.className = navigator.onLine ? 'online' : 'offline';
-  status.innerHTML = navigator.onLine ? 'online' : 'offline';
+  statusElem.className = navigator.onLine ? 'online' : 'offline';
+  statusElem.innerHTML = navigator.onLine ? 'online' : 'offline';
   state.innerHTML += '<li>New event: ' + event.type + '</li>';
 }
 
