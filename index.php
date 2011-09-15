@@ -2,10 +2,10 @@
 $demos = json_decode(file_get_contents('demos.json'));
 
 function support($support, $url) {
-  $browsers = split(' ', 'ie firefox opera safari chrome'); // big 5 - should I add iPhone (for geo, etc)?
+  $browsers = explode(' ', 'ie firefox opera safari chrome'); // big 5 - should I add iPhone (for geo, etc)?
 
-  $live = isset($support->live) ? split(' ', $support->live) : array();
-  $nightly = isset($support->nightly) ? split(' ', $support->nightly) : array();
+  $live = isset($support->live) ? explode(' ', $support->live) : array();
+  $nightly = isset($support->nightly) ? explode(' ', $support->nightly) : array();
 
   $html = '<span title="unknown browser support" class="yourbrowser tag" id="test-' . $url . '"></span> ';
 
@@ -26,7 +26,7 @@ function support($support, $url) {
 }
 
 function spans($list) {
-  $items = split(' ', $list);
+  $items = explode(' ', $list);
   $html = '';
   foreach ($items as $item) {
     $html .= '<span class="tag">' . $item . '</span> ';
@@ -41,7 +41,7 @@ function spans($list) {
 <meta charset=utf-8 />
 <meta name="viewport" content="width=620" />
 <title>HTML5 Demos and Examples</title>
-<link rel="stylesheet" href="/css/html5demos.css" />
+<link rel="stylesheet" href="css/html5demos.css" />
 <script src="js/h5utils.js"></script>
 <script src="js/modernizr.custom.js"></script>
 </head>
@@ -79,9 +79,9 @@ function spans($list) {
         <tbody>
           <?php foreach ($demos as $demo) :?>
           <tr>
-            <td class="demo"><a href="<?=$demo->url?>"><?=$demo->desc?></a><?php if (isset($demo->note)) { echo ' <small>' . $demo->note . '</small>'; }?></td>
-            <td class="support"><?=support($demo->support, $demo->url)?></td>
-            <td class="tags"><?=spans($demo->tags)?></td>
+            <td class="demo"><a href="<?php echo $demo->url?>"><?php echo $demo->desc?></a><?php if (isset($demo->note)) { echo ' <small>' . $demo->note . '</small>'; }?></td>
+            <td class="support"><?php echo support($demo->support, $demo->url)?></td>
+            <td class="tags"><?php echo spans($demo->tags)?></td>
           </tr>
           <?php endforeach ?>
         </tbody>
