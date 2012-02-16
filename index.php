@@ -52,19 +52,19 @@ function spans($list) {
     </header>
     <article>
       <p><abbr>HTML</abbr> 5 experimentation and demos I've hacked together. Click on the browser support icon or the technology tag to filter the demos (the filter is an <code>OR</code> filter).</p>
-<?php /*
 <section>
-  <a href="http://leftlogic.com/tour" id="promo">
-    <p><strong>Want to learn all about JavaScript?</strong></p>
-    <p>Full day limted places workshops covering HTML5 APIs, Node and jQuery for designers at <strong>£200</strong> running throughout May. <u>Find out more and grab your ticket now.</u></p>
+  <a href="http://leftlogic.com/training?ref=html5demos.com#node" id="promo">
+    <p><strong>Learn how to create real-time applications with HTML5 &amp; Node.js</strong></p>
+    <p>Two day workshop covering real-time HTML5 APIs and Node.js running in March in Brighton, UK. <u>Find out more and grab your ticket now.</u></p>
   </a>
 </section>
-*/ ?>
+<?php /*
       <section>
         <a href="http://introducinghtml5.com" id="ih5">
-          <p><strong>Introducing HTML5</strong> by Bruce Laweson &amp; Remy Sharp is the first full length book dedicated to HTML5.</p><p>Get it now and kick some HTML5 ass!</p>
+          <p><strong>Introducing HTML5</strong> by Bruce Lawson &amp; Remy Sharp is the first full length book dedicated to HTML5.</p><p>Get it now and kick some HTML5 ass!</p>
         </a>
       </section>
+*/ ?>
       <p id="tags" class="tags">
 
       </p>
