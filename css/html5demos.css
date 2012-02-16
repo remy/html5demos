@@ -298,6 +298,12 @@ body.view-source #view-source {
   background: url(../images/yourbrowser.gif) no-repeat top right;
 }
 
+#carbonads-container {
+  position: fixed;
+  margin-left: 620px;
+  margin-top: -2px;
+}
+
 /** Pretty printing styles. Used with prettify.js. */
 pre { font-size: 14px; }
 .str { color: #080; }
