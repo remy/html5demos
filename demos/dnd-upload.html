@@ -7,12 +7,12 @@
 meter { width: 100%; }
 meter:after { content: '%'; }
 .fail { background: #c00; padding: 2px; color: #fff; }
-[hidden] { display: none !important;}
+.hidden { display: none !important;}
 </style>
 <article>
   <div id="holder">
   </div> 
-  <p id="upload" hidden><label>Drag &amp; drop not supported, but you can still upload via this input field:<br><input type="file"></label></p>
+  <p id="upload" class="hidden"><label>Drag &amp; drop not supported, but you can still upload via this input field:<br><input type="file"></label></p>
   <p id="filereader">File API &amp; FileReader API not supported</p>
   <p id="formdata">XHR2's FormData is not supported</p>
   <p id="progress">XHR2's upload progress isn't supported</p>
@@ -44,7 +44,11 @@ var holder = document.getElementById('holder'),
   if (tests[api] === false) {
     support[api].className = 'fail';
   } else {
-    support[api].hidden = true;
+    // FFS. I could have done el.hidden = true, but IE doesn't support
+    // hidden, so I tried to create a polyfill that would extend the
+    // Element.prototype, but then IE10 doesn't even give me access
+    // to the Element object. Brilliant.
+    support[api].className = 'hidden';
   }
 });
 
@@ -103,7 +107,7 @@ if (tests.dnd) {
     readfiles(e.dataTransfer.files);
   }
 } else {
-  fileupload.hidden = false;
+  fileupload.className = 'hidden';
   fileupload.querySelector('input').onchange = function () {
     readfiles(this.files);
   };
