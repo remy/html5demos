@@ -10,6 +10,16 @@
     "test": "typeof FileReader != 'undefined' && 'draggable' in document.createElement('span') && !!window.FormData && 'upload' in new XMLHttpRequest"
   },
   {
+    "desc": "Hidden property",
+    "url": "hidden",
+    "tags": "hidden",
+    "support": {
+      "live": "chrome firefox opera safari",
+      "nightly": ""
+    },
+    "test": "'hidden' in document.createElement('i')"
+  },
+  {
     "desc": "Simple class manipulation",
     "url": "classlist",
     "tags": "classlist",
