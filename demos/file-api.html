@@ -28,8 +28,10 @@ holder.ondrop = function (e) {
   var file = e.dataTransfer.files[0],
       reader = new FileReader();
   reader.onload = function (event) {
+    console.log(event.target);
     holder.style.background = 'url(' + event.target.result + ') no-repeat center';
   };
+  console.log(file);
   reader.readAsDataURL(file);
 
   return false;

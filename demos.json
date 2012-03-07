@@ -1,5 +1,15 @@
 [
   {
+    "desc": "Drag and drop and XHR upload",
+    "url": "dnd-upload",
+    "tags": "file dnd xhr2",
+    "support": {
+      "live": "chrome firefox",
+      "nightly": "ie"
+    },
+    "test": "typeof FileReader != 'undefined' && 'draggable' in document.createElement('span') && !!window.FormData && 'upload' in new XMLHttpRequest"
+  },
+  {
     "desc": "Simple class manipulation",
     "url": "classlist",
     "tags": "classlist",
