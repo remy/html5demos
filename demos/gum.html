@@ -1,0 +1,41 @@
+<title>getUserMedia</title>
+<style>
+  video { 
+    -webkit-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    -o-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    -moz-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    -ms-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    max-width: 100%;
+    margin: 0;
+  }
+</style>
+<article>
+  <video autoplay></video>
+</article>
+<script>
+var video = document.querySelector('video');
+
+function init() {
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+  if (navigator.getUserMedia) {
+    navigator.getUserMedia('video', successCallback, errorCallback);
+    // Below is the latest syntax. Using the old syntax for the time being for backwards compatibility.
+    //navigator.getUserMedia({video: true}, successCallback, errorCallback);
+    function successCallback(stream) {
+      window.stream = stream;
+      if (window.webkitURL) {
+        video.src = window.webkitURL.createObjectURL(stream);
+      } else {
+        video.src = stream;
+      }
+    }
+    function errorCallback(error) {
+      console.error('An error occurred: [CODE ' + error.code + ']');
+      return;
+    }
+  }
+}
+
+init();
+</script>
