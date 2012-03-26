@@ -1,15 +1,35 @@
 <title>getUserMedia with canvas effects</title>
 <style>
-  #source { -webkit-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); display: block; margin: 20px 0; max-width: 100%; }
-  #strip { display: block; }
+  #gum {
+    background: #c00;
+    color: #fff;
+    padding: 10px;
+  }
+
+  /* I'm using CSS3 to translate the video on the X axis to give it a mirror effect */
+  #source {
+    display: block; 
+    margin: 20px 0; 
+    max-width: 100%; 
+  }
+
+  .supported #source { -webkit-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    -o-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    -moz-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    -ms-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+  }
   video, canvas { display: none; }
-  input { width: 360px ;}
-  output { display: inline-block; width: 16px; height: 16px; background: red; padding: 0; margin: 0;}
+  input { width: 360px; }
 </style>
 <article>
   <label for="hue">Colour <input type="range" min="0" max="360" value="0" id="hue"></label> <output id="target"></output>
-  <video autoplay></video>
+    <video id="video" muted loop autoplay>
+    <source src="/assets/remy-and-ellis2.mp4"></source>
+    <source src="/assets/remy-and-ellis2.webm"></source>
+  </video>
   <canvas id="source"></canvas>
+  <p id="gum">getUserMeda either not supported or not allowed - so instead here's me and my son headbanging.</p>
 </article>
 <script>
 var video = document.querySelector('video'),
@@ -63,11 +83,11 @@ slider.oninput = slider.onchange = function () {
   tr = rgb[0];
   tg = rgb[1];
   tb = rgb[2];
-  // console.log(brightness / 256);
 };
 
 
 function init() {
+  // from HTML5 Doctor article: http://html5doctor.com/getusermedia/
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
   if (navigator.getUserMedia) {
     navigator.getUserMedia('video', successCallback, errorCallback);
@@ -89,12 +109,8 @@ function init() {
 }
 
 video.addEventListener('loadedmetadata', function () {
-  // output.canvas.width = ;
   source.canvas.width = video.videoWidth;
-  // output.canvas.height = 
   source.canvas.height = video.videoHeight;
-  // source.canvas.height = height;
-  // source.canvas.width = width;
   draw();
 });
 
@@ -107,18 +123,17 @@ function draw() {
       brightness;
 
   for (; i < pixels.data.length; i += 4) {
-    // grey = r*.3 + g*.59 + b*.11;
+    // brightness code from Tab Atkins' canvas demos
     brightness = ((3*pixels.data[i]+4*pixels.data[i+1]+pixels.data[i+2])>>>3) / 256;
 
     pixels.data[i] = ((tr * brightness)+0.5)>>0;
     pixels.data[i+1] = ((tg * brightness)+0.5)>>0
     pixels.data[i+2] = ((tb * brightness)+0.5)>>0
-    // pixels.data[i+2] = 0;
   }
   output.putImageData(pixels, 0, 0);
 }
 
-// shim layer with setTimeout fallback
+// shim layer with setTimeout fallback - from Paul Irish
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame       || 
           window.webkitRequestAnimationFrame || 
@@ -130,8 +145,15 @@ window.requestAnimFrame = (function(){
           };
 })();
 
+var article = video.parentNode,
+    gum = document.getElementById('gum');
 
-init();
+if (navigator.getUserMedia || navigator.webkitGetUserMedia) {
+  article.removeChild(gum);
+  article.className = 'supported';
+  init();
+}
+
 </script>
 </body>
 </html>

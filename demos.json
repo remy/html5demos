@@ -1,5 +1,25 @@
 [
   {
+    "desc": "Stream video and filter with canvas",
+    "url": "gum-canvas",
+    "tags": "getUserMedia canvas",
+    "support": {
+      "live": "",
+      "nightly": "chrome opera"
+    },
+    "test": "navigator.getUserMedia !== undefined"
+  },
+  {
+    "desc": "Stream video to the browser<br><small>Also works on Opera Mobile 12</small>",
+    "url": "gum",
+    "tags": "getUserMedia",
+    "support": {
+      "live": "",
+      "nightly": "chrome opera"
+    },
+    "test": "navigator.getUserMedia !== undefined"
+  },
+  {
     "desc": "Drag and drop and XHR upload",
     "url": "dnd-upload",
     "tags": "file dnd xhr2",
