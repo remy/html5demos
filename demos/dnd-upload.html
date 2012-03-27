@@ -4,8 +4,8 @@
 #holder.hover { border: 10px dashed #0c0; }
 #holder img { display: block; margin: 10px auto; }
 #holder p { margin: 10px; font-size: 14px; }
-meter { width: 100%; }
-meter:after { content: '%'; }
+progress { width: 100%; }
+progress:after { content: '%'; }
 .fail { background: #c00; padding: 2px; color: #fff; }
 .hidden { display: none !important;}
 </style>
@@ -16,7 +16,7 @@ meter:after { content: '%'; }
   <p id="filereader">File API &amp; FileReader API not supported</p>
   <p id="formdata">XHR2's FormData is not supported</p>
   <p id="progress">XHR2's upload progress isn't supported</p>
-  <p>Upload progress: <meter id="uploadprogress" min="0" max="100" value="0">0</meter></p>
+  <p>Upload progress: <progress id="uploadprogress" min="0" max="100" value="0">0</progress></p>
   <p>Drag an image from your desktop on to the drop zone above to see the browser both render the preview, but also upload automatically to this server.</p>
 </article>
 <script>
