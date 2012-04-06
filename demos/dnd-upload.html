@@ -64,7 +64,7 @@ function previewfile(file) {
 
     reader.readAsDataURL(file);
   }  else {
-    holder.innerHTML += '<p>Uploaded ' + file.name + ' ' + (file.fileSize ? (file.fileSize/1024|0) + 'K' : '');
+    holder.innerHTML += '<p>Uploaded ' + file.name + ' ' + (file.size ? (file.size/1024|0) + 'K' : '');
     console.log(file);
   }
 }
