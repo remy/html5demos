@@ -95,7 +95,7 @@ if (video.readyState > 0) { // metadata is loaded already - fire the event handl
 function asTime(t) {
   t = Math.round(t);
   var s = t % 60;
-  var m = Math.round(t / 60);
+  var m = Math.floor(t / 60);
   
   return two(m) + ':' + two(s);
 }
