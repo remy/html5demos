@@ -4,8 +4,8 @@
     "url": "gum-canvas",
     "tags": "getUserMedia canvas",
     "support": {
-      "live": "",
-      "nightly": "chrome opera"
+      "live": "opera",
+      "nightly": "chrome"
     },
     "test": "navigator.getUserMedia !== undefined"
   },
@@ -14,8 +14,8 @@
     "url": "gum",
     "tags": "getUserMedia",
     "support": {
-      "live": "",
-      "nightly": "chrome opera"
+      "live": "opera",
+      "nightly": "chrome"
     },
     "test": "navigator.getUserMedia !== undefined"
   },
@@ -197,7 +197,7 @@
     "url": "drag",
     "tags": "dnd",
     "support": {
-      "live": "ie firefox safari chrome"
+      "live": "ie firefox safari chrome opera"
     },
     "test": "Modernizr.draganddrop"
   },
@@ -206,7 +206,7 @@
     "url": "drag-anything",
     "tags": "dnd",
     "support": {
-      "live": "ie firefox safari chrome"
+      "live": "ie firefox safari chrome opera"
     },
     "test": "Modernizr.draganddrop"
   },
