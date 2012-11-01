@@ -1,10 +1,12 @@
 <title>getUserMedia streamed to a video element</title>
 <style>
-  video {
+  audio, video {
     max-width: 100%;
     margin: 0;
   }
-  .supported video { 
+
+  .supported video,
+  .supported audio { 
     /* I'm using CSS3 to translate the video on the X axis to give it a mirror effect */
     -webkit-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
     -o-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
@@ -34,13 +36,14 @@ function init() {
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
   if (navigator.getUserMedia) {
     // NOTE: at time of writing March 26, 2012, audio isn't working in Chrome
-    navigator.getUserMedia('video', successCallback, errorCallback);
+    // navigator.getUserMedia('audio,video', successCallback, errorCallback);
     // Below is the latest syntax. Using the old syntax for the time being for backwards compatibility.
-    //navigator.getUserMedia({video: true}, successCallback, errorCallback);
+    navigator.getUserMedia({video: true, audio: true }, successCallback, errorCallback);
     function successCallback(stream) {
       window.stream = stream;
       if (window.webkitURL) {
         video.src = window.webkitURL.createObjectURL(stream);
+        // document.querySelector('audio').src = window.webkitURL.createObjectURL(stream);
       } else {
         video.src = stream;
       }

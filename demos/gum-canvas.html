@@ -90,9 +90,7 @@ function init() {
   // from HTML5 Doctor article: http://html5doctor.com/getusermedia/
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
   if (navigator.getUserMedia) {
-    navigator.getUserMedia('video', successCallback, errorCallback);
-    // Below is the latest syntax. Using the old syntax for the time being for backwards compatibility.
-    //navigator.getUserMedia({video: true}, successCallback, errorCallback);
+    navigator.getUserMedia({ video: true }, successCallback, errorCallback);
     function successCallback(stream) {
       window.stream = stream;
       if (window.webkitURL) {
