@@ -41,7 +41,9 @@ function init() {
     navigator.getUserMedia({video: true, audio: true }, successCallback, errorCallback);
     function successCallback(stream) {
       window.stream = stream;
-      if (window.webkitURL) {
+      if ('mozSrcObject' in video)
+        video.mozSrcObject = stream;
+      } else if (window.webkitURL) {
         video.src = window.webkitURL.createObjectURL(stream);
         // document.querySelector('audio').src = window.webkitURL.createObjectURL(stream);
       } else {
