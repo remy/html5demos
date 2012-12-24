@@ -24,7 +24,7 @@
     "url": "dnd-upload",
     "tags": "file dnd xhr2",
     "support": {
-      "live": "chrome firefox",
+      "live": "chrome firefox opera",
       "nightly": "ie"
     },
     "test": "typeof FileReader != 'undefined' && 'draggable' in document.createElement('span') && !!window.FormData && 'upload' in new XMLHttpRequest"
@@ -94,7 +94,7 @@
     "note": "Not directly part of HTML5",
     "tags": "file-api dnd",
     "support": {
-      "live": "firefox chrome"
+      "live": "firefox chrome opera"
     },
     "test": "typeof FileReader != 'undefined' && Modernizr.draganddrop"
   },
@@ -103,8 +103,8 @@
     "url": "web-socket",
     "tags": "websocket",
     "support": {
-      "live": "safari chrome",
-      "nightly": "firefox opera"
+      "live": "safari chrome opera",
+      "nightly": "firefox"
     },
     "test": "Modernizr.websockets"
   },
