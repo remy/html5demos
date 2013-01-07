@@ -216,7 +216,7 @@
     "tags": "offline events",
     "note": "Works on Safari Mobile too",
     "support": {
-      "live": "firefox opera"
+      "live": "firefox opera chrome"
     }
   },
   {
@@ -225,7 +225,7 @@
     "tags": "offline",
     "note": "Doesn't use events, only polls",
     "support": {
-      "live": "firefox opera ie"
+      "live": "firefox opera ie chrome"
     }
   },
   {
@@ -234,7 +234,7 @@
     "notes": "Opera &amp; Firefox - requires \"Work Offline\"",
     "tags": "offline events",
     "support": {
-      "live": "firefox opera"
+      "live": "firefox opera chrome"
     }
   },
   {
