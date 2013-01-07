@@ -31,9 +31,9 @@
   <canvas id="source"></canvas>
   <p id="gum">getUserMeda either not supported or not allowed - so instead here's me and my son headbanging.</p>
 </article>
+<script src="/js/gum.js"></script>
 <script>
-var video = document.querySelector('video'),
-    source = document.getElementById('source').getContext('2d'),
+var source = document.getElementById('source').getContext('2d'),
     output = source, //document.getElementById('output').getContext('2d'),
     slider = document.getElementById('hue'),
     target = document.getElementById('target'),
@@ -85,30 +85,13 @@ slider.oninput = slider.onchange = function () {
   tb = rgb[2];
 };
 
-
-function init() {
-  // from HTML5 Doctor article: http://html5doctor.com/getusermedia/
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-  if (navigator.getUserMedia) {
-    navigator.getUserMedia({ video: true }, successCallback, errorCallback);
-    function successCallback(stream) {
-      window.stream = stream;
-      if (window.webkitURL) {
-        video.src = window.webkitURL.createObjectURL(stream);
-      } else {
-        video.src = stream;
-      }
-    }
-    function errorCallback(error) {
-      console.error('An error occurred: [CODE ' + error.code + ']');
-      return;
-    }
-  }
-}
-
+// note: video is defined in gum.js
 video.addEventListener('loadedmetadata', function () {
-  source.canvas.width = video.videoWidth;
-  source.canvas.height = video.videoHeight;
+  // due to bug in Chrome: http://crbug.com/168700
+  if (video.videoWidth) {
+    source.canvas.width = video.videoWidth;
+    source.canvas.height = video.videoHeight;
+  }
   draw();
 });
 
@@ -146,10 +129,9 @@ window.requestAnimFrame = (function(){
 var article = video.parentNode,
     gum = document.getElementById('gum');
 
-if (navigator.getUserMedia || navigator.webkitGetUserMedia) {
+if (navigator.getUserMedia) {
   article.removeChild(gum);
   article.className = 'supported';
-  init();
 }
 
 </script>

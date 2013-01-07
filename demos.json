@@ -5,7 +5,7 @@
     "tags": "getUserMedia canvas",
     "support": {
       "live": "opera",
-      "nightly": "chrome"
+      "nightly": "chrome firefox"
     },
     "test": "navigator.getUserMedia !== undefined"
   },
@@ -15,7 +15,7 @@
     "tags": "getUserMedia",
     "support": {
       "live": "opera",
-      "nightly": "chrome"
+      "nightly": "chrome firefox"
     },
     "test": "navigator.getUserMedia !== undefined"
   },
