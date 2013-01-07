@@ -283,5 +283,14 @@
       "live": "safari chrome firefox opera"
     },
     "test": "Modernizr.webworkers"
-  }
+  },
+  {
+    "desc": "SVG clock animation",
+    "url": "svg-clock",
+    "tags": "svg",
+    "note": "SVG inline clock with animation.",
+    "support": {
+      "live": "ie firefox opera safari chrome"
+    }
+  },
 ]
