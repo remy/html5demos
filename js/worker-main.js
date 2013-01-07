@@ -15,7 +15,7 @@
     var running = false;
     var statusDiv = document.getElementById('status');
     var button = document.getElementById('toggleWorker');
-    var worker = new Worker('../js/worker-cruncher.js');
+    var worker = new Worker('../js/worker-cruncher.js'); // path is relative to the main HTML file
     worker.addEventListener('message', function (event) {
         var currentStatus = statusDiv.innerHTML;
         statusDiv.innerHTML = "<p>" + event.data + "</p>" + currentStatus;
