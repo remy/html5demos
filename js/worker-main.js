@@ -4,7 +4,7 @@
 (function () {
     "use strict";
 
-    var SQUARE_SIZE = 75;
+    var SQUARE_SIZE = 50;
     var MOVEMENT_STEP = 3;
 
     var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
@@ -52,26 +52,26 @@
         var top = parseInt(square.style.top, 10);
         var right = left + SQUARE_SIZE;
         var bottom = top + SQUARE_SIZE;
-        
+
         switch (direction) {
         case 37: // left
             if (left > 0) {
-                square.style.left = left - MOVEMENT_STEP;
+                square.style.left = left - MOVEMENT_STEP + 'px';
             }
             break;
         case 38: // up
             if (top > 0) {
-                square.style.top = top - MOVEMENT_STEP;
+                square.style.top = top - MOVEMENT_STEP + 'px';
             }
             break;
         case 39: //right
             if (right < document.documentElement.clientWidth) {
-                square.style.left = left + MOVEMENT_STEP;
+                square.style.left = left + MOVEMENT_STEP + 'px';
             }
             break;
         case 40: // down
             if (bottom < document.documentElement.clientHeight) {
-                square.style.top = top + MOVEMENT_STEP;
+                square.style.top = top + MOVEMENT_STEP + 'px';
             }
             break;
         default:
