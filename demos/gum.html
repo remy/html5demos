@@ -28,40 +28,13 @@
   </video>
   <p id="gum">getUserMeda either not supported or not allowed - so instead here's me and my son headbanging.</p>
 </article>
+<script src="/js/gum.js"></script>
 <script>
-var video = document.getElementById('video'),
-    article = video.parentNode,
+var article = video.parentNode,
     gum = document.getElementById('gum');
 
-function successCallback(stream) {
-  window.stream = stream;
-  if ('mozSrcObject' in video) {
-    video.mozSrcObject = stream;
-  } else if (window.webkitURL) {
-    video.src = window.webkitURL.createObjectURL(stream);
-    // document.querySelector('audio').src = window.webkitURL.createObjectURL(stream);
-  } else {
-    video.src = stream;
-  }
-  video.play();
-}
-
-function errorCallback(error) {
-  console.error('An error occurred: [CODE ' + error.code + ']', error);
-  return;
-}
-
-function init() {
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
-  if (navigator.getUserMedia) {
-    navigator.getUserMedia({video: true }, successCallback, errorCallback);
-  }
-}
-
-if (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia) {
+if (navigator.getUserMedia) {
   article.removeChild(gum);
   article.className = 'supported';
-  init();
 }
 </script>
