@@ -85,24 +85,26 @@ slider.oninput = slider.onchange = function () {
   tb = rgb[2];
 };
 
+function successCallback(stream) {
+  window.stream = stream;
+  if (window.webkitURL) {
+    video.src = window.webkitURL.createObjectURL(stream);
+  } else {
+    video.src = stream;
+  }
+  video.play();
+}
+
+function errorCallback(error) {
+  console.error('An error occurred: [CODE ' + error.code + ']');
+  return;
+}
 
 function init() {
   // from HTML5 Doctor article: http://html5doctor.com/getusermedia/
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
   if (navigator.getUserMedia) {
     navigator.getUserMedia({ video: true }, successCallback, errorCallback);
-    function successCallback(stream) {
-      window.stream = stream;
-      if (window.webkitURL) {
-        video.src = window.webkitURL.createObjectURL(stream);
-      } else {
-        video.src = stream;
-      }
-    }
-    function errorCallback(error) {
-      console.error('An error occurred: [CODE ' + error.code + ']');
-      return;
-    }
   }
 }
 
