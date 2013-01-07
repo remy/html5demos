@@ -33,7 +33,7 @@ var video = document.getElementById('video'),
     gum = document.getElementById('gum');
 
 function init() {
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
   if (navigator.getUserMedia) {
     // NOTE: at time of writing March 26, 2012, audio isn't working in Chrome
     // navigator.getUserMedia('audio,video', successCallback, errorCallback);
@@ -55,7 +55,7 @@ function init() {
   }
 }
 
-if (navigator.getUserMedia || navigator.webkitGetUserMedia) {
+if (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia) {
   article.removeChild(gum);
   article.className = 'supported';
   init();
