@@ -4,8 +4,8 @@
     "url": "gum-canvas",
     "tags": "getUserMedia canvas",
     "support": {
-      "live": "opera",
-      "nightly": "chrome firefox"
+      "live": "opera chrome",
+      "nightly": "firefox"
     },
     "test": "navigator.getUserMedia !== undefined"
   },
@@ -14,8 +14,8 @@
     "url": "gum",
     "tags": "getUserMedia",
     "support": {
-      "live": "opera",
-      "nightly": "chrome firefox"
+      "live": "opera chrome",
+      "nightly": "firefox"
     },
     "test": "navigator.getUserMedia !== undefined"
   },
@@ -24,7 +24,7 @@
     "url": "dnd-upload",
     "tags": "file dnd xhr2",
     "support": {
-      "live": "chrome firefox opera",
+      "live": "chrome firefox opera safari",
       "nightly": "ie"
     },
     "test": "typeof FileReader != 'undefined' && 'draggable' in document.createElement('span') && !!window.FormData && 'upload' in new XMLHttpRequest"
@@ -84,7 +84,7 @@
     "note": "Not part of HTML5",
     "tags": "file-api",
     "support": {
-      "live": "firefox chrome opera"
+      "live": "firefox chrome opera safari"
     },
     "test": "typeof FileReader != 'undefined'"
   },
@@ -94,7 +94,7 @@
     "note": "Not directly part of HTML5",
     "tags": "file-api dnd",
     "support": {
-      "live": "firefox chrome opera"
+      "live": "firefox chrome opera safari"
     },
     "test": "typeof FileReader != 'undefined' && Modernizr.draganddrop"
   },
@@ -216,7 +216,7 @@
     "tags": "offline events",
     "note": "Works on Safari Mobile too",
     "support": {
-      "live": "firefox opera chrome"
+      "live": "firefox opera chrome safari"
     }
   },
   {
@@ -225,7 +225,7 @@
     "tags": "offline",
     "note": "Doesn't use events, only polls",
     "support": {
-      "live": "firefox opera ie chrome"
+      "live": "firefox opera ie chrome safari"
     }
   },
   {
@@ -234,7 +234,7 @@
     "notes": "Opera &amp; Firefox - requires \"Work Offline\"",
     "tags": "offline events",
     "support": {
-      "live": "firefox opera chrome"
+      "live": "firefox opera chrome safari"
     }
   },
   {
