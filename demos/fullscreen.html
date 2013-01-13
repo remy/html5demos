@@ -12,7 +12,8 @@
   <p>This example shows how an element can request fullscreen support from the browser.</p>
   <p id="unavailable">Not supported :(</p>
   <div id="game">
-
+    <button id="gofull">Go fullscreen</button>
+    <button id="goback">Go back to non-fullscreen</button>
   </div>
 </article>
 <script>
@@ -39,10 +40,16 @@ function available() {
   return !!shim(document.body)
 }
 
-var no = $('#unavailable');
+var no = $('unavailable'),
+    go = $('gofull'),
+    back = $('goback');
 
 if (available()) {
   no.parentNode.removeChild(no);
+}
+
+go.onclick = function () {
+  shim(this.parentNode).call(this.parentNode);
 }
 
 

@@ -4,10 +4,10 @@
     "url": "fullscreen",
     "tags": "fullscreen",
     "support": {
-      "live": "opera",
-      "nightly": "chrome firefox safari"
+      "live": "opera chrome firefox safari",
+      "nightly": ""
     },
-    "test": ""
+    "test": "document.body.requestFullscreen !== undefined"
   },
   {
     "desc": "Stream video and filter with canvas",
