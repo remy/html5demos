@@ -71,14 +71,18 @@ function previewfile(file) {
 
 function readfiles(files) {
     debugger;
-    var formData = tests.formdata ? new FormData() : null;
+    if(!tests.formdata){
+      alert('Unsupported');
+      return false;
+    }
+    var formData = new FormData();
     for (var i = 0; i < files.length; i++) {
-      if (tests.formdata) formData.append('file', files[i]);
+      formData.append('file', files[i]);
       previewfile(files[i]);
     }
 
     // now post a new XHR request
-    if (tests.formdata) {
+
       var xhr = new XMLHttpRequest();
       xhr.open('POST', '/devnull.php');
       xhr.onload = function() {
@@ -95,7 +99,7 @@ function readfiles(files) {
       }
 
       xhr.send(formData);
-    }
+    
 }
 
 if (tests.dnd) { 
