@@ -42,8 +42,8 @@
     var square = document.getElementById('square');
     var direction = 39; // right
     
-    square.style.top = 0;
-    square.style.left = 20;
+    square.style.top = "0px";
+    square.style.left = "20px";
     square.style.height = SQUARE_SIZE;
     square.style.width = SQUARE_SIZE;
     
