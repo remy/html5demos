@@ -38,4 +38,12 @@ if (localStorage.getItem('contenteditable')) {
   editable.innerHTML = localStorage.getItem('contenteditable');
 }
 
+(function fix(){
+    var a = editable.parentElement.innerHTML;
+    editable.parentElement.innerHTML+='bob';
+    document.getElementById('editable').parentElement.innerHTML = a;
+    editable = document.getElementById('editable');
+    document.getElementById('clear').onclick=function(){location.reload()};
+})()
+
 </script>
