@@ -24,8 +24,8 @@
     "url": "dnd-upload",
     "tags": "file dnd xhr2",
     "support": {
-      "live": "chrome firefox opera safari",
-      "nightly": "ie"
+      "live": "ie chrome firefox opera safari",
+      "nightly": ""
     },
     "test": "typeof FileReader != 'undefined' && 'draggable' in document.createElement('span') && !!window.FormData && 'upload' in new XMLHttpRequest"
   },
@@ -34,7 +34,7 @@
     "url": "hidden",
     "tags": "hidden",
     "support": {
-      "live": "chrome firefox opera safari",
+      "live": "ie chrome firefox opera safari",
       "nightly": ""
     },
     "test": "'hidden' in document.createElement('i')"
@@ -44,7 +44,7 @@
     "url": "classlist",
     "tags": "classlist",
     "support": {
-      "live": "chrome opera firefox safari",
+      "live": "ie chrome opera firefox safari",
       "nightly": ""
     },
     "test": "'classList' in document.createElement('i')"
@@ -63,7 +63,7 @@
     "url": "dataset",
     "tags": "dataset",
     "support": {
-      "live": "chrome opera safari firefox",
+      "live": "ie chrome opera safari firefox",
       "nightly": ""
     },
     "test": "'dataset' in document.createElement('i')"
@@ -74,7 +74,7 @@
     "notes": "Uses onpopstate event",
     "tags": "history",
     "support": {
-      "live": "chrome safari firefox opera"
+      "live": "ie chrome safari firefox opera"
     },
     "test": "Modernizr.history"
   },
@@ -84,7 +84,7 @@
     "note": "Not part of HTML5",
     "tags": "file-api",
     "support": {
-      "live": "firefox chrome opera safari"
+      "live": "ie firefox chrome opera safari"
     },
     "test": "typeof FileReader != 'undefined'"
   },
@@ -94,7 +94,7 @@
     "note": "Not directly part of HTML5",
     "tags": "file-api dnd",
     "support": {
-      "live": "firefox chrome opera safari"
+      "live": "ie firefox chrome opera safari"
     },
     "test": "typeof FileReader != 'undefined' && Modernizr.draganddrop"
   },
@@ -103,7 +103,7 @@
     "url": "web-socket",
     "tags": "websocket",
     "support": {
-      "live": "safari chrome opera",
+      "live": "ie safari chrome opera",
       "nightly": "firefox"
     },
     "test": "Modernizr.websockets"
@@ -216,7 +216,7 @@
     "tags": "offline events",
     "note": "Works on Safari Mobile too",
     "support": {
-      "live": "firefox opera chrome safari"
+      "live": "ie firefox opera chrome safari"
     }
   },
   {
@@ -243,7 +243,7 @@
     "note": "FF 3.6 is still buggy - doesn't request manifest after initial load",
     "tags": "offline manifest",
     "support": {
-      "live": "firefox safari chrome opera"
+      "live": "ie firefox safari chrome opera"
     },
     "test": "Modernizr.applicationcache"
   },
@@ -280,7 +280,7 @@
     "tags": "workers",
     "note": "watch out - uses a lot of CPU! <a href=\"non-worker\">example without - will hang your browser</a>",
     "support": {
-      "live": "safari chrome firefox opera"
+      "live": "ie safari chrome firefox opera"
     },
     "test": "Modernizr.webworkers"
   },
