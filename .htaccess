@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
 Options +FollowSymLinks +ExecCGI
 RewriteEngine On
-RewriteBase /
+#RewriteBase /
 
 # no-www.org
 RewriteCond %{HTTP_HOST} ^www\.html5demos\.com$ [NC,OR]

@@ -31,6 +31,11 @@ label {
 </article>
 <script>
 
+function getVals(){
+  getStorage('session');
+  getStorage('local');
+}
+
 function getStorage(type) {
   var storage = window[type + 'Storage'],
     delta = 0,
@@ -49,17 +54,23 @@ function getStorage(type) {
   document.querySelector('#previous').appendChild(li);
 }
 
-getStorage('session');
-getStorage('local');
+function updateList(){
+  document.querySelector('#previous').innerHTML = '';
+  getVals();
+}
+
+getVals();
 
 addEvent(document.querySelector('#session'), 'keyup', function () {
   sessionStorage.setItem('value', this.value);
   sessionStorage.setItem('timestamp', (new Date()).getTime());
+  updateList();
 });
 
 addEvent(document.querySelector('#local'), 'keyup', function () {
   localStorage.setItem('value', this.value);
   localStorage.setItem('timestamp', (new Date()).getTime());
+  updateList();
 });
 
 addEvent(document.querySelector('#clear'), 'click', function () {
