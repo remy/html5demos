@@ -1,6 +1,10 @@
 <?php
 // $request = preg_replace('/[^0-9a-z-_]/', '', preg_replace('/^\//', '', preg_replace('/\/$/', '', preg_replace('/\?.*$/', '', $_SERVER['REQUEST_URI']))));
 
+// Above method caused issues when repo is in a subfolder.
+// Replaced with "end" function below.
+// Added simple if-else
+
 if($request= end((explode('/', $_SERVER['REQUEST_URI']))))
 {
   if (file_exists('demos/' . $request . '.html')) {
