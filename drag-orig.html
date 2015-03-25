@@ -45,7 +45,7 @@ function dragOver(ev) {
     var idelt = ev.dataTransfer.getData("Text");
     var id = ev.target.getAttribute('id');
     
-    return false;
+    //return false;
     
     if( (id =='boxB' || id =='boxA') && (idelt == 'drag' || idelt=='drag2'))
         return false;
