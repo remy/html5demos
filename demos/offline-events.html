@@ -14,11 +14,14 @@ li::before {
     <li>via window "on" events: <span id="viaon"></span></li>
     <li>via window.addEventListener: <span id="vialistener"></span></li>
   </ul>
-  <p>Note that the test shows that <code>window.ononline</code> and <code>window.onoffline</code> doesn't work (which I thought I had read in the specs somewhere...).</p>
 </article>
 <script>
+var windowAlso = false;
+
 function update(online) {
   document.getElementById('viabody').innerHTML = navigator.onLine ? 'Online' : 'Offline';
+  if (windowAlso)
+    document.getElementById('viaon').innerHTML = navigator.onLine ? 'Online' : 'Offline';
 }
 
 addEvent(window, 'online', function () {
@@ -29,16 +32,24 @@ addEvent(window, 'offline', function () {
   document.getElementById('vialistener').innerHTML = 'Offline';
 });
 
-window.ononline = function () {
-  document.getElementById('viaon').innerHTML = 'Online';
-};
+document.body.ononline = update;
+document.body.onoffline = update;
 
-window.onoffline = function () {
-  document.getElementById('viaon').innerHTML = 'Offline';
-};
+if (window.ononline == document.body.ononline) {
+  // According to http://dev.w3.org/html5/spec/Overview.html#event-handlers-on-elements-document-objects-and-window-objects
+  // the online / offline event handler is supported by the Window object, and exposed as an IDL attribute on the window object
+  // and on the body and frameset elements. This means that setting body.ononline will also set window.ononline.
+  windowAlso = true;
+}
+else {
+  window.ononline = function () {
+    document.getElementById('viaon').innerHTML = 'Online';
+  };
 
-document.body.onOnline = update;
-document.body.onOffline = update;
+  window.onoffline = function () {
+    document.getElementById('viaon').innerHTML = 'Offline';
+  };
+}
 
 // document.body.onload = update;
  
