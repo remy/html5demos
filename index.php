@@ -41,9 +41,9 @@ function spans($list) {
 <meta charset=utf-8 />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HTML5 Demos and Examples</title>
-<link rel="stylesheet" href="css/html5demos.css" />
-<script src="js/h5utils.js"></script>
-<script src="js/modernizr.custom.js"></script>
+<link rel="stylesheet" href="/css/html5demos.css" />
+<script src="/js/h5utils.js"></script>
+<script src="/js/modernizr.custom.js"></script>
 </head>
 <body>
 <section id="wrapper">

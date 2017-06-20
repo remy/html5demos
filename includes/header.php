@@ -4,8 +4,8 @@
 <meta charset=utf-8>
 <meta name="viewport" content="width=device-width">
 <title>HTML5 Demo: <?=$title?></title>
-<link rel="stylesheet" href="css/html5demos.css">
-<?php if (!$manifest) : ?><script src="js/h5utils.js"></script><?php endif ?>
+<link rel="stylesheet" href="/css/html5demos.css">
+<?php if (!$manifest) : ?><script src="/js/h5utils.js"></script><?php endif ?>
 </head>
 <body>
 <section id="wrapper">
