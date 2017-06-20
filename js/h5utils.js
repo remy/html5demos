@@ -48,7 +48,7 @@ addEvent(window, 'click', function (event) {
 
       document.body.appendChild(pre);
       // really need to be sync? - I like to think so
-      xhr.open("GET", location.origin + '/demos' + window.location.pathname + '.html', true);
+      xhr.open("GET", location.origin + '/demos' + window.location.pathname.replace(/\/$/, '') + '.html', true);
       xhr.send();
     }
     document.body.className = 'view-source';
