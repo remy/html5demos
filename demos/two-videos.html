@@ -36,7 +36,6 @@ var video = document.querySelector('#one'),
 
 addEvent(togglePlay, 'click', function () {
   if (ready) {
-    video.playbackRate = 0.5;
     if (video.paused) {
       if (video.ended) {
         video.currentTime = 0;
