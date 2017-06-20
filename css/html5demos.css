@@ -1,4 +1,4 @@
-body { 
+body {
   font: normal 16px/20px "Helvetica Neue", Helvetica, sans-serif;
   background: rgb(237, 237, 236);
   margin: 0;
@@ -141,7 +141,7 @@ li {
 button, input {
   font-size: 16px;
   padding: 3px;
-  margin-left: 5px;  
+  margin-left: 5px;
 }
 
 #view-source {
@@ -262,7 +262,7 @@ body.view-source #view-source {
 .tags span:hover,
 .tags span.selected {
   border: 1px solid #75784C;
-  background: #FF7;  
+  background: #FF7;
   color: #333521;
 }
 
@@ -298,12 +298,6 @@ body.view-source #view-source {
   background: url(../images/yourbrowser.gif) no-repeat top right;
 }
 
-#carbonads-container {
-  position: fixed;
-  margin-left: 620px;
-  margin-top: -2px;
-}
-
 /** Pretty printing styles. Used with prettify.js. */
 pre { font-size: 14px; }
 .str { color: #080; }
@@ -317,3 +311,84 @@ pre { font-size: 14px; }
 .atn { color: #606; }
 .atv { color: #080; }
 .dec { color: #606; }
+
+
+/* Carbon Ads */
+#carbonads {
+  position: fixed;
+  display: block;
+  overflow: hidden;
+  margin-top: -2px;
+  margin-left: 620px;
+  padding: 1em;
+  max-width: 130px;
+  border: 1px solid hsl(0, 0%, 91%);
+  background-color: #fbfbfb;
+  text-align: center;
+  font-size: 11px;
+  font-family: Verdana, "Helvetica Neue", Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+#carbonads a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#carbonads a:hover {
+  color: inherit;
+}
+
+#carbonads span {
+  display: block;
+  overflow: hidden;
+}
+
+.carbon-img {
+  display: block;
+  margin: 0 auto 1em;
+}
+
+.carbon-text {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.carbon-poweredby {
+  display: block;
+  color: #888 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 8px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 759px) {
+  #carbonads {
+    position: relative;
+    float: none;
+    margin: 3em auto 1em;
+    max-width: 330px;
+  }
+  #carbonads span {
+    position: relative;
+  }
+  #carbonads > span {
+    max-width: none;
+  }
+  .carbon-img {
+    float: left;
+    margin: 0 1em 0 0;
+  }
+  .carbon-text {
+    float: left;
+    margin-bottom: 0;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+  }
+}
