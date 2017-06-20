@@ -39,7 +39,7 @@ function spans($list) {
 <html id="home" lang="en">
 <head>
 <meta charset=utf-8 />
-<meta name="viewport" content="width=620" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HTML5 Demos and Examples</title>
 <link rel="stylesheet" href="css/html5demos.css" />
 <script src="js/h5utils.js"></script>
@@ -62,9 +62,8 @@ function spans($list) {
 */ ?>
 
 <section>
-  <a href="http://2012.full-frontal.org/workshop/tooling#tooling" id="promo">
-    <p><strong>Learn the power tools for your job: git, SASS, require.js and more</strong></p>
-    <p>One day of tutorials run by 3 different teachers. Choose 4 topics from: git, require.js, SASS, testing, debugging and build processes - and master your tools.</u></p>
+  <a href="https://terminal.training" id="promo">
+    <img src="/images/terminal-training.png">
   </a>
   </section>
       <p id="tags" class="tags">
@@ -96,7 +95,7 @@ function spans($list) {
     </a>
     <footer><a id="built" href="http://twitter.com/rem">@rem built this</a></footer>
 </section>
-<a href="http://github.com/remy/html5demos"><img style="position: absolute; top: 0; left: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<a id="forkme" href="http://github.com/remy/html5demos"><img style="position: absolute; top: 0; left: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 <script>
 (function() {

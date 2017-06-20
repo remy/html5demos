@@ -2,7 +2,6 @@ body {
   font: normal 16px/20px "Helvetica Neue", Helvetica, sans-serif;
   background: rgb(237, 237, 236);
   margin: 0;
-  margin-top: 40px;
   padding: 0;
 }
 
@@ -11,7 +10,7 @@ section, header, footer {
 }
 
 #wrapper {
-  width: 600px;
+  max-width: 600px;
   margin: 0 auto;
   background: #fff url(../images/shade.jpg) repeat-x center bottom;
   -moz-border-radius: 10px;
@@ -85,18 +84,22 @@ li {
 
 #promo {
   font-size: 90%;
-  background: #333 url(../images/learn-js.jpg) no-repeat left center;
-  display: block;
-  color: #efefef;
+  /* background: #333 url(../images/learn-js.jpg) no-repeat left center; */
+  /* display: inline-block; */
+  /* color: #efefef; */
   text-decoration: none;
   cursor: pointer;
-  padding: 0px 20px 0px 260px;
-  border: 5px solid #006;
+  /* border: 5px solid #006; */
   height: 160px;
 }
 
 #promo:hover {
   border-color: #00f;
+}
+
+#promo img {
+  width: 100%;
+  display: block;
 }
 
 #ih5 {
@@ -317,3 +320,14 @@ pre { font-size: 14px; }
 .atn { color: #606; }
 .atv { color: #080; }
 .dec { color: #606; }
+
+#forkme {
+  display: none;
+}
+
+
+@media all and (min-width: 768px) {
+  body {
+    margin-top: 40px;
+  }
+}
