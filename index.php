@@ -61,7 +61,10 @@ function spans($list) {
       </section>
 */ ?>
 
-<section>
+  <section>
+    <a href="https://terminal.training?utm_source=html5demos&utm_medium=banner&utm_campaign=banner" target="_blank" id="promo">
+      <img src="/images/terminal-training.png">
+    </a>
   </section>
       <p id="tags" class="tags">
 
