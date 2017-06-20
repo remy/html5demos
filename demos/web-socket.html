@@ -37,7 +37,7 @@ if (window.MozWebSocket) {
 function openConnection() {
   // uses global 'conn' object
   if (conn.readyState === undefined || conn.readyState > 1) {
-    conn = new WebSocket('ws://node.remysharp.com:8001');    
+    conn = new WebSocket('wss://remy-ws.glitch.me/');
     conn.onopen = function () {
       state.className = 'success';
       state.innerHTML = 'Socket open';
@@ -52,7 +52,7 @@ function openConnection() {
         connected.innerHTML = message;
       }
     };
-    
+
     conn.onclose = function (event) {
       state.className = 'fail';
       state.innerHTML = 'Socket closed';
@@ -84,7 +84,7 @@ if (window.WebSocket === undefined) {
       }, 250);
     }
   };
-  
+
   addEvent(form, 'submit', function (event) {
     event.preventDefault();
 
@@ -92,12 +92,12 @@ if (window.WebSocket === undefined) {
     if (conn.readyState === 1) {
       conn.send(JSON.stringify(chat.value));
       log.innerHTML = '<li class="you">' + chat.value.replace(/[<>&]/g, function (m) { return entities[m]; }) + '</li>' + log.innerHTML;
-      
+
       chat.value = '';
     }
   });
 
-  openConnection();  
+  openConnection();
 }
 
 </script>
