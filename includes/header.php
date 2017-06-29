@@ -9,8 +9,7 @@
 </head>
 <body>
 <section id="wrapper">
-<div id="carbonads-container"><script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=html5demoscom" id="_carbonads_js"></script>
-</div>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=html5demoscom" id="_carbonads_js"></script>
     <header>
       <h1><?=$title?></h1>
     </header>
