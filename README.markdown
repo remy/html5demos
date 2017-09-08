@@ -1,7 +1,5 @@
 # HTML5 Demos and Examples
 
-<a href="https://app.codesponsor.io/link/wnz2te8CdfKZ8wMjGUpi8EZG/remy/html5demos" rel="nofollow"><img src="https://app.codesponsor.io/embed/wnz2te8CdfKZ8wMjGUpi8EZG/remy/html5demos.svg" style="width: 888px; height: 68px;" alt="Sponsor" /></a>
-
 A collection of HTML5 experiments I've created, now open source and on GitHub, so please go ahead and help me hack this resource in to a wealth of demos that other authors can learn from.
 
 ## Aim
@@ -48,3 +46,5 @@ By submitting any code, you're also agreeing that your code is covered by the MI
 ## Misc
 
 * Clearer versioning on the demos, rather than "All bar Opera", should include last version to support feature, i.e. Opera 10.10b, Chrome 4 dev, Safari 4.0, etc.
+
+<a href="https://app.codesponsor.io/link/wnz2te8CdfKZ8wMjGUpi8EZG/remy/html5demos" rel="nofollow" target="_blank"><img src="https://app.codesponsor.io/embed/wnz2te8CdfKZ8wMjGUpi8EZG/remy/html5demos.svg" style="width: 888px; height: 68px;" alt="Sponsor" /></a>
