@@ -1,7 +1,5 @@
 # HTML5 Demos and Examples
 
-<a href="https://app.codesponsor.io/link/wnz2te8CdfKZ8wMjGUpi8EZG/remy/html5demos" rel="nofollow"><img src="https://app.codesponsor.io/embed/wnz2te8CdfKZ8wMjGUpi8EZG/remy/html5demos.svg" style="width: 888px; height: 68px;" alt="Sponsor" /></a>
-
 A collection of HTML5 experiments I've created, now open source and on GitHub, so please go ahead and help me hack this resource in to a wealth of demos that other authors can learn from.
 
 ## Aim
