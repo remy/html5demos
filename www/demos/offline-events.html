@@ -1,0 +1,45 @@
+<title>on/offline event capture</title>
+<style>
+li {
+  font-weight: bold;
+}
+li::before {
+  font-weight: normal;
+}
+</style>
+<article>
+  <p>Test required here: File -> Work Offline - toggle the value and there <em>should</em> be three list items notifying of online and offline.</p>
+  <ul>
+    <li>via body "on" events: <span id="viabody"></span></li>
+    <li>via window "on" events: <span id="viaon"></span></li>
+    <li>via window.addEventListener: <span id="vialistener"></span></li>
+  </ul>
+  <p>Note that the test shows that <code>window.ononline</code> and <code>window.onoffline</code> doesn't work (which I thought I had read in the specs somewhere...).</p>
+</article>
+<script>
+function update(online) {
+  document.getElementById('viabody').innerHTML = navigator.onLine ? 'Online' : 'Offline';
+}
+
+addEvent(window, 'online', function () {
+  document.getElementById('vialistener').innerHTML = 'Online';
+});
+
+addEvent(window, 'offline', function () {
+  document.getElementById('vialistener').innerHTML = 'Offline';
+});
+
+window.ononline = function () {
+  document.getElementById('viaon').innerHTML = 'Online';
+};
+
+window.onoffline = function () {
+  document.getElementById('viaon').innerHTML = 'Offline';
+};
+
+document.body.onOnline = update;
+document.body.onOffline = update;
+
+// document.body.onload = update;
+ 
+</script>

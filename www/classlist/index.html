@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width">
+<title>HTML5 Demo: Simple classList manipulation</title>
+<link rel="stylesheet" href="/css/html5demos.css">
+<script src="/js/h5utils.js"></script></head>
+<body>
+<section id="wrapper">
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=html5demoscom" id="_carbonads_js"></script>
+    <header>
+      <h1>Simple classList manipulation</h1>
+    </header>
+
+<style>
+#classListTest {
+  padding: 5px;
+  border: 1px solid #ccc;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+#classListTest:after {
+  content: 'class: ' attr(class);
+  position: absolute;
+  background: #c00;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
+  color: #fff;
+}
+
+.big { font-size: 30px; line-height: 30px; }
+.bold { font-weight: bold; }
+.pink { background: #FF5E99; color: #fff; }
+
+#status {
+  background: #c00;
+}
+</style>
+<article>
+  <p>Clicking the buttons below will toggle the class on the <em>bacon ipsum</em> text below, assigning the class with the same name (styles seen below). This is done using the new <code>classList</code> API.</p>
+  <p id="status">Not supported :(</p> 
+  <pre><code>&lt;style&gt; 
+  .big { font-size: 30px; }
+  .bold { font-weight: bold; }
+  .pink { background: #FF5E99; color: #fff; }
+&lt;/style&gt;</code></pre>
+    <p id="classListTest">Bacon ipsum dolor sit amet pancetta bresaola tenderloin, swine meatball tongue ham boudin t-bone ribeye jerky sausage. Pork loin cow shankle drumstick tri-tip, chicken venison strip steak.</p>
+    <p id="toggleClass">Toggle a class: 
+      <input type="button" value="big" />
+      <input type="button" value="bold" />
+      <input type="button" value="pink" />
+    </p>
+</article>
+<script>
+// checkfor support
+
+var toggle = document.getElementById('toggleClass'),
+    test = document.getElementById('classListTest');
+
+if (toggle.classList) {
+  var supported = document.getElementById('status');
+  supported.parentNode.removeChild(supported);
+  // bit of event delegation otherwise we're binding to each input
+  toggle.addEventListener('click', function (event) {
+    if (event.target.nodeName == 'INPUT') {
+      test.classList.toggle(event.target.value);
+    }
+  }, false);
+} else {
+  // not supported
+}
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+<a id="html5badge" href="http://www.w3.org/html/logo/">
+<img src="https://www.w3.org/html/logo/badge/html5-badge-h-connectivity-device-graphics-multimedia-performance-semantics-storage.png" width="325" height="64" alt="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage">
+</a>
+    <footer><a href="/">HTML5 demos</a>/<a id="built" href="http://twitter.com/rem">@rem built this</a>/<a href="#view-source">view source</a></footer>
+</section>
+<a id="forkme" href="http://github.com/remy/html5demos"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<script src="/js/prettify.packed.js"></script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

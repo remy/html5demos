@@ -1,0 +1,75 @@
+<title>Simple classList manipulation</title>
+<style>
+#classListTest {
+  padding: 5px;
+  border: 1px solid #ccc;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+#classListTest:after {
+  content: 'class: ' attr(class);
+  position: absolute;
+  background: #c00;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
+  color: #fff;
+}
+
+.big { font-size: 30px; line-height: 30px; }
+.bold { font-weight: bold; }
+.pink { background: #FF5E99; color: #fff; }
+
+#status {
+  background: #c00;
+}
+</style>
+<article>
+  <p>Clicking the buttons below will toggle the class on the <em>bacon ipsum</em> text below, assigning the class with the same name (styles seen below). This is done using the new <code>classList</code> API.</p>
+  <p id="status">Not supported :(</p> 
+  <pre><code>&lt;style&gt; 
+  .big { font-size: 30px; }
+  .bold { font-weight: bold; }
+  .pink { background: #FF5E99; color: #fff; }
+&lt;/style&gt;</code></pre>
+    <p id="classListTest">Bacon ipsum dolor sit amet pancetta bresaola tenderloin, swine meatball tongue ham boudin t-bone ribeye jerky sausage. Pork loin cow shankle drumstick tri-tip, chicken venison strip steak.</p>
+    <p id="toggleClass">Toggle a class: 
+      <input type="button" value="big" />
+      <input type="button" value="bold" />
+      <input type="button" value="pink" />
+    </p>
+</article>
+<script>
+// checkfor support
+
+var toggle = document.getElementById('toggleClass'),
+    test = document.getElementById('classListTest');
+
+if (toggle.classList) {
+  var supported = document.getElementById('status');
+  supported.parentNode.removeChild(supported);
+  // bit of event delegation otherwise we're binding to each input
+  toggle.addEventListener('click', function (event) {
+    if (event.target.nodeName == 'INPUT') {
+      test.classList.toggle(event.target.value);
+    }
+  }, false);
+} else {
+  // not supported
+}
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+

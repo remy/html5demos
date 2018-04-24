@@ -1,0 +1,103 @@
+<title>Web Socket</title>
+<style>
+#chat { width: 97%; }
+.them { font-weight: bold; }
+.them:before { content: 'them '; color: #bbb; font-size: 14px; }
+.you { font-style: italic; }
+.you:before { content: 'you '; color: #bbb; font-size: 14px; font-weight: bold; }
+#log {
+  overflow: auto;
+  max-height: 300px;
+  list-style: none;
+  padding: 0;
+/*  margin: 0;*/
+}
+#log li {
+  border-top: 1px solid #ccc;
+  margin: 0;
+  padding: 10px 0;
+}
+</style>
+<article>
+  <form>
+    <input type="text" id="chat" placeholder="type and press enter to chat" />
+  </form>
+  <p id="status">Not connected</p>
+  <p>Users connected: <span id="connected">0</span></p>
+  <p>To test, open two windows with Web Socket support, type a message above and press return.</p>
+  <p>The server side code is available here: <a href="http://github.com/remy/html5demos/tree/master/server/">node-web-socket &amp; server</a> (note that it runs on <a href="http://nodejs.org/" title="node.js">nodejs</a>)</p>
+  <ul id="log"></ul>
+</article>
+<script>
+// let's invite Firefox to the party.
+if (window.MozWebSocket) {
+  window.WebSocket = window.MozWebSocket;
+}
+
+function openConnection() {
+  // uses global 'conn' object
+  if (conn.readyState === undefined || conn.readyState > 1) {
+    conn = new WebSocket('wss://remy-ws.glitch.me/');
+    conn.onopen = function () {
+      state.className = 'success';
+      state.innerHTML = 'Socket open';
+    };
+
+    conn.onmessage = function (event) {
+      // console.log(event.data);
+      var message = event.data; //JSON.parse(event.data);
+      if (!(/^\d+$/).test(message)) {
+        log.innerHTML = '<li class="them">' + message.replace(/[<>&]/g, function (m) { return entities[m]; }) + '</li>' + log.innerHTML;
+      } else {
+        connected.innerHTML = message;
+      }
+    };
+
+    conn.onclose = function (event) {
+      state.className = 'fail';
+      state.innerHTML = 'Socket closed';
+    };
+  }
+}
+
+var connected = document.getElementById('connected'),
+    log = document.getElementById('log'),
+    chat = document.getElementById('chat'),
+    form = chat.form,
+    conn = {},
+    state = document.getElementById('status'),
+    entities = {
+      '<' : '&lt;',
+      '>' : '&gt;',
+      '&' : '&amp;'
+    };
+
+if (window.WebSocket === undefined) {
+  state.innerHTML = 'Sockets not supported';
+  state.className = 'fail';
+} else {
+  state.onclick = function () {
+    if (conn.readyState !== 1) {
+      conn.close();
+      setTimeout(function () {
+        openConnection();
+      }, 250);
+    }
+  };
+
+  addEvent(form, 'submit', function (event) {
+    event.preventDefault();
+
+    // if we're connected
+    if (conn.readyState === 1) {
+      conn.send(JSON.stringify(chat.value));
+      log.innerHTML = '<li class="you">' + chat.value.replace(/[<>&]/g, function (m) { return entities[m]; }) + '</li>' + log.innerHTML;
+
+      chat.value = '';
+    }
+  });
+
+  openConnection();
+}
+
+</script>

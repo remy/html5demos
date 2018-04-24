@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width">
+<title>HTML5 Demo: Two videos in sync</title>
+<link rel="stylesheet" href="/css/html5demos.css">
+<script src="/js/h5utils.js"></script></head>
+<body>
+<section id="wrapper">
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=html5demoscom" id="_carbonads_js"></script>
+    <header>
+      <h1>Two videos in sync</h1>
+    </header>
+<style>
+video {
+  float: left;
+  width: 40%;
+}
+
+#controls {
+  clear: left;
+}
+</style>
+
+<article>
+  <video preload="auto" id="one">
+    <source src="assets/dizzy.mp4" />
+    <source src="assets/dizzy.ogv" />
+  </video>    
+  <video preload="auto" id="two">
+    <source src="assets/dizzy.mp4" />
+    <source src="assets/dizzy.ogv" />
+  </video>
+  <p id="controls">
+    <input type="button" id="play" value="play">
+    <span id="position">00:00</span> / <span id="duration">loading...</span>
+    <input type="range" value="0" id="scrub" />
+  </p>
+  <p>This demo shows two videos running, which we're trying to run in sync. Moving the scrubber should scrub <em>both</em> videos.</p>
+</article>
+<script>
+var video = document.querySelector('#one'),
+    video2 = document.querySelector('#two'),
+    togglePlay = document.querySelector('#play'),
+    position = document.querySelector('#position'),
+    ready = false,
+    controls = document.querySelector('#controls'),
+    scrub = document.querySelector('#scrub');
+
+addEvent(togglePlay, 'click', function () {
+  if (ready) {
+    if (video.paused) {
+      if (video.ended) {
+        video.currentTime = 0;
+        video2.currentTime = 0;
+      }
+      video2.currentTime = video.currentTime;
+      video.play();
+      this.value = "pause";
+    } else {
+      video.pause();
+      this.value = "play";
+    }
+  }
+});
+
+function seek() {
+  scrub.value = video2.currentTime = this.currentTime;
+}
+
+addEvent(video, 'seeking', seek);
+addEvent(video, 'seeked', seek);
+
+addEvent(video, 'play', function () {
+  video2.play();
+});
+
+addEvent(video, 'pause', function () {
+  video2.pause();
+})
+
+addEvent(video, 'timeupdate', function () {
+  position.innerHTML = asTime(this.currentTime);
+  scrub.value = this.currentTime;
+});
+
+addEvent(video, 'ended', function () {
+  togglePlay.value = "play";
+});
+
+addEvent(video, 'canplay', function () {
+  video.muted = true;
+  ready = true;
+  document.querySelector('#duration').innerHTML = asTime(this.duration);
+
+  scrub.setAttribute('max', this.duration);
+  addEvent(scrub, 'change', function () {
+    video.currentTime = this.value;
+    video2.currentTime = this.value;
+  });
+});
+
+function asTime(t) {
+  t = Math.round(t);
+  var s = t % 60;
+  var m = Math.round(t / 60);
+  
+  return two(m) + ':' + two(s);
+}
+
+function two(s) {
+  s += "";
+  if (s.length < 2) s = "0" + s;
+  return s;
+}
+</script>
+<a id="html5badge" href="http://www.w3.org/html/logo/">
+<img src="https://www.w3.org/html/logo/badge/html5-badge-h-connectivity-device-graphics-multimedia-performance-semantics-storage.png" width="325" height="64" alt="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage">
+</a>
+    <footer><a href="/">HTML5 demos</a>/<a id="built" href="http://twitter.com/rem">@rem built this</a>/<a href="#view-source">view source</a></footer>
+</section>
+<a id="forkme" href="http://github.com/remy/html5demos"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<script src="/js/prettify.packed.js"></script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

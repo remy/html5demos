@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width">
+<title>HTML5 Demo: Web SQL Database - rollback test</title>
+<link rel="stylesheet" href="/css/html5demos.css">
+<script src="/js/h5utils.js"></script></head>
+<body>
+<section id="wrapper">
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=html5demoscom" id="_carbonads_js"></script>
+    <header>
+      <h1>Web SQL Database - rollback test</h1>
+    </header>
+
+<style>
+#status {
+  padding: 5px;
+  color: #fff;
+  background: #ccc;
+}
+ 
+#status.error {
+  background: #c00;
+}
+ 
+#status.ok {
+  background: #0c0;
+}
+
+label {
+  float: left;
+  display: block;
+  width: 125px;
+  line-height: 32px;
+}
+
+#tweets {
+  max-height: 300px;
+  overflow: auto;
+  border: 3px solid #ccc;
+}
+
+#tweets ul {
+  margin: 0;
+/*  list-style: none;*/
+  padding: 5px;
+}
+
+#tweets li {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-top: 1px solid #ccc;
+}
+
+#tweets li:first-child {
+  border-top: 0;
+}
+</style>
+    <article>
+      <section>
+        <p>This code creates a table called 'foo' and inserts a single row. In a separate transaction, it drops the table then tries to insert in to the table 'foo' - obviously failing. That failure should cause the transaction to rollback, and leave the table 'foo' intact. The next transaction tries to select a row from the 'foo' table. If the rollback succeeds, you should see the status change to 'found rows'.</p>
+        <p>Status:</p>
+        <section id="status" class="ok">ready</section>
+      </section>
+    </article>
+<script>
+var db = openDatabase('foo', '1.0', 'foo', 2 * 1024);
+db.transaction(function (tx) {
+  tx.executeSql('CREATE TABLE IF NOT EXISTS foo (id unique, text)');  
+  tx.executeSql('INSERT INTO foo (id, text) VALUES (1, "foobar")');
+  document.querySelector('#status').innerHTML = '<p>foo created and row inserted.</p>';
+});
+
+db.transaction(function (tx) {
+  tx.executeSql('DROP TABLE foo');
+  
+  // known to fail - so should rollback the DROP statement
+  tx.executeSql('INSERT INTO foo (id, text) VALUES (1, "foobar")');
+}, function (err) {
+  document.querySelector('#status').innerHTML += '<p>should be rolling back caused by: <code>' + err.message + '</code></p>';
+});
+
+db.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM foo', [], function (tx, results) {
+    document.querySelector('#status').innerHTML += '<p>found rows (should be 1): ' + results.rows.length + '</p>'; 
+  }, function (tx, err) {
+    document.querySelector('#status').innerHTML += '<p>failed (rollback failed): <em>' + err.message + '</em></p>';
+    document.querySelector('#status').className = 'error';
+  });
+});
+</script><a id="html5badge" href="http://www.w3.org/html/logo/">
+<img src="https://www.w3.org/html/logo/badge/html5-badge-h-connectivity-device-graphics-multimedia-performance-semantics-storage.png" width="325" height="64" alt="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage">
+</a>
+    <footer><a href="/">HTML5 demos</a>/<a id="built" href="http://twitter.com/rem">@rem built this</a>/<a href="#view-source">view source</a></footer>
+</section>
+<a id="forkme" href="http://github.com/remy/html5demos"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<script src="/js/prettify.packed.js"></script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

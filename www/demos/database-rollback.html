@@ -1,0 +1,78 @@
+<title>Web SQL Database - rollback test</title>
+<style>
+#status {
+  padding: 5px;
+  color: #fff;
+  background: #ccc;
+}
+ 
+#status.error {
+  background: #c00;
+}
+ 
+#status.ok {
+  background: #0c0;
+}
+
+label {
+  float: left;
+  display: block;
+  width: 125px;
+  line-height: 32px;
+}
+
+#tweets {
+  max-height: 300px;
+  overflow: auto;
+  border: 3px solid #ccc;
+}
+
+#tweets ul {
+  margin: 0;
+/*  list-style: none;*/
+  padding: 5px;
+}
+
+#tweets li {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-top: 1px solid #ccc;
+}
+
+#tweets li:first-child {
+  border-top: 0;
+}
+</style>
+    <article>
+      <section>
+        <p>This code creates a table called 'foo' and inserts a single row. In a separate transaction, it drops the table then tries to insert in to the table 'foo' - obviously failing. That failure should cause the transaction to rollback, and leave the table 'foo' intact. The next transaction tries to select a row from the 'foo' table. If the rollback succeeds, you should see the status change to 'found rows'.</p>
+        <p>Status:</p>
+        <section id="status" class="ok">ready</section>
+      </section>
+    </article>
+<script>
+var db = openDatabase('foo', '1.0', 'foo', 2 * 1024);
+db.transaction(function (tx) {
+  tx.executeSql('CREATE TABLE IF NOT EXISTS foo (id unique, text)');  
+  tx.executeSql('INSERT INTO foo (id, text) VALUES (1, "foobar")');
+  document.querySelector('#status').innerHTML = '<p>foo created and row inserted.</p>';
+});
+
+db.transaction(function (tx) {
+  tx.executeSql('DROP TABLE foo');
+  
+  // known to fail - so should rollback the DROP statement
+  tx.executeSql('INSERT INTO foo (id, text) VALUES (1, "foobar")');
+}, function (err) {
+  document.querySelector('#status').innerHTML += '<p>should be rolling back caused by: <code>' + err.message + '</code></p>';
+});
+
+db.transaction(function (tx) {
+  tx.executeSql('SELECT * FROM foo', [], function (tx, results) {
+    document.querySelector('#status').innerHTML += '<p>found rows (should be 1): ' + results.rows.length + '</p>'; 
+  }, function (tx, err) {
+    document.querySelector('#status').innerHTML += '<p>failed (rollback failed): <em>' + err.message + '</em></p>';
+    document.querySelector('#status').className = 'error';
+  });
+});
+</script>

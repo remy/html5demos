@@ -1,0 +1,11 @@
+<title>Hidden</title>
+<style>
+.fail { background: #c00; padding: 2px; color: #fff; }
+</style>
+<article>
+  <p>Welcome dear HTML5-er. You will be able to read this paragraph, but not the next. The next paragraph has the hidden property set on it. It's a boolean that uses the browsers own stylesheet to hide the element, which is nicer than having to dip in to the <code>style</code> properties in JavaScript.</p>
+  <p id="test" class="fail">Sadly, your browser doesn't support the hidden property. Useful when you want to quickly do <code>element.hidden</code>. Ah well, back to CSS.</p>
+</article>
+<script>
+document.getElementById('test').hidden = true;
+</script>

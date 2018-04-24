@@ -1,0 +1,78 @@
+<title>Web Database</title>
+<style>
+#status {
+  padding: 5px;
+  color: #fff;
+  background: #ccc;
+}
+
+#status.error {
+  background: #c00;
+}
+
+#status.ok {
+  background: #0c0;
+}
+
+label {
+  float: left;
+  display: block;
+  width: 125px;
+  line-height: 32px;
+}
+
+#tweets {
+  max-height: 300px;
+  overflow: auto;
+  border: 3px solid #ccc;
+}
+
+#tweets ul {
+  margin: 0;
+  padding: 5px;
+}
+
+#tweets li {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-top: 1px solid #ccc;
+}
+
+#tweets li:first-child {
+  border-top: 0;
+}
+</style>
+<article>
+  <section>
+    <p>We're using the Web Database API to store <a href="http://twitter.com/rem">my tweets</a>, so there's no Twitter API hit on load.</p>
+    <p>In addition, I'm using the <code>since_id</code> when we make new requests, so I shouldn't be doubling up on tweets.</p>
+    <p>Status: <span id="status" class="ok">ready</span></p>
+  </section>
+  <section id="tweets">
+    <ol>
+      <li>None loaded up yet :-(</li>
+    </ol>
+  </section>
+  <div>
+    <input type="button" id="clear" value="Reset database" />
+    <input type="button" id="timeline" value="Timeline" />
+    <input type="button" id="mentions" value="Mentions" />
+  </div>
+</article>
+<script src="/js/tweets.js"></script>
+<script>
+// all contained in http://html5demos.com/js/tweets.js
+html5demoTweets.init();
+
+addEvent(document.getElementById('clear'), 'click', function () {
+  html5demoTweets.reset();
+});
+
+addEvent(document.getElementById('timeline'), 'click', function () {
+  html5demoTweets.timeline();
+});
+
+addEvent(document.getElementById('mentions'), 'click', function () {
+  html5demoTweets.mentions();
+});
+</script>

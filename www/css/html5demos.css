@@ -1,0 +1,407 @@
+body {
+  font: normal 16px/20px "Helvetica Neue", Helvetica, sans-serif;
+  background: rgb(237, 237, 236);
+  margin: 0;
+  padding: 0;
+}
+
+section, header, footer {
+  display: block;
+}
+
+#wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff url(../images/shade.jpg) repeat-x center bottom;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  border-top: 1px solid #fff;
+  padding-bottom: 76px;
+}
+
+h1 {
+  padding-top: 10px;
+}
+
+h2 {
+  font-size: 100%;
+  font-style: italic;
+}
+
+header,
+article > *,
+footer > * {
+  margin: 20px;
+}
+
+footer > * {
+  margin: 20px;
+  color: #999;
+}
+
+#status {
+  padding: 5px;
+  color: #fff;
+  background: #ccc;
+}
+
+#status.fail {
+  background: #c00;
+}
+
+#status.success {
+  background: #0c0;
+}
+
+#status.offline {
+  background: #c00;
+}
+
+#status.online {
+  background: #0c0;
+}
+
+/*footer #built:hover:after {
+  content: '...quickly';
+}
+*/
+[contenteditable]:hover:not(:focus) {
+  outline: 1px dotted #ccc;
+}
+
+abbr {
+  border-bottom: 0;
+}
+
+abbr[title] {
+  border-bottom: 1px dotted #ccc;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+#promo {
+  font-size: 90%;
+  /* background: #333 url(../images/learn-js.jpg) no-repeat left center; */
+  /* display: inline-block; */
+  /* color: #efefef; */
+  text-decoration: none;
+  cursor: pointer;
+  /* border: 5px solid #006; */
+  height: 160px;
+}
+
+#promo:hover {
+  border-color: #00f;
+}
+
+#promo img {
+  width: 100%;
+  display: block;
+}
+
+#ih5 {
+  font-size: 90%;
+  background: #442C0D url(../images/ih5.jpg) no-repeat left center;
+  display: block;
+  color: #F7FCE4;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 1px 20px 1px 260px;
+  border: 5px solid #904200;
+}
+
+#ih5:hover {
+  border-color: #CF6D3B;
+}
+
+#ffad section {
+  padding: 20px;
+}
+
+#ffad p {
+  margin: 10px 10px 10px 100px;
+}
+
+#ffad img {
+  border: 0;
+  float: left;
+  display: block;
+  margin: 14px 14px 0;
+}
+
+#ffad .definition {
+  font-style: italic;
+  font-family: Georgia,Palatino,Palatino Linotype,Times,Times New Roman,serif;
+}
+
+#ffad .url {
+  text-decoration: underline;
+}
+
+button, input {
+  font-size: 16px;
+  padding: 3px;
+  margin-left: 5px;
+}
+
+#view-source {
+  display: none;
+}
+
+body.view-source {
+  margin: 0;
+  background: #fff;
+  padding: 20px;
+}
+
+body.view-source > * {
+  display: none;
+}
+
+body.view-source #view-source {
+  display: block !important;
+  margin: 0;
+}
+
+#demos {
+  width: 560px;
+  border-collapse: collapse;
+}
+
+#demos .demo {
+  padding: 5px;
+}
+
+#demos a {
+  color: #00b;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+#demos a:hover {
+  text-decoration: underline;
+}
+
+#demos tbody tr {
+  border-top: 1px solid #DCDCDC;
+}
+
+
+#demos .demo p {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+#demos .support {
+  width: 126px;
+}
+
+.support span {
+  cursor: pointer;
+  overflow: hidden;
+  float: left;
+  display: block;
+  height: 16px;
+  width: 16px;
+  text-indent: -9999px;
+  background-image: url(../images/browsers.gif);
+  background-repeat: none;
+  margin-right: 5px;
+}
+
+.support span.selected {
+  outline: 1px dashed #75784C;
+}
+
+.support span.safari {
+  background-position: 0 0;
+}
+
+.support span.chrome {
+  background-position: 16px 0;
+}
+
+.support span.firefox {
+  background-position: 32px 0;
+}
+
+.support span.ie {
+  background-position: 48px 0;
+}
+
+.support span.opera {
+  background-position: 64px 0;
+}
+
+.support span.nightly {
+  opacity: 0.5;
+  filter:alpha(opacity=50);
+}
+
+.support span.none {
+  opacity: 0.1;
+  filter:alpha(opacity=10);
+}
+
+#demos .tags {
+  width: 140px;
+}
+
+.tags span {
+  font-size: 11px;
+  color: #6E724E;
+  padding: 2px 5px;
+  border: 1px solid #D7D999;
+  background: #FFFFC6;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.tags span:hover,
+.tags span.selected {
+  border: 1px solid #75784C;
+  background: #FF7;
+  color: #333521;
+}
+
+#tags span {
+  margin-right: 2px;
+}
+
+#tags {
+  font-size: 14px;
+}
+
+#html5badge {
+/*  display: none;*/
+  margin-left: -30px;
+  border: 0;
+}
+
+#html5badge img {
+  border: 0;
+}
+
+.support span.yourbrowser {
+  width: 16px;
+  height: 16px;
+  background: none;
+}
+
+.support span.yourbrowser.supported {
+  background: url(../images/yourbrowser.gif) no-repeat top left;
+}
+
+.support span.yourbrowser.not-supported {
+  background: url(../images/yourbrowser.gif) no-repeat top right;
+}
+
+/** Pretty printing styles. Used with prettify.js. */
+pre { font-size: 14px; }
+.str { color: #080; }
+.kwd { color: #008; }
+.com { color: #800; }
+.typ { color: #606; }
+.lit { color: #066; }
+.pun { color: #660; }
+.pln { color: #000; }
+.tag { color: #008; }
+.atn { color: #606; }
+.atv { color: #080; }
+.dec { color: #606; }
+
+#forkme {
+  display: none;
+}
+
+
+@media all and (min-width: 768px) {
+  body {
+    margin-top: 40px;
+  }
+}
+
+/* Carbon Ads */
+#carbonads {
+  position: fixed;
+  display: block;
+  overflow: hidden;
+  margin-top: -2px;
+  margin-left: 620px;
+  padding: 1em;
+  max-width: 130px;
+  border: 1px solid hsl(0, 0%, 91%);
+  background-color: #fbfbfb;
+  text-align: center;
+  font-size: 11px;
+  font-family: Verdana, "Helvetica Neue", Helvetica, sans-serif;
+  line-height: 1.5;
+}
+
+#carbonads a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#carbonads a:hover {
+  color: inherit;
+}
+
+#carbonads span {
+  display: block;
+  overflow: hidden;
+}
+
+.carbon-img {
+  display: block;
+  margin: 0 auto 1em;
+}
+
+.carbon-text {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.carbon-poweredby {
+  display: block;
+  color: #888 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 8px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 759px) {
+  #carbonads {
+    position: relative;
+    float: none;
+    margin: 3em auto 1em;
+    max-width: 330px;
+  }
+  #carbonads span {
+    position: relative;
+  }
+  #carbonads > span {
+    max-width: none;
+  }
+  .carbon-img {
+    float: left;
+    margin: 0 1em 0 0;
+  }
+  .carbon-text {
+    float: left;
+    margin-bottom: 0;
+    max-width: calc(100% - 130px - 1em);
+    text-align: left;
+  }
+  .carbon-poweredby {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+  }
+}
