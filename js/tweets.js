@@ -1,4 +1,5 @@
-//added comment to test commit
+//added comment to test commit 
+//update commit test
 var html5demoTweets = (function (user, elm, status) {
   var elm = document.querySelector(elm),
       status = document.querySelector(status),
