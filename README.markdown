@@ -15,8 +15,8 @@ If the demo should take the default style - currently grey and dull - but it kee
 
 Instructions to creating a new demo:
 
-* Create a .html in the /demos directory
-* Use the following template (also a sample in /demos/template.html):
+* Create a .html in the `/demos` directory
+* Use the following template (also a sample in `/demos/template.html`):
 
 <pre><code>&lt;title&gt;&lt;!-- Title of your demo, note this appears in the document title prefixed with &quot;HTML5 Demo:&quot; --&gt;&lt;/title&gt;
 &lt;style&gt;/** any custom styles live here **/&lt;/style&gt;
@@ -26,7 +26,7 @@ Instructions to creating a new demo:
 &lt;/script&gt;</code></pre>
 
 * When requesting the demo, use html5demos.com/[yourdemo] and page.php will top and tail your page
-* Any additional JavaScript libraries should be stored in the /js directory, assets, such as video and audio live in the /assets directory.
+* Any additional JavaScript libraries should be stored in the `/js` directory, assets, such as video and audio live in the `/assets` directory.
 
 That should be it. 
 
