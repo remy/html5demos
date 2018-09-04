@@ -3,8 +3,8 @@ CACHE MANIFEST
 # Build 2011-05-17
 
 CACHE:
-images/shade.jpg
-images/bin.jpg
+/images/shade.jpg
+/images/bin.jpg
 /js/h5utils-offline.js
 /css/html5demos.css
 
