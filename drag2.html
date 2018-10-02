@@ -48,7 +48,7 @@ li.over {
 }
 
 #bin {
-  background: url(images/bin.jpg) top right no-repeat;
+  background: url(/images/bin.jpg) top right no-repeat;
   height: 250px;
   width: 166px;
   float: right;
@@ -57,7 +57,7 @@ li.over {
 }
 
 #bin.over {
-  background: url(images/bin.jpg) top left no-repeat;
+  background: url(/images/bin.jpg) top left no-repeat;
 }
 
 #bin p {
@@ -116,7 +116,7 @@ li.over {
 
   addEvent(bin, 'drop', function (e) {
     if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting...why???
-    
+
     var el = document.getElementById(e.dataTransfer.getData('Text'));
 
     el.parentNode.removeChild(el);
@@ -134,7 +134,7 @@ li.over {
           if (msie) { // don't bother with the animation
             y.style.display = 'none';
           }
-          clearInterval(t); 
+          clearInterval(t);
         } else {
           y.style.opacity -= 0.1;
         }
@@ -153,6 +153,6 @@ li.over {
   try {
   var pageTracker = _gat._getTracker("UA-1656750-18");
   pageTracker._trackPageview();
-  } catch(err) {}</script>  
+  } catch(err) {}</script>
 </body>
 </html>

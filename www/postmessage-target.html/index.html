@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>postMessage target</title>
+<style>
+body { 
+  font: normal 16px/20px Helvetica, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+</style>
+</head>
+<body>
+<strong>This iframe is located on the same domain</strong>
+<p id="test">Send me a message!</p>
+<script src="/js/h5utils.js"></script>
+<script>
+addEvent(window, "message", function(e){
+  if ( e.origin !== "http://html5demos.com" ) {
+    document.getElementById("test").innerHTML = 'Ignoring message from ' + e.origin;
+  } else {
+    document.getElementById("test").innerHTML = e.origin + " said: " + e.data;
+  }
+});
+</script>
+</body>
+</html>

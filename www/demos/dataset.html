@@ -1,0 +1,73 @@
+<style>
+#test {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 20px 0;
+}
+pre {
+  overflow-x: auto;
+  padding: 10px;
+  border: 1px dashed #ccc;
+  background: #fff;
+  font-size: 12px;
+}
+</style>
+<title>data-*</title>
+<article>
+  <section>
+    <p>The <code>data-[name]</code> attribute on elements can now be accessed directly via the DOM using <code>element.dataset.[attr]</code>.</p>
+    <p>Try openning the Web Console and editing <code>element.dataset</code> directly: <br /><code>element.dataset.foo = 'bar';</code></p>
+  </section>
+  <p id="status">Not connected</p>
+  <section>
+    <div id="testWrapper"><div id="test" data-name="rem" data-height="short">This element has data</div></div>
+    <input type="button" value="Show data" id="show" />
+    <input type="button" value="Change data via dataset" id="change1" />
+    <input type="button" value="change data via setAttribute" id="change2" />
+  </section>
+  <pre><code id="element">[click buttons above to show element html]</code></pre>
+</article>
+<script>
+(function () {
+
+function show() {
+  code.innerHTML = testWrapper.innerHTML.replace(/[<>]/g, function (m) {
+    return { '<': '&lt;', '>': '&gt;' }[m];
+  });
+  
+  for (var prop in test.dataset) {
+    code.innerHTML += '\nel.dataset.' + prop + ' = "' + test.dataset[prop] + '"';
+  }
+}
+
+var state = document.getElementById('status'),
+    code = document.getElementById('element');
+    
+var test = document.getElementById('test'),
+    testWrapper = document.getElementById('testWrapper');
+
+if (test.dataset === undefined) {
+  state.innerHTML = 'dataset not supported';
+  state.className = 'fail';
+} else {
+  state.className = 'success';
+  state.innerHTML = 'element.dataset supported';
+}
+
+addEvent(document.getElementById('show'), 'click', function () {
+  show();
+});
+
+addEvent(document.getElementById('change1'), 'click', function () {
+  test.dataset.name = 'via el.dataset';
+  show();
+});
+  
+addEvent(document.getElementById('change2'), 'click', function () {
+  test.setAttribute('data-name', 'via setAttribute');
+  show();  
+});
+
+
+})();
+</script>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width">
+<title>HTML5 Demo: Web Worker</title>
+<link rel="stylesheet" href="/css/html5demos.css">
+<script src="/js/h5utils.js"></script></head>
+<body>
+<section id="wrapper">
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=html5demoscom" id="_carbonads_js"></script>
+    <header>
+      <h1>Web Worker</h1>
+    </header>
+
+<style>
+body {
+  font-family: sans-serif;
+}
+
+#status {
+  height: 200px;
+  max-height: 200px;
+  border: thin solid #aaa;
+  overflow-y: scroll;
+}
+
+#animationWrapper {
+  position: relative;
+  height: 50px;
+}
+
+#square {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 220, 0.3);
+}
+</style>
+<article>    
+  <p>This demo shows how main window animation isn't interrupted by Web Workers. <small>Note that the animation does not work in Opera (due to lack of requestAnimationFrame support).</small></p>
+  <p>Use arrow keys to change the direction of the animated square. The square is animated with <em>requestAnimationFrame</em>.</p>
+  <div id="animationWrapper">
+     <div id="square"></div>
+  </div>
+  <p>Click the button below to start or stop the worker.</p>
+  <div><input type="button" value="start worker" id="toggleWorker" /></div>
+  <h2>Messages from Worker:</h2>
+  <div id="status"></div>
+<script src="/js/worker-main.js"></script>
+</article><a id="html5badge" href="http://www.w3.org/html/logo/">
+<img src="https://www.w3.org/html/logo/badge/html5-badge-h-connectivity-device-graphics-multimedia-performance-semantics-storage.png" width="325" height="64" alt="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage">
+</a>
+    <footer><a href="/">HTML5 demos</a>/<a id="built" href="http://twitter.com/rem">@rem built this</a>/<a href="#view-source">view source</a></footer>
+</section>
+<a id="forkme" href="http://github.com/remy/html5demos"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<script src="/js/prettify.packed.js"></script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

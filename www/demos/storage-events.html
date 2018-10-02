@@ -1,0 +1,44 @@
+<title>Storage Events</title>
+<style>
+article div { 
+  margin: 10px 0;
+}
+
+label {
+  float: left;
+  display: block;
+  width: 125px;
+  line-height: 32px;
+}
+
+#fromEvent {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+</style>
+<article>
+  <section>
+    <p><strong>Directions:</strong> open multiple windows or tabs with <a href="/storage-events">this demo</a> and change the text below.</p>
+    <p>The <code>storage</code> event triggers on the "blurred" windows, giving us a way to communicate across windows using <code>localStorage</code>.</p>
+    <div>
+      <p><label for="data">Your test data:</label> <input type="text" name="data" value="" placeholder="change me" id="data" /> <small>(this is only echoed on <em>other</em> windows)</small></p>
+      <p id="fromEvent">Waiting for data via <code>storage</code> event...</p>
+    </div>
+  </section>
+</article>
+<script>
+
+var dataInput = document.getElementById('data'),
+    output = document.getElementById('fromEvent');
+
+addEvent(window, 'storage', function (event) {
+  if (event.key == 'storage-event-test') {
+    output.innerHTML = event.newValue;
+  }
+});
+
+addEvent(dataInput, 'keyup', function () {
+  localStorage.setItem('storage-event-test', this.value);
+});
+
+</script>

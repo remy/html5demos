@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width">
+<title>HTML5 Demo: data-*</title>
+<link rel="stylesheet" href="/css/html5demos.css">
+<script src="/js/h5utils.js"></script></head>
+<body>
+<section id="wrapper">
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=html5demoscom" id="_carbonads_js"></script>
+    <header>
+      <h1>data-*</h1>
+    </header>
+<style>
+#test {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 20px 0;
+}
+pre {
+  overflow-x: auto;
+  padding: 10px;
+  border: 1px dashed #ccc;
+  background: #fff;
+  font-size: 12px;
+}
+</style>
+
+<article>
+  <section>
+    <p>The <code>data-[name]</code> attribute on elements can now be accessed directly via the DOM using <code>element.dataset.[attr]</code>.</p>
+    <p>Try openning the Web Console and editing <code>element.dataset</code> directly: <br /><code>element.dataset.foo = 'bar';</code></p>
+  </section>
+  <p id="status">Not connected</p>
+  <section>
+    <div id="testWrapper"><div id="test" data-name="rem" data-height="short">This element has data</div></div>
+    <input type="button" value="Show data" id="show" />
+    <input type="button" value="Change data via dataset" id="change1" />
+    <input type="button" value="change data via setAttribute" id="change2" />
+  </section>
+  <pre><code id="element">[click buttons above to show element html]</code></pre>
+</article>
+<script>
+(function () {
+
+function show() {
+  code.innerHTML = testWrapper.innerHTML.replace(/[<>]/g, function (m) {
+    return { '<': '&lt;', '>': '&gt;' }[m];
+  });
+  
+  for (var prop in test.dataset) {
+    code.innerHTML += '\nel.dataset.' + prop + ' = "' + test.dataset[prop] + '"';
+  }
+}
+
+var state = document.getElementById('status'),
+    code = document.getElementById('element');
+    
+var test = document.getElementById('test'),
+    testWrapper = document.getElementById('testWrapper');
+
+if (test.dataset === undefined) {
+  state.innerHTML = 'dataset not supported';
+  state.className = 'fail';
+} else {
+  state.className = 'success';
+  state.innerHTML = 'element.dataset supported';
+}
+
+addEvent(document.getElementById('show'), 'click', function () {
+  show();
+});
+
+addEvent(document.getElementById('change1'), 'click', function () {
+  test.dataset.name = 'via el.dataset';
+  show();
+});
+  
+addEvent(document.getElementById('change2'), 'click', function () {
+  test.setAttribute('data-name', 'via setAttribute');
+  show();  
+});
+
+
+})();
+</script>
+<a id="html5badge" href="http://www.w3.org/html/logo/">
+<img src="https://www.w3.org/html/logo/badge/html5-badge-h-connectivity-device-graphics-multimedia-performance-semantics-storage.png" width="325" height="64" alt="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage">
+</a>
+    <footer><a href="/">HTML5 demos</a>/<a id="built" href="http://twitter.com/rem">@rem built this</a>/<a href="#view-source">view source</a></footer>
+</section>
+<a id="forkme" href="http://github.com/remy/html5demos"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<script src="/js/prettify.packed.js"></script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

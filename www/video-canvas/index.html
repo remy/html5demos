@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Dizzy</title>
+<style>
+* { margin: 0;}
+body { font-family: helvetica; padding: 10px;  }
+input { width: 50px; }
+/*video, canvas { display: block; }*/
+p { margin-top: 20px;}
+</style>
+</head>
+<body>
+  <video height="360" width="480">
+    <source src="assets/dizzy.mp4" />
+    <source src="assets/dizzy.ogv" />
+  </video><canvas></canvas>
+  <p>
+    <input type="button" id="play" value="play">
+    <span id="position">00:00</span> / <span id="duration"></span>
+  </p>
+<script src="/js/h5utils.js"></script>
+<script>
+var video = document.querySelector('video');
+var togglePlay = document.querySelector('#play');
+var position = document.querySelector('#position');
+var canvas = document.querySelector('canvas');
+var ctx = canvas.getContext('2d');
+
+addEvent(togglePlay, 'click', function () {
+  video.playbackRate = 0.5;
+  if (video.paused) {
+    if (video.ended) video.currentTime = 0;
+    video.play();
+    this.value = "pause";
+  } else {
+    video.pause();
+    this.value = "play";
+  }
+});
+
+setInterval(function () {
+  position.innerHTML = asTime(video.currentTime);
+
+  // ctx.restore();
+  ctx.drawImage(video, 0, 0, video.width, video.height, 0, 0, canvas.width, canvas.height);
+}, 1000 / 15);
+
+addEvent(video, 'ended', function () {
+  togglePlay.value = "play";
+});
+
+addEvent(video, 'canplay', function () {
+  video.muted = true;
+  document.querySelector('#duration').innerHTML = asTime(this.duration);
+  startCanvas();
+});
+
+
+function startCanvas() {
+  canvas.setAttribute('height', Math.floor(video.height));
+  canvas.setAttribute('width', Math.floor(video.width));
+  
+  ctx.translate(canvas.width/2, canvas.height/2);
+  ctx.scale(-1, 1);
+  ctx.translate(-canvas.width/2, -canvas.height/2);
+  ctx.drawImage(video, 0, 0, video.width, video.height, 0, 0, canvas.width, canvas.height);
+
+  // var mirror = canvas.height * 0.6;
+  // var grad = ctx.createLinearGradient(0, 0, 0, mirror);
+  // grad.addColorStop(0, 'rgba(0, 0, 0, 0.5)');
+  // grad.addColorStop(1, 'rgba(0, 0, 0, 1)');
+  // ctx.fillStyle = grad;
+  // ctx.rect(0, 0, canvas.width, mirror);
+  // ctx.fill();
+  // ctx.save();  
+}
+
+function asTime(t) {
+  t = Math.round(t);
+  var s = t % 60;
+  var m = Math.round(t / 60);
+  
+  return two(m) + ':' + two(s);
+}
+
+function two(s) {
+  s += "";
+  if (s.length < 2) s = "0" + s;
+  return s;
+}
+</script>
+</body>
+</html>

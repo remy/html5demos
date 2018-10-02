@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width">
+<title>HTML5 Demo: Non Worker</title>
+<link rel="stylesheet" href="/css/html5demos.css">
+<script src="/js/h5utils.js"></script></head>
+<body>
+<section id="wrapper">
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=html5demoscom" id="_carbonads_js"></script>
+    <header>
+      <h1>Non Worker</h1>
+    </header>
+  
+  <article>
+    <p>Canvas is running whilst an prime number finder runs - this will cause your browser to hang</p>
+    <p>Prime found: <span id="status">0</span></p>
+    <div><input type="button" value="start worker" id="toggleWorker" /></div>
+  </article>
+<script>
+
+buildSpinner({ x : 50, y : 50, size : 20, degrees : 30 });
+
+var running = false;
+var ctr = 0;
+
+addEvent(document.getElementById('toggleWorker'), 'click', function (event) {
+  // doesn't matter what the message is, just toggle the worker
+  if (running == false) {
+    running = true;
+    run();
+  } else {
+    running = false;
+  }
+});
+
+function run() {
+  var n = 1;
+  search: while (running) {
+    n += 1;
+    for (var i = 2; i <= Math.sqrt(n); i += 1)
+      if (n % i == 0)
+       continue search;
+    // found a prime!
+    document.querySelector('#status').innerHTML = n;
+  }
+}
+
+
+function buildSpinner(data) {
+  
+  var canvas = document.createElement('canvas');
+  canvas.height = 200;
+  canvas.width = 300;
+  document.querySelector('article').appendChild(canvas);
+  var ctx = canvas.getContext("2d"),
+    i = 0, degrees = data.degrees, loops = 0, degreesList = [];
+    
+  for (i = 0; i < degrees; i++) {
+    degreesList.push(i);
+  }
+  
+  // reset
+  i = 0;
+  
+  // so I can kill it later
+  window.canvasTimer = setInterval(draw, 1000/degrees);  
+
+  function reset() {
+    ctx.clearRect(0,0,100,100); // clear canvas
+    
+    var left = degreesList.slice(0, 1);
+    var right = degreesList.slice(1, degreesList.length);
+    degreesList = right.concat(left);
+  }
+  
+  function draw() {
+    var c, s, e;
+
+    var d = 0;
+
+    if (i == 0) {
+      reset();
+    }
+
+    ctx.save();
+
+    d = degreesList[i];
+    c = Math.floor(255/degrees*i);
+    ctx.strokeStyle = 'rgb(' + c + ', ' + c + ', ' + c + ')';
+    ctx.lineWidth = data.size;
+    ctx.beginPath();
+    s = Math.floor(360/degrees*(d));
+    e = Math.floor(360/degrees*(d+1)) - 1;
+
+    ctx.arc(data.x, data.y, data.size, (Math.PI/180)*s, (Math.PI/180)*e, false);
+    ctx.stroke();
+
+    ctx.restore();
+
+    i++;
+    if (i >= degrees) {
+      i = 0;
+    }
+  }  
+}
+
+
+</script>
+<a id="html5badge" href="http://www.w3.org/html/logo/">
+<img src="https://www.w3.org/html/logo/badge/html5-badge-h-connectivity-device-graphics-multimedia-performance-semantics-storage.png" width="325" height="64" alt="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage">
+</a>
+    <footer><a href="/">HTML5 demos</a>/<a id="built" href="http://twitter.com/rem">@rem built this</a>/<a href="#view-source">view source</a></footer>
+</section>
+<a id="forkme" href="http://github.com/remy/html5demos"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<script src="/js/prettify.packed.js"></script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

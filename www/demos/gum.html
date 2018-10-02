@@ -1,0 +1,40 @@
+<title>getUserMedia streamed to a video element</title>
+<style>
+  audio, video {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .supported video,
+  .supported audio { 
+    width: 100%;
+    /* I'm using CSS3 to translate the video on the X axis to give it a mirror effect */
+    -webkit-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    -o-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    -moz-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    -ms-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+    transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
+  }
+  #gum {
+    background: #c00;
+    color: #fff;
+    padding: 10px;
+  }
+</style>
+<article>
+  <video id="video" muted loop autoplay>
+    <source src="/assets/remy-and-ellis2.mp4"></source>
+    <source src="/assets/remy-and-ellis2.webm"></source>
+  </video>
+  <p id="gum">getUserMeda either not supported or not allowed - so instead here's me and my son headbanging.</p>
+</article>
+<script src="/js/gum.js"></script>
+<script>
+var article = video.parentNode,
+    gum = document.getElementById('gum');
+
+if (navigator.getUserMedia) {
+  article.removeChild(gum);
+  article.className = 'supported';
+}
+</script>

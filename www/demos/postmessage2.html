@@ -1,0 +1,30 @@
+<title>postMessage (cross domain)</title>
+<style>
+iframe {
+  width: 100%;
+  border: 2px solid #ccc;
+}
+</style>
+    <article>
+      <form>
+      <p><label for="message">Message</label><input type="text" name="message" value="my message" id="message" /> <input type="submit" />
+      </p>
+      <h2>Target iframe:</h2>
+      <iframe id="iframe" src="http://jsbin.com/uderi/7"></iframe>
+      </form>
+    </article>
+<script>
+var win = document.getElementById("iframe").contentWindow;
+
+addEvent(document.querySelector('form'), 'submit', function (e) {
+	win.postMessage(
+		document.getElementById("message").value,
+		"http://jsbin.com"
+	);
+
+	if (e.preventDefault)
+		e.preventDefault();
+	// otherwise set the returnValue property of the original event to false (IE)
+	e.returnValue = false;
+});
+</script>

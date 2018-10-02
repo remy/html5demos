@@ -1,0 +1,108 @@
+<title>Video</title>
+<article>
+  <video preload="metadata"> <!-- https://bugzilla.mozilla.org/show_bug.cgi?id=676422 -->
+    <source src="assets/dizzy.mp4" type="video/mp4" />
+    <source src="assets/dizzy.webm" type="video/webm" />
+    <source src="assets/dizzy.ogv" type="video/ogg" />
+  </video>
+  <p id="controls">
+    <input type="button" id="play" value="play">
+    <span id="position">00:00</span> / <span id="duration">loading...</span>
+  </p>
+  <p>Video loaded: <span id="using">loading...</span></p>
+  <p>Note that (at time of writing) <a href="http://webkit.org/" title="The WebKit Open Source Project">Webkit nightly</a> supports full screen mode, which will add a button above.</p>
+</article>
+<script>
+/*
+  Note that this example used to contain the video inline in the HTML above.
+  However, since it's been understood that there's the possible risk of a race
+  condition (which I'll explain in a moment), it means the best way to prevent
+  this problem is to generate the video element attaching the events, and only
+  once all this is in place, assign the source and insert the element.
+  
+  Other possible alternatives would be to listen on the window object for the 
+  loadedmetadata event and to check the event.target with the element we're 
+  interested in, but it would require the script at the top of the code - 
+  which would block, and that's something I prefer not to do.
+  
+  Another alternative is to put inline event handlers in the markup, again
+  this is something I prefer not to do. 
+  
+  One final alternative is to create the meida element and bind the event
+  before dropping it in the DOM. 
+  
+  Instead of all of these workarounds, I'm going to test the readyState
+  of the media element. If readyState is > 0, then it means the metadata
+  has loaded, and therefore I'll have to run the event handler manually.
+*/
+
+
+var video = document.getElementsByTagName('video')[0],
+    togglePlay = document.getElementById('play'),
+    position = document.getElementById('position'),
+    using = document.getElementById('using'),
+    ready = false,
+    controls = document.getElementById('controls'),
+    fullscreen = null;
+
+addEvent(togglePlay, 'click', function () {
+  if (ready) {
+    // video.playbackRate = 0.5;
+    if (video.paused) {
+      if (video.ended) video.currentTime = 0;
+      video.play();
+      this.value = "pause";
+    } else {
+      video.pause();
+      this.value = "play";
+    }
+  }
+});
+
+addEvent(video, 'timeupdate', function () {
+  position.innerHTML = asTime(this.currentTime);
+});
+
+addEvent(video, 'ended', function () {
+  togglePlay.value = "play";
+});
+
+// this used to be canplay, but really it should have been loadedmetadata - sorry folks
+function loadedmetadata() {
+  video.muted = true;
+  ready = true;
+  document.querySelector('#duration').innerHTML = asTime(this.duration);
+  using.innerHTML = this.currentSrc;
+  // note: .webkitSupportsFullscreen is false while the video is loading, so we bind in to the canplay event
+  if (video.webkitSupportsFullscreen) {
+    fullscreen = document.createElement('input');
+    fullscreen.setAttribute('type', 'button');
+    fullscreen.setAttribute('value', 'fullscreen');
+    controls.insertBefore(fullscreen, controls.firstChild);
+    addEvent(fullscreen, 'click', function () {
+      video.webkitEnterFullScreen();
+    });
+  }
+}
+
+if (video.readyState > 0) { // metadata is loaded already - fire the event handler manually
+  loadedmetadata.call(video);
+} else {
+  addEvent(video, 'loadedmetadata', loadedmetadata);
+}
+
+
+function asTime(t) {
+  t = Math.round(t);
+  var s = t % 60;
+  var m = Math.floor(t / 60);
+  
+  return two(m) + ':' + two(s);
+}
+
+function two(s) {
+  s += "";
+  if (s.length < 2) s = "0" + s;
+  return s;
+}
+</script>

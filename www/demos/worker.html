@@ -1,0 +1,39 @@
+<title>Web Worker</title>
+<style>
+body {
+  font-family: sans-serif;
+}
+
+#status {
+  height: 200px;
+  max-height: 200px;
+  border: thin solid #aaa;
+  overflow-y: scroll;
+}
+
+#animationWrapper {
+  position: relative;
+  height: 50px;
+}
+
+#square {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 220, 0.3);
+}
+</style>
+<article>    
+  <p>This demo shows how main window animation isn't interrupted by Web Workers. <small>Note that the animation does not work in Opera (due to lack of requestAnimationFrame support).</small></p>
+  <p>Use arrow keys to change the direction of the animated square. The square is animated with <em>requestAnimationFrame</em>.</p>
+  <div id="animationWrapper">
+     <div id="square"></div>
+  </div>
+  <p>Click the button below to start or stop the worker.</p>
+  <div><input type="button" value="start worker" id="toggleWorker" /></div>
+  <h2>Messages from Worker:</h2>
+  <div id="status"></div>
+<script src="/js/worker-main.js"></script>
+</article>

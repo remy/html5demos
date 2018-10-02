@@ -40,7 +40,7 @@ li.over {
 }
 
 #bin {
-  background: url(images/bin.jpg) top right no-repeat;
+  background: url(/images/bin.jpg) top right no-repeat;
   height: 250px;
   width: 166px;
   float: left;
@@ -50,7 +50,7 @@ li.over {
 }
 
 #bin.over {
-  background: url(images/bin.jpg) top left no-repeat;
+  background: url(/images/bin.jpg) top left no-repeat;
 }
 
 #bin p {
@@ -85,9 +85,9 @@ li.over {
   var links = document.querySelectorAll('li > a'), el = null;
   for (var i = 0; i < links.length; i++) {
     el = links[i];
-  
+
     el.setAttribute('draggable', 'true');
-  
+
     addEvent(el, 'dragstart', function (e) {
       e.dataTransfer.effectAllowed = 'copy'; // only dropEffect='copy' will be dropable
       e.dataTransfer.setData('Text', this.id); // required otherwise doesn't work
@@ -117,7 +117,7 @@ li.over {
     if (e.stopPropagation) e.stopPropagation(); // stops the browser from redirecting...why???
 
     var el = document.getElementById(e.dataTransfer.getData('Text'));
-    
+
     el.parentNode.removeChild(el);
 
     // stupid nom text + fade effect
@@ -133,7 +133,7 @@ li.over {
           if (msie) { // don't bother with the animation
             y.style.display = 'none';
           }
-          clearInterval(t); 
+          clearInterval(t);
         } else {
           y.style.opacity -= 0.1;
         }

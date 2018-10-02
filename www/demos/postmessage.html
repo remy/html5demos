@@ -1,0 +1,32 @@
+<title>postMessage (same domain)</title>
+<style>
+iframe {
+  width: 100%;
+  border: 2px solid #ccc;
+}
+</style>
+    <article>
+      <form>
+      <p><label for="message">Message</label> <input type="text" name="message" value="my message" id="message" /> <input type="submit" />
+      </p>
+      <h2>Target iframe:</h2>
+      <iframe id="iframe" src="postmessage-target.html"></iframe>
+      </form>
+    </article>
+<script>
+var win = document.getElementById("iframe").contentWindow;
+
+addEvent(document.getElementsByTagName('form')[0], 'submit', function (e) {
+	if (e.preventDefault)
+		e.preventDefault();
+
+	win.postMessage(
+		document.getElementById("message").value,
+    "http://html5demos.com"
+	);
+
+	// otherwise set the returnValue property of the original event to false (IE)
+	e.returnValue = false;
+	return false;
+});
+</script>

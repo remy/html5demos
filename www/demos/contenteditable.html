@@ -1,0 +1,41 @@
+<title>ContentEditable</title>
+<article>
+  <section>
+    <p>Any elements with the <code>contenteditable</code> attribute set will have a grey outline as you hover over. Feel free to edit and change their contents.  I'm using local storage to maintain your changes.</p>
+  </section>
+  <section id="editable" contenteditable="true">
+    <h2>Go ahead, edit away!</h2>
+    <p>Here's a typical paragraph element</p>
+    <ol>
+      <li>and now a list</li>
+      <li>with only</li>
+      <li>three items</li>
+    </ol>
+  </section>
+  <div>
+    <input type="button" id="clear" value="Clear changes" />
+  </div>
+</article>
+<script>
+var editable = document.getElementById('editable');
+
+addEvent(editable, 'blur', function () {
+  // lame that we're hooking the blur event
+  localStorage.setItem('contenteditable', this.innerHTML);
+  document.designMode = 'off';
+});
+
+addEvent(editable, 'focus', function () {
+  document.designMode = 'on';
+});
+
+addEvent(document.getElementById('clear'), 'click', function () {
+  localStorage.clear();
+  window.location = window.location; // refresh
+});
+
+if (localStorage.getItem('contenteditable')) {
+  editable.innerHTML = localStorage.getItem('contenteditable');
+}
+
+</script>

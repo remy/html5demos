@@ -1,0 +1,13 @@
+<title>navigator.onLine testing</title>
+<article>
+  <p>Current network status: <span id="status">checking...</span></p>
+  <p>A timer is constantly polling the navigator.onLine property, which is typically switched via File -&gt; Work Offline</p>
+</article>
+<script>
+var statusElem = document.getElementById('status')
+
+setInterval(function () {
+  statusElem.className = navigator.onLine ? 'online' : 'offline';
+  statusElem.innerHTML = navigator.onLine ? 'online' : 'offline';  
+}, 250);
+</script>

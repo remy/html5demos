@@ -10,7 +10,7 @@ if (file_exists('demos/' . $request . '.html')) {
   if ($request == 'offlineapp') { // specific change to support <html manifest=xyz>
     $manifest = ' manifest="html5demo.appcache"';
   }
-  
+
   include('includes/header.php');
   echo $file;
   include('includes/footer.php');

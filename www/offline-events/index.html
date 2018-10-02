@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width">
+<title>HTML5 Demo: on/offline event capture</title>
+<link rel="stylesheet" href="/css/html5demos.css">
+<script src="/js/h5utils.js"></script></head>
+<body>
+<section id="wrapper">
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=html5demoscom" id="_carbonads_js"></script>
+    <header>
+      <h1>on/offline event capture</h1>
+    </header>
+
+<style>
+li {
+  font-weight: bold;
+}
+li::before {
+  font-weight: normal;
+}
+</style>
+<article>
+  <p>Test required here: File -> Work Offline - toggle the value and there <em>should</em> be three list items notifying of online and offline.</p>
+  <ul>
+    <li>via body "on" events: <span id="viabody"></span></li>
+    <li>via window "on" events: <span id="viaon"></span></li>
+    <li>via window.addEventListener: <span id="vialistener"></span></li>
+  </ul>
+  <p>Note that the test shows that <code>window.ononline</code> and <code>window.onoffline</code> doesn't work (which I thought I had read in the specs somewhere...).</p>
+</article>
+<script>
+function update(online) {
+  document.getElementById('viabody').innerHTML = navigator.onLine ? 'Online' : 'Offline';
+}
+
+addEvent(window, 'online', function () {
+  document.getElementById('vialistener').innerHTML = 'Online';
+});
+
+addEvent(window, 'offline', function () {
+  document.getElementById('vialistener').innerHTML = 'Offline';
+});
+
+window.ononline = function () {
+  document.getElementById('viaon').innerHTML = 'Online';
+};
+
+window.onoffline = function () {
+  document.getElementById('viaon').innerHTML = 'Offline';
+};
+
+document.body.onOnline = update;
+document.body.onOffline = update;
+
+// document.body.onload = update;
+ 
+</script><a id="html5badge" href="http://www.w3.org/html/logo/">
+<img src="https://www.w3.org/html/logo/badge/html5-badge-h-connectivity-device-graphics-multimedia-performance-semantics-storage.png" width="325" height="64" alt="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage">
+</a>
+    <footer><a href="/">HTML5 demos</a>/<a id="built" href="http://twitter.com/rem">@rem built this</a>/<a href="#view-source">view source</a></footer>
+</section>
+<a id="forkme" href="http://github.com/remy/html5demos"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<script src="/js/prettify.packed.js"></script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

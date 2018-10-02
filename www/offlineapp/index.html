@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" manifest="html5demo.appcache">
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width">
+<title>HTML5 Demo: Offline Application: using manifest</title>
+<link rel="stylesheet" href="/css/html5demos.css">
+</head>
+<body>
+<section id="wrapper">
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=html5demoscom" id="_carbonads_js"></script>
+    <header>
+      <h1>Offline Application: using manifest</h1>
+    </header>
+<meta name="viewport" content="width=620" />
+
+<script src="/js/h5utils-offline.js"></script>
+    <article>
+      <p>A good working example is to load this demo up, then disconnection your web connection - the page will still reload. In addition, try this on an iPhone, then set your iPhone to flight mode, and refresh: the page loads.</p>
+      <p>Status of cache: </p>
+      <p id="status">checking...</p>
+      <p><input type="button" id="update" value="Update cache status" /></p>
+      <p><input type="button" id="swap" value="Update cache to latest" /></p>
+    </article>
+<script>
+
+var cacheStates = ["UNCACHED (numeric value 0) -- The ApplicationCache object's cache host is not associated with an application cache at this time.",
+"IDLE (numeric value 1) -- The ApplicationCache object's cache host is associated with an application cache whose application cache group's update status is idle, and that application cache is the newest cache in its application cache group, and the application cache group is not marked as obsolete.",
+"CHECKING (numeric value 2) -- The ApplicationCache object's cache host is associated with an application cache whose application cache group's update status is checking.",
+"DOWNLOADING (numeric value 3) -- The ApplicationCache object's cache host is associated with an application cache whose application cache group's update status is downloading.",
+"UPDATEREADY (numeric value 4) -- The ApplicationCache object's cache host is associated with an application cache whose application cache group's update status is idle, and whose application cache group is not marked as obsolete, but that application cache is not the newest cache in its group.",
+"OBSOLETE (numeric value 5) -- The ApplicationCache object's cache host is associated with an application cache whose application cache group is marked as obsolete."];
+
+function updateCacheStatus() {
+  document.querySelector('#status').innerHTML = cacheStates[window.applicationCache.status];
+}
+
+addEvent(document.querySelector('#update'), 'click', function () {
+  window.applicationCache.update();
+});
+
+addEvent(document.querySelector('#swap'), 'click', function () {
+  window.applicationCache.swapCache();
+});
+
+var events = "checking,error,noupdate,downloading,progress,updateready,cached,obsolete".split(',');
+var i = events.length;
+
+while (i--) {
+  addEvent(window.applicationCache, events[i], updateCacheStatus);
+}
+
+</script>
+<a id="html5badge" href="http://www.w3.org/html/logo/">
+<img src="https://www.w3.org/html/logo/badge/html5-badge-h-connectivity-device-graphics-multimedia-performance-semantics-storage.png" width="325" height="64" alt="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage" title="HTML5 Powered with Connectivity / Realtime, Device Access, Graphics, 3D &amp; Effects, Multimedia, Performance &amp; Integration, Semantics, and Offline &amp; Storage">
+</a>
+    <footer><a href="/">HTML5 demos</a>/<a id="built" href="http://twitter.com/rem">@rem built this</a>/<a href="#view-source">view source</a></footer>
+</section>
+<a id="forkme" href="http://github.com/remy/html5demos"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+<script src="/js/prettify.packed.js"></script>
+<script>
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+try {
+var pageTracker = _gat._getTracker("UA-1656750-18");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>
