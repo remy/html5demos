@@ -7,6 +7,7 @@
 
   .supported video,
   .supported audio { 
+    width: 100%;
     /* I'm using CSS3 to translate the video on the X axis to give it a mirror effect */
     -webkit-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
     -o-transform: rotateY(180deg) rotate3d(1, 0, 0, 0deg); 
@@ -27,37 +28,13 @@
   </video>
   <p id="gum">getUserMeda either not supported or not allowed - so instead here's me and my son headbanging.</p>
 </article>
+<script src="/js/gum.js"></script>
 <script>
-var video = document.getElementById('video'),
-    article = video.parentNode,
+var article = video.parentNode,
     gum = document.getElementById('gum');
 
-function init() {
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-  if (navigator.getUserMedia) {
-    // NOTE: at time of writing March 26, 2012, audio isn't working in Chrome
-    // navigator.getUserMedia('audio,video', successCallback, errorCallback);
-    // Below is the latest syntax. Using the old syntax for the time being for backwards compatibility.
-    navigator.getUserMedia({video: true, audio: true }, successCallback, errorCallback);
-    function successCallback(stream) {
-      window.stream = stream;
-      if (window.webkitURL) {
-        video.src = window.webkitURL.createObjectURL(stream);
-        // document.querySelector('audio').src = window.webkitURL.createObjectURL(stream);
-      } else {
-        video.src = stream;
-      }
-    }
-    function errorCallback(error) {
-      console.error('An error occurred: [CODE ' + error.code + ']');
-      return;
-    }
-  }
-}
-
-if (navigator.getUserMedia || navigator.webkitGetUserMedia) {
+if (navigator.getUserMedia) {
   article.removeChild(gum);
   article.className = 'supported';
-  init();
 }
 </script>
