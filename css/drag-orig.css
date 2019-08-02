@@ -1,0 +1,44 @@
+#boxA,
+#boxB,
+#boxC {
+    float: left;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#boxA {
+    background-color: blue;
+}
+
+#boxB {
+    background-color: green;
+}
+
+#boxC {
+    background-color: yellow;
+}
+
+#drag,
+#drag2,
+#drag3 {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    margin: 5px;
+    -moz-user-select: none;
+}
+
+#drag {
+    background-color: red;
+}
+
+#drag2 {
+    background-color: orange;
+}
+
+#drag3 {
+    background-color: purple;
+    border: 3px brown solid;
+}

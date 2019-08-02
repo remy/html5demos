@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    margin: 50px;
+    font-family: helvetica, arial;
+  }
+
+  li {
+    list-style: none;
+    /*  padding: 10px;*/
+  }
+
+  li a {
+    text-decoration: none;
+    color: #000;
+    margin: 10px;
+    width: 150px;
+    border: 3px dashed #999;
+    background: #eee;
+    padding: 10px;
+    cursor: pointer;
+    -moz-user-select: none;
+    /*  -webkit-user-drag: element;*/
+    -khtml-user-drag: element;
+    display: block;
+  }
+
+  *:-khtml-drag {
+    background-color: rgba(238, 238, 238, 0.5);
+  }
+
+  a:hover:after {
+    content: ' (drag me)';
+  }
+
+  li.over {
+    border-color: #333;
+    background: #ccc;
+  }
+
+  #bin {
+    background: url(/images/bin.jpg) top right no-repeat;
+    height: 250px;
+    width: 166px;
+    float: right;
+    border: 5px solid #000;
+    position: relative;
+  }
+
+  #bin.over {
+    background: url(/images/bin.jpg) top left no-repeat;
+  }
+
+  #bin p {
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+    width: 166px;
+    font-size: 32px;
+    color: #fff;
+    text-shadow: #000 2px 2px 2px;
+  }
