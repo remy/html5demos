@@ -29,13 +29,11 @@ h2 {
   font-style: italic;
 }
 
-header,
-article > *,
-footer > * {
+header, article>*, footer>* {
   margin: 20px;
 }
 
-footer > * {
+footer>* {
   margin: 20px;
   color: #999;
 }
@@ -66,6 +64,7 @@ footer > * {
   content: '...quickly';
 }
 */
+
 [contenteditable]:hover:not(:focus) {
   outline: 1px dotted #ccc;
 }
@@ -134,7 +133,7 @@ li {
 
 #ffad .definition {
   font-style: italic;
-  font-family: Georgia,Palatino,Palatino Linotype,Times,Times New Roman,serif;
+  font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
 }
 
 #ffad .url {
@@ -157,7 +156,7 @@ body.view-source {
   padding: 20px;
 }
 
-body.view-source > * {
+body.view-source>* {
   display: none;
 }
 
@@ -188,7 +187,6 @@ body.view-source #view-source {
 #demos tbody tr {
   border-top: 1px solid #DCDCDC;
 }
-
 
 #demos .demo p {
   margin-top: 0;
@@ -238,12 +236,12 @@ body.view-source #view-source {
 
 .support span.nightly {
   opacity: 0.5;
-  filter:alpha(opacity=50);
+  filter: alpha(opacity=50);
 }
 
 .support span.none {
   opacity: 0.1;
-  filter:alpha(opacity=10);
+  filter: alpha(opacity=10);
 }
 
 #demos .tags {
@@ -262,8 +260,7 @@ body.view-source #view-source {
   cursor: pointer;
 }
 
-.tags span:hover,
-.tags span.selected {
+.tags span:hover, .tags span.selected {
   border: 1px solid #75784C;
   background: #FF7;
   color: #333521;
@@ -278,7 +275,7 @@ body.view-source #view-source {
 }
 
 #html5badge {
-/*  display: none;*/
+  /*  display: none;*/
   margin-left: -30px;
   border: 0;
 }
@@ -302,23 +299,58 @@ body.view-source #view-source {
 }
 
 /** Pretty printing styles. Used with prettify.js. */
-pre { font-size: 14px; }
-.str { color: #080; }
-.kwd { color: #008; }
-.com { color: #800; }
-.typ { color: #606; }
-.lit { color: #066; }
-.pun { color: #660; }
-.pln { color: #000; }
-.tag { color: #008; }
-.atn { color: #606; }
-.atv { color: #080; }
-.dec { color: #606; }
+
+pre {
+  font-size: 14px;
+}
+
+.str {
+  color: #080;
+}
+
+.kwd {
+  color: #008;
+}
+
+.com {
+  color: #800;
+}
+
+.typ {
+  color: #606;
+}
+
+.lit {
+  color: #066;
+}
+
+.pun {
+  color: #660;
+}
+
+.pln {
+  color: #000;
+}
+
+.tag {
+  color: #008;
+}
+
+.atn {
+  color: #606;
+}
+
+.atv {
+  color: #080;
+}
+
+.dec {
+  color: #606;
+}
 
 #forkme {
   display: none;
 }
-
 
 @media all and (min-width: 768px) {
   body {
@@ -327,6 +359,7 @@ pre { font-size: 14px; }
 }
 
 /* Carbon Ads */
+
 #carbonads {
   position: fixed;
   display: block;
@@ -385,7 +418,7 @@ pre { font-size: 14px; }
   #carbonads span {
     position: relative;
   }
-  #carbonads > span {
+  #carbonads>span {
     max-width: none;
   }
   .carbon-img {

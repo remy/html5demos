@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+  }
+
+  body {
+    font-family: helvetica;
+    padding: 10px;
+  }
+
+  input {
+    width: 50px;
+  }
+
+  /*video, canvas { display: block; }*/
+  p {
+    margin-top: 20px;
+  }
