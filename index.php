@@ -40,6 +40,9 @@ function spans($list) {
 <head>
 <meta charset=utf-8 />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Simple html 5 demos">
+<meta name="author" content="Remy">
+<meta name="keywords" content="html5, demos">
 <title>HTML5 Demos and Examples</title>
 <link rel="stylesheet" href="/css/html5demos.css" />
 <script src="/js/h5utils.js"></script>
