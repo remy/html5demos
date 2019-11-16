@@ -1,5 +1,34 @@
 <title>Simple classList manipulation</title>
 <style>
+
+  /*Reset*/
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+  
+  /*Containers*/
+.container{
+  width: 80%;
+  margin-left: 10%;
+}
+
+  /*Styles of body*/
+p{
+  padding: 2%;
+  text-align: center;
+}
+code{
+  background: #eee;
+  font-weight: bold;
+}
+pre{
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+  /*Class of JavaScript*/
 #classListTest {
   padding: 5px;
   border: 1px solid #ccc;
@@ -17,38 +46,47 @@
   color: #fff;
 }
 
+  /*Class of buttons*/
 .big { font-size: 30px; line-height: 30px; }
-.bold { font-weight: bold; }
+.bold {font-weight: bold; }
 .pink { background: #FF5E99; color: #fff; }
 
 #status {
   background: #c00;
 }
 </style>
-<article>
+
+  <!-- MAIN -->
+<article class="container">
   <p>Clicking the buttons below will toggle the class on the <em>bacon ipsum</em> text below, assigning the class with the same name (styles seen below). This is done using the new <code>classList</code> API.</p>
-  <p id="status">Not supported :(</p> 
+
+    <p id="status">Not supported :(</p> 
+
   <pre><code>&lt;style&gt; 
   .big { font-size: 30px; }
   .bold { font-weight: bold; }
   .pink { background: #FF5E99; color: #fff; }
 &lt;/style&gt;</code></pre>
+
     <p id="classListTest">Bacon ipsum dolor sit amet pancetta bresaola tenderloin, swine meatball tongue ham boudin t-bone ribeye jerky sausage. Pork loin cow shankle drumstick tri-tip, chicken venison strip steak.</p>
+
     <p id="toggleClass">Toggle a class: 
       <input type="button" value="big" />
       <input type="button" value="bold" />
       <input type="button" value="pink" />
     </p>
 </article>
+
+  <!-- JAVASCRIPT -->
 <script>
 // checkfor support
-
 var toggle = document.getElementById('toggleClass'),
     test = document.getElementById('classListTest');
 
 if (toggle.classList) {
   var supported = document.getElementById('status');
   supported.parentNode.removeChild(supported);
+  
   // bit of event delegation otherwise we're binding to each input
   toggle.addEventListener('click', function (event) {
     if (event.target.nodeName == 'INPUT') {
