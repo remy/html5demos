@@ -48,3 +48,5 @@ By submitting any code, you're also agreeing that your code is covered by the MI
 ## Misc
 
 * Clearer versioning on the demos, rather than "All bar Opera", should include last version to support feature, i.e. Opera 10.10b, Chrome 4 dev, Safari 4.0, etc.
+
+<a href="https://app.codesponsor.io/link/wnz2te8CdfKZ8wMjGUpi8EZG/remy/html5demos" rel="nofollow" target="_blank"><img src="https://app.codesponsor.io/embed/wnz2te8CdfKZ8wMjGUpi8EZG/remy/html5demos.svg" style="width: 888px; height: 68px;" alt="Sponsor" /></a>
