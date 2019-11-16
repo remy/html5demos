@@ -1,0 +1,58 @@
+<title>Simple Fullscreen API demo</title>
+<style>
+#status {
+  background: #c00;
+}
+
+#game {
+
+}
+</style>
+<article>
+  <p>This example shows how an element can request fullscreen support from the browser.</p>
+  <p id="unavailable">Not supported :(</p>
+  <div id="game">
+    <button id="gofull">Go fullscreen</button>
+    <button id="goback">Go back to non-fullscreen</button>
+  </div>
+</article>
+<script>
+function $(id) {
+  return document.getElementById(id);
+}
+
+// fullscreen is a bit of mess due to mixed case support
+// taken from http://voxeljs.com/ the very cool game world
+// building toolkit by @maxogden, et al
+function shim(el) {
+  return (el.requestFullscreen ||
+    el.webkitRequestFullscreen ||
+    el.webkitRequestFullScreen ||
+    el.mozRequestFullscreen ||
+    el.mozRequestFullScreen ||
+    el.msRequestFullscreen ||
+    el.msRequestFullScreen ||
+    el.oRequestFullscreen ||
+    el.oRequestFullScreen)
+}
+
+function available() {
+  return !!shim(document.body)
+}
+
+var no = $('unavailable'),
+    go = $('gofull'),
+    back = $('goback');
+
+if (available()) {
+  no.parentNode.removeChild(no);
+}
+
+go.onclick = function () {
+  shim(this.parentNode).call(this.parentNode);
+}
+
+
+
+
+</script>

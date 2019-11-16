@@ -1,5 +1,15 @@
 [
   {
+    "desc": "Full screen of the page, and individual elements",
+    "url": "fullscreen",
+    "tags": "fullscreen",
+    "support": {
+      "live": "opera chrome firefox safari",
+      "nightly": ""
+    },
+    "test": "document.body.requestFullscreen !== undefined"
+  },
+  {
     "desc": "Stream video and filter with canvas",
     "url": "gum-canvas",
     "tags": "getUserMedia canvas",
